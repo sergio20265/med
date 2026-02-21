@@ -1,0 +1,2039 @@
+// Стили для компонента стационара
+
+// Новые стили для улучшенного дизайна
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  opacity: 0.9;
+  font-weight: 300;
+}
+
+.main-description {
+  margin: 2rem 0;
+  
+  h2 {
+    color: #2c5aa0;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+  }
+  
+  .lead-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  
+  .benefit-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #28a745;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    
+    h3 {
+      color: #2c5aa0;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    p {
+      color: #666;
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+}
+
+.cta-block {
+  background: linear-gradient(135deg, #28a745, #20c997);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  margin: 2rem 0;
+  
+  .cta-text {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .btn {
+    background: white;
+    color: #28a745;
+    border: none;
+    padding: 12px 30px;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+  }
+}
+
+.services-section {
+  margin: 3rem 0;
+  
+  .section-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
+
+// Семантические секции
+.geriatric-care,
+.therapeutic-treatment,
+.facility-description {
+  margin-bottom: 2rem;
+  
+  .diagnos_2 {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      padding-left: 1.5rem;
+      
+      &:before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: #28a745;
+        font-weight: bold;
+      }
+      
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.services-list {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  
+  .service-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+    
+    h4 {
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+    
+    p {
+      margin: 0;
+      color: #6c757d;
+      line-height: 1.6;
+    }
+  }
+}
+
+// Ценовые секции
+.prices-section {
+  padding: 3rem 0;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  
+  h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  
+  .prices-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .price-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    position: relative;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      border-color: #007bff;
+    }
+    
+    h3 {
+      color: #2c3e50;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #007bff;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .service-features {
+      list-style: none;
+      padding: 0;
+      
+      li {
+        padding: 0.5rem 0;
+        color: #6c757d;
+        position: relative;
+        padding-left: 1.5rem;
+        
+        &:before {
+          content: '✓';
+          position: absolute;
+          left: 0;
+          color: #28a745;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.savings-section {
+  background: #e3f2fd;
+  padding: 2rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+  
+  h2 {
+    color: #1976d2;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .discount-list {
+    display: grid;
+    gap: 1rem;
+    
+    .discount-item {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.promo-section {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+  color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  margin: 2rem 0;
+  
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+  
+  p {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+}
+
+// Адаптивность и доступность
+@media (max-width: 768px) {
+  .prices-section {
+    padding: 2rem 1rem;
+    
+    h2 {
+      font-size: 2rem;
+    }
+    
+    .prices-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .price-card {
+      padding: 1.5rem;
+      
+      h3 {
+        font-size: 1.3rem;
+      }
+      
+      .price {
+        font-size: 1.5rem;
+      }
+    }
+  }
+  
+  .services-list {
+    .service-item {
+      padding: 1rem;
+      
+      h4 {
+        font-size: 1.1rem;
+      }
+    }
+  }
+  
+  .geriatric-care,
+  .therapeutic-treatment,
+  .facility-description {
+    padding: 0 1rem;
+  }
+  
+  .savings-section,
+  .promo-section {
+    margin: 1rem;
+    padding: 1.5rem;
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .prices-section {
+    .price-card {
+      padding: 1rem;
+      
+      h3 {
+        font-size: 1.2rem;
+      }
+      
+      .price {
+        font-size: 1.3rem;
+      }
+    }
+  }
+  
+  .promo-section {
+    h2 {
+      font-size: 1.3rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+}
+
+// Улучшение доступности
+.btn {
+  &:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+  }
+  
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+// Высокий контраст для лучшей читаемости
+@media (prefers-contrast: high) {
+  .price-card {
+    border: 2px solid #000;
+    
+    &:hover {
+      border-color: #007bff;
+    }
+  }
+  
+  .service-item {
+    border: 1px solid #000;
+  }
+}
+
+// Уменьшенная анимация для пользователей с вестибулярными нарушениями
+@media (prefers-reduced-motion: reduce) {
+  .price-card,
+  .service-card {
+    transition: none;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+  
+  .service-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-top: 4px solid #28a745;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    h4 {
+      color: #2c5aa0;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    p {
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}
+
+.pricing-section {
+  margin: 3rem 0;
+  
+  .pricing-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+  
+  .price-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    
+    &.featured {
+      border: 2px solid #28a745;
+      transform: scale(1.05);
+      
+      .price-badge {
+        background: #28a745;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        position: absolute;
+        top: -10px;
+        right: 20px;
+      }
+    }
+    
+    .price-header h3 {
+      color: #2c5aa0;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    
+    .price-amount {
+      text-align: center;
+      margin: 1.5rem 0;
+      
+      .currency {
+        font-size: 1.2rem;
+        color: #666;
+        vertical-align: top;
+      }
+      
+      .amount {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #28a745;
+      }
+      
+      .period {
+        font-size: 1rem;
+        color: #666;
+      }
+    }
+    
+    .price-total {
+      text-align: center;
+      color: #666;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    
+    .price-features {
+      list-style: none;
+      padding: 0;
+      
+      li {
+        padding: 0.5rem 0;
+        color: #333;
+        border-bottom: 1px solid #eee;
+        
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}
+
+.pricing-cta {
+  text-align: center;
+  margin: 3rem 0;
+  
+  .cta-text {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .btn {
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+  }
+ }
+ 
+ // Стили для секции карты и маршрутов
+ .map-section {
+   background: #f8f9fa;
+   padding: 3rem 0;
+   border-radius: 20px;
+   margin: 2rem 0;
+   
+   h2 {
+     color: #2c5aa0;
+     font-weight: 700;
+     margin-bottom: 2rem;
+   }
+ }
+ 
+ .location-info {
+   margin-bottom: 3rem;
+ }
+ 
+ .address-card, .route-card {
+   background: white;
+   padding: 2rem;
+   border-radius: 15px;
+   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+   height: 100%;
+   
+   h4 {
+     color: #28a745;
+     margin-bottom: 1.5rem;
+     font-size: 1.3rem;
+   }
+   
+   .address-text {
+     font-size: 1.1rem;
+     line-height: 1.6;
+     margin-bottom: 1.5rem;
+     
+     strong {
+       color: #2c5aa0;
+     }
+   }
+   
+   .contact-info p {
+     margin-bottom: 0.8rem;
+     color: #333;
+     
+     i {
+       color: #28a745;
+       margin-right: 0.5rem;
+       width: 20px;
+     }
+   }
+ }
+ 
+ .route-buttons {
+   display: flex;
+   flex-direction: column;
+   gap: 0.8rem;
+   
+   .btn {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     gap: 0.5rem;
+     padding: 12px 20px;
+     border-radius: 10px;
+     font-weight: 600;
+     transition: all 0.3s ease;
+     text-decoration: none;
+     
+     &:hover {
+       transform: translateY(-2px);
+       box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+     }
+     
+     i {
+       font-size: 1.2rem;
+     }
+   }
+ }
+ 
+ .embedded-map {
+   background: white;
+   padding: 2rem;
+   border-radius: 15px;
+   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+   
+   h4 {
+     color: #2c5aa0;
+     margin-bottom: 1rem;
+   }
+   
+   .map-container {
+     position: relative;
+     overflow: hidden;
+     border-radius: 12px;
+   }
+   
+   .map-note {
+     background: #e8f5e8;
+     padding: 1rem;
+     border-radius: 8px;
+     border-left: 4px solid #28a745;
+     margin: 0;
+     
+     i {
+       color: #28a745;
+       margin-right: 0.5rem;
+     }
+   }
+ }
+ 
+ .transport-info {
+   .transport-card {
+     background: white;
+     padding: 1.5rem;
+     border-radius: 12px;
+     box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+     text-align: center;
+     height: 100%;
+     transition: all 0.3s ease;
+     
+     &:hover {
+       transform: translateY(-5px);
+       box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+     }
+     
+     h5 {
+       color: #2c5aa0;
+       margin-bottom: 1rem;
+       font-size: 1.1rem;
+     }
+     
+     p {
+       color: #666;
+       margin: 0;
+       line-height: 1.5;
+     }
+
+     .bus-routes {
+       text-align: left;
+       
+       .route-list {
+         list-style: none;
+         padding: 0;
+         margin: 0.5rem 0;
+         
+         li {
+           margin: 0.3rem 0;
+           
+           .route-number {
+             background: linear-gradient(135deg, #2c5aa0, #1e3d72);
+             color: white;
+             padding: 0.3rem 0.8rem;
+             border-radius: 20px;
+             font-weight: 600;
+             font-size: 0.9rem;
+             display: inline-block;
+             box-shadow: 0 2px 8px rgba(44, 90, 160, 0.3);
+           }
+         }
+       }
+       
+       .route-note {
+         font-size: 0.85rem;
+         color: #888;
+         font-style: italic;
+         margin-top: 0.8rem;
+       }
+     }
+   }
+ }
+ 
+ // Адаптивность для мобильных устройств
+ @media (max-width: 768px) {
+   .map-section {
+     padding: 2rem 1rem;
+   }
+   
+   .address-card, .route-card {
+     margin-bottom: 1.5rem;
+   }
+   
+   .route-buttons .btn {
+     font-size: 0.9rem;
+     padding: 10px 15px;
+   }
+   
+   .embedded-map {
+     padding: 1.5rem;
+   }
+   
+   .transport-card {
+     margin-bottom: 1rem;
+   }
+ }
+ 
+ .hero-section {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/assets/img/medical-pattern.png') repeat;
+    opacity: 0.1;
+    z-index: 1;
+  }
+
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .lead {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+  }
+
+  .hero-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 3rem;
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255,255,255,0.15);
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.2);
+
+      i {
+        font-size: 1.5rem;
+        color: #ffd700;
+      }
+
+      span {
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+
+  .service-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(135deg, #28a745, #20c997);
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #28a745, #20c997);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+
+      i {
+        font-size: 1.5rem;
+        color: white;
+      }
+    }
+
+    h3 {
+      color: #28a745;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #6c757d;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.prices-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e8f5e8 100%);
+  padding: 4rem 0;
+  border-radius: 20px;
+  margin: 3rem 0;
+  border: 1px solid #d4edda;
+
+  .prices-item-title {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 2rem;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #28a745;
+    }
+
+    h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      &::before {
+        content: '🏥';
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  .prices-item-offer {
+    background: white;
+    padding: 2rem;
+    border-radius: 0 0 10px 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    border: 1px solid #d4edda;
+    border-top: none;
+
+    .prices-item-offer-title {
+      color: #28a745;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      &::before {
+        content: '✓';
+        color: #28a745;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+    }
+
+    .prices-item-offer-subtitle {
+      color: #dc3545;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      padding: 0.5rem 1rem;
+      background: #fff5f5;
+      border-radius: 8px;
+      border-left: 4px solid #dc3545;
+    }
+
+    p {
+      color: #6c757d;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &.highlight {
+        background: #fff3cd;
+        padding: 0.75rem;
+        border-radius: 8px;
+        border-left: 4px solid #ffc107;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+.medical-info {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-radius: 15px;
+  padding: 2rem;
+  margin: 2rem 0;
+  border: 1px solid #90caf9;
+
+  h4 {
+    color: #1976d2;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::before {
+      content: 'ℹ️';
+    }
+  }
+
+  p {
+    color: #424242;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+}
+
+// Стили для табов
+::ng-deep {
+  .p-tabview {
+    margin-top: 3rem;
+
+    .p-tabview-nav {
+      background: white;
+      border-radius: 10px 10px 0 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-bottom: 3px solid #28a745;
+
+      .p-tabview-nav-link {
+        background: transparent;
+        border: none;
+        color: #6c757d;
+        font-weight: 500;
+        padding: 1rem 2rem;
+        transition: all 0.3s ease;
+        position: relative;
+
+        &:hover {
+          background: #f8f9fa;
+          color: #28a745;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          width: 0;
+          height: 3px;
+          background: #28a745;
+          transition: all 0.3s ease;
+          transform: translateX(-50%);
+        }
+      }
+
+      .p-highlight .p-tabview-nav-link {
+        background: #28a745;
+        color: white;
+        border-radius: 8px 8px 0 0;
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    .p-tabview-panels {
+      background: white;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 2rem;
+      border: 1px solid #e9ecef;
+      border-top: none;
+    }
+  }
+}
+
+// Специальные стили для медицинских элементов
+.medical-highlight {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  border: 1px solid #ffb74d;
+  border-radius: 10px;
+  padding: 1rem;
+  margin: 1rem 0;
+
+  &::before {
+    content: '⚕️';
+    margin-right: 0.5rem;
+  }
+}
+
+// Адаптивность
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 60px 0;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .hero-features {
+      flex-direction: column;
+      gap: 1rem;
+
+      .feature-item {
+        justify-content: center;
+      }
+    }
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .prices-section {
+    .prices-item-title {
+      padding: 1rem 1.5rem;
+
+      &::after {
+        left: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .prices-section {
+    margin: 2rem -15px;
+    border-radius: 0;
+
+    .prices-item-title,
+    .prices-item-offer {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
+
+  .medical-info {
+    margin-left: -15px;
+    margin-right: -15px;
+    border-radius: 0;
+  }
+}
+
+// Современные стили для прайс-листа
+.pricing-section-modern {
+  margin: 40px 0;
+  padding: 30px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 30px;
+  
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+  
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+    margin: 0;
+  }
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.price-card-modern {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: #007bff;
+  }
+  
+  &.featured {
+    border-color: #28a745;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fff9 100%);
+    
+    &::before {
+      content: '⭐ Рекомендуем';
+      position: absolute;
+      top: -10px;
+      right: 20px;
+      background: #28a745;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.card-header {
+  text-align: center;
+  margin-bottom: 20px;
+  
+  .service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+  
+  .service-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+  }
+  
+  .service-description {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+}
+
+.price-info {
+  .daily-price {
+    text-align: center;
+    margin-bottom: 16px;
+    
+    .price-amount {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #007bff;
+    }
+    
+    .price-period {
+      font-size: 1rem;
+      color: #6c757d;
+      margin-left: 4px;
+    }
+  }
+  
+  .monthly-price {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    
+    .discount-badge {
+      display: block;
+      font-size: 0.85rem;
+      color: #28a745;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .monthly-amount {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2c3e50;
+      display: block;
+    }
+    
+    .payment-terms {
+      color: #6c757d;
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.important-notice {
+  display: grid;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.notice-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  
+  &.warning {
+    background: #fff3cd;
+    border-left: 4px solid #ffc107;
+  }
+  
+  &.info {
+    background: #d1ecf1;
+    border-left: 4px solid #17a2b8;
+  }
+  
+  .notice-icon {
+    font-size: 1.2rem;
+    margin-top: 2px;
+  }
+  
+  .notice-content {
+    flex: 1;
+    
+    h5 {
+      margin: 0 0 8px 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    
+    p {
+      margin: 0;
+      color: #495057;
+      line-height: 1.5;
+    }
+  }
+}
+
+.pricing-grid-therapy {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-bottom: 30px;
+}
+
+.therapy-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: #007bff;
+  }
+  
+  &.featured {
+    border-color: #dc3545;
+    background: linear-gradient(135deg, #ffffff 0%, #fff5f5 100%);
+  }
+}
+
+.popular-badge {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: #dc3545;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.therapy-header {
+  text-align: center;
+  margin-bottom: 20px;
+  
+  .therapy-icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+  }
+  
+  .therapy-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+  }
+  
+  .therapy-description {
+    color: #6c757d;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+}
+
+.therapy-price {
+  text-align: center;
+  margin-bottom: 20px;
+  
+  .price-from {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-right: 4px;
+  }
+  
+  .price-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #007bff;
+  }
+  
+  .price-period {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-left: 4px;
+  }
+}
+
+.therapy-features {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      padding: 6px 0;
+      color: #495057;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+}
+
+.additional-info {
+  margin-top: 30px;
+}
+
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px;
+  background: #fff3cd;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+  
+  .info-icon {
+    font-size: 1.5rem;
+    margin-top: 2px;
+  }
+  
+  .info-content {
+    flex: 1;
+    
+    h5 {
+      margin: 0 0 8px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    
+    p {
+      margin: 0;
+      color: #495057;
+      line-height: 1.5;
+    }
+  }
+}
+
+// Стили для акционного блока
+ .promo-banner-urgent {
+   margin: 30px 0;
+   background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #ff3838 100%);
+   border-radius: 20px;
+   box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4), 0 5px 15px rgba(0, 0, 0, 0.1);
+   position: relative;
+   overflow: hidden;
+   animation: pulseGlow 3s ease-in-out infinite;
+   
+   &::before {
+     content: '';
+     position: absolute;
+     top: -50%;
+     left: -50%;
+     width: 200%;
+     height: 200%;
+     background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+     animation: shimmer 4s ease-in-out infinite;
+   }
+ }
+ 
+ @keyframes pulseGlow {
+   0%, 100% {
+     box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4), 0 5px 15px rgba(0, 0, 0, 0.1);
+   }
+   50% {
+     box-shadow: 0 20px 45px rgba(255, 107, 107, 0.6), 0 8px 25px rgba(0, 0, 0, 0.15);
+   }
+ }
+ 
+ @keyframes shimmer {
+   0% {
+     transform: translateX(-100%) translateY(-100%) rotate(45deg);
+   }
+   100% {
+     transform: translateX(100%) translateY(100%) rotate(45deg);
+   }
+ }
+ 
+ .promo-container {
+   padding: 30px;
+   position: relative;
+   z-index: 2;
+ }
+ 
+ .promo-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 25px;
+   flex-wrap: wrap;
+   gap: 15px;
+ }
+ 
+ .promo-badge {
+   background: rgba(255, 255, 255, 0.95);
+   color: #ee5a24;
+   padding: 8px 20px;
+   border-radius: 25px;
+   font-weight: 800;
+   font-size: 1rem;
+   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+   animation: bounce 2s ease-in-out infinite;
+ }
+ 
+ @keyframes bounce {
+   0%, 20%, 50%, 80%, 100% {
+     transform: translateY(0);
+   }
+   40% {
+     transform: translateY(-8px);
+   }
+   60% {
+     transform: translateY(-4px);
+   }
+ }
+ 
+ .promo-timer {
+   text-align: center;
+   color: white;
+   
+   .timer-text {
+     font-size: 0.9rem;
+     margin-bottom: 8px;
+     font-weight: 600;
+   }
+ }
+ 
+ .countdown-timer {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   justify-content: center;
+ }
+ 
+ .timer-unit {
+   background: rgba(255, 255, 255, 0.15);
+   border-radius: 8px;
+   padding: 8px 12px;
+   text-align: center;
+   backdrop-filter: blur(10px);
+   border: 1px solid rgba(255, 255, 255, 0.2);
+   
+   .timer-number {
+     display: block;
+     font-size: 1.4rem;
+     font-weight: 800;
+     line-height: 1;
+   }
+   
+   .timer-label {
+     display: block;
+     font-size: 0.7rem;
+     opacity: 0.9;
+     margin-top: 2px;
+   }
+ }
+ 
+ .timer-separator {
+   font-size: 1.5rem;
+   font-weight: bold;
+   color: white;
+   animation: blink 1s ease-in-out infinite;
+ }
+ 
+ @keyframes blink {
+   0%, 50% {
+     opacity: 1;
+   }
+   51%, 100% {
+     opacity: 0.3;
+   }
+ }
+ 
+ .promo-content {
+   text-align: center;
+   color: white;
+ }
+ 
+ .promo-title {
+   font-size: 2.2rem;
+   font-weight: 800;
+   margin-bottom: 20px;
+   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+   line-height: 1.2;
+ }
+ 
+ .promo-warning {
+   background: rgba(255, 255, 255, 0.95);
+   color: #2c3e50;
+   padding: 20px;
+   border-radius: 15px;
+   margin-bottom: 25px;
+   display: flex;
+   align-items: flex-start;
+   gap: 15px;
+   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+   
+   .warning-icon {
+     font-size: 2rem;
+     animation: shake 2s ease-in-out infinite;
+   }
+   
+   .warning-text {
+     flex: 1;
+     text-align: left;
+     line-height: 1.5;
+     
+     strong {
+       color: #ee5a24;
+       font-size: 1.1rem;
+     }
+   }
+ }
+ 
+ @keyframes shake {
+   0%, 100% {
+     transform: translateX(0);
+   }
+   10%, 30%, 50%, 70%, 90% {
+     transform: translateX(-2px);
+   }
+   20%, 40%, 60%, 80% {
+     transform: translateX(2px);
+   }
+ }
+ 
+ .promo-benefits {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   gap: 15px;
+   margin-bottom: 30px;
+ }
+ 
+ .benefit-item {
+   background: rgba(255, 255, 255, 0.1);
+   padding: 15px;
+   border-radius: 12px;
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   backdrop-filter: blur(10px);
+   border: 1px solid rgba(255, 255, 255, 0.2);
+   transition: all 0.3s ease;
+   
+   &:hover {
+     background: rgba(255, 255, 255, 0.2);
+     transform: translateY(-2px);
+   }
+   
+   .benefit-icon {
+     font-size: 1.5rem;
+   }
+   
+   .benefit-text {
+     font-weight: 600;
+     font-size: 0.95rem;
+   }
+ }
+ 
+ .promo-cta {
+   text-align: center;
+ }
+ 
+ .cta-button-urgent {
+   background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
+   color: #2c3e50;
+   border: none;
+   padding: 20px 40px;
+   border-radius: 50px;
+   font-size: 1.2rem;
+   font-weight: 800;
+   cursor: pointer;
+   box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+   transition: all 0.3s ease;
+   position: relative;
+   overflow: hidden;
+   margin-bottom: 15px;
+   
+   &:hover {
+     transform: translateY(-3px);
+     box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+   }
+   
+   &:active {
+     transform: translateY(-1px);
+   }
+   
+   .cta-text {
+     display: block;
+     font-size: 1.2rem;
+   }
+   
+   .cta-subtext {
+     display: block;
+     font-size: 0.8rem;
+     opacity: 0.8;
+     margin-top: 2px;
+   }
+   
+   &::before {
+     content: '';
+     position: absolute;
+     top: 0;
+     left: -100%;
+     width: 100%;
+     height: 100%;
+     background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+     transition: left 0.5s ease;
+   }
+   
+   &:hover::before {
+     left: 100%;
+   }
+ }
+ 
+ .urgency-text {
+   font-size: 0.9rem;
+   font-weight: 600;
+   animation: pulse 2s ease-in-out infinite;
+ }
+ 
+ @keyframes pulse {
+   0%, 100% {
+     opacity: 1;
+   }
+   50% {
+     opacity: 0.7;
+   }
+ }
+ 
+ // Адаптивность для современных стилей
+  @media (max-width: 768px) {
+   // Адаптивность для акционного блока
+   .promo-banner-urgent {
+     margin: 20px 0;
+   }
+   
+   .promo-container {
+     padding: 20px;
+   }
+   
+   .promo-header {
+     flex-direction: column;
+     text-align: center;
+     gap: 20px;
+   }
+   
+   .promo-title {
+     font-size: 1.6rem;
+   }
+   
+   .countdown-timer {
+     flex-wrap: wrap;
+     gap: 5px;
+   }
+   
+   .timer-unit {
+     padding: 6px 10px;
+     
+     .timer-number {
+       font-size: 1.2rem;
+     }
+   }
+   
+   .promo-warning {
+     flex-direction: column;
+     text-align: center;
+     gap: 10px;
+   }
+   
+   .promo-benefits {
+     grid-template-columns: 1fr;
+   }
+   
+   .cta-button-urgent {
+     padding: 15px 30px;
+     font-size: 1rem;
+     
+     .cta-text {
+       font-size: 1rem;
+     }
+   }
+   
+   .pricing-section-modern {
+     padding: 20px;
+     margin: 20px 0;
+   }
+   
+   .section-header .section-title {
+     font-size: 1.5rem;
+     flex-direction: column;
+     gap: 8px;
+   }
+   
+   .pricing-grid,
+   .pricing-grid-therapy {
+     grid-template-columns: 1fr;
+   }
+   
+   .price-card-modern,
+   .therapy-card {
+     padding: 16px;
+   }
+   
+   .notice-item {
+     flex-direction: column;
+     text-align: center;
+   }
+ }
+
+// Стили для модального окна бронирования
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 0;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+.success-message {
+  text-align: center;
+  padding: 40px 30px;
+  
+  .success-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+  }
+  
+  h4 {
+    color: #28a745;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+  }
+  
+  p {
+    color: #666;
+    margin-bottom: 25px;
+    line-height: 1.6;
+  }
+  
+  .vs-btn {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.booking-form {
+  padding: 30px;
+  
+  .form-group {
+    margin-bottom: 20px;
+    
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #333;
+      font-size: 0.95rem;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #e9ecef;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      
+      &:focus {
+        outline: none;
+        border-color: #ff6b35;
+        box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
+      }
+      
+      &::placeholder {
+        color: #adb5bd;
+      }
+    }
+  }
+  
+  .form-actions {
+    margin-top: 30px;
+    
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: white;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      &:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+      }
+      
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+    }
+  }
+  
+  .form-note {
+    margin-top: 15px;
+    text-align: center;
+    
+    small {
+      color: #6c757d;
+      font-size: 0.85rem;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// Адаптивность для модального окна
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .modal-header {
+    padding: 15px 20px;
+    
+    h3 {
+      font-size: 1.3rem;
+    }
+  }
+  
+  .booking-form {
+    padding: 20px;
+  }
+  
+  .success-message {
+    padding: 30px 20px;
+  }
+}

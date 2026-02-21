@@ -1,0 +1,36 @@
+.license-document {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.license-pdf-container {
+  margin: 2rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.license-pdf-container iframe {
+  display: block;
+  width: 100%;
+  min-height: 800px;
+}
+
+@media (max-width: 768px) {
+  .license-document {
+    padding: 1rem;
+  }
+  
+  .license-pdf-container iframe {
+    min-height: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .license-pdf-container iframe {
+    min-height: 400px;
+  }
+}

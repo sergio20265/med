@@ -1,0 +1,265 @@
+// ========== Мобильный герой: анимации, стили, UX (до 768px) ==========
+
+// Ключевые кадры
+@keyframes hero-mobile-fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-mobile-bg-zoom {
+  from {
+    transform: scale(1.08);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero-slider-mobile {
+  --mobile-padding: 20px;
+  --mobile-min-height: 560px;
+  --mobile-content-max: min(400px, 88vw);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-in: 0.6s;
+  --duration-overlay: 0.8s;
+  --duration-bg: 18s;
+
+  position: relative;
+  min-height: var(--mobile-min-height);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: var(--mobile-padding);
+  padding-top: 28px;
+  padding-bottom: calc(var(--mobile-padding) + env(safe-area-inset-bottom, 0));
+  box-sizing: border-box;
+  overflow: hidden;
+  background: transparent;
+
+  // Фон: плавный вход + лёгкий zoom
+  &__bg {
+    position: absolute;
+    inset: -2%;
+    z-index: 0;
+    animation: hero-mobile-bg-zoom var(--duration-bg) var(--ease-out-expo) forwards;
+
+    img {
+      width: 104%;
+      height: 104%;
+      margin: -2%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: transparent;
+    pointer-events: none;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: var(--mobile-content-max);
+    margin: 0;
+    background: transparent;
+  }
+
+  &__content-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: transparent;
+    padding: 0;
+  }
+
+  // Появление по очереди (заголовки и текст — дети content-inner, кнопки — внутри actions)
+  &__anim {
+    opacity: 0;
+    animation: hero-mobile-fade-in-up var(--duration-in) var(--ease-out-expo) forwards;
+  }
+
+  &__content-inner > &__title.hero-slider-mobile__anim { animation-delay: 0.15s; }
+  &__content-inner > &__subtitle.hero-slider-mobile__anim { animation-delay: 0.28s; }
+  &__content-inner > &__text.hero-slider-mobile__anim { animation-delay: 0.4s; }
+  &__actions > &__play.hero-slider-mobile__anim { animation-delay: 0.52s; }
+  &__actions > &__btn.hero-slider-mobile__anim { animation-delay: 0.64s; }
+
+  &__title {
+    font-family: var(--title-font, 'Montserrat', sans-serif);
+    font-size: clamp(24px, 6.2vw, 28px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    color: #1a1a1a;
+    margin: 0 0 2px;
+    text-shadow:
+      0 0 2px rgba(255, 255, 255, 0.8),
+      0 1px 3px rgba(255, 255, 255, 0.6);
+  }
+
+  &__subtitle {
+    font-family: var(--title-font, 'Montserrat', sans-serif);
+    font-size: clamp(21px, 5.4vw, 25px);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    color: #1a1a1a;
+    margin: 0 0 12px;
+    text-shadow:
+      0 0 2px rgba(255, 255, 255, 0.8),
+      0 1px 3px rgba(255, 255, 255, 0.6);
+  }
+
+  &__text {
+    font-family: var(--body-font, 'Inter', sans-serif);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+    color: #2d2d2d;
+    margin: 0 0 18px;
+    max-width: 100%;
+    text-shadow:
+      0 0 2px rgba(255, 255, 255, 0.7),
+      0 1px 2px rgba(255, 255, 255, 0.5);
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  // Кнопка «Смотреть видео» — минимум 44px для тапа
+  &__play {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    min-height: 56px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--white-color, #fff);
+    font-size: 20px;
+    text-decoration: none;
+    transition: transform 0.25s var(--ease-out-back),
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: scale(1.06);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: scale(0.96);
+      transition-duration: 0.1s;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--white-color, #fff);
+      outline-offset: 3px;
+    }
+  }
+
+  // Основная CTA
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 52px;
+    padding: 16px 24px;
+    font-family: var(--title-font, 'Montserrat', sans-serif);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--white-color, #fff);
+    background: var(--theme-color, #07ccec);
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    transition: transform 0.25s var(--ease-out-back),
+                background 0.25s ease,
+                box-shadow 0.25s ease;
+    box-shadow: 0 4px 20px rgba(7, 204, 236, 0.35);
+
+    .hero-slider-mobile__btn-text {
+      flex: 1;
+      text-align: center;
+    }
+
+    i {
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      background: #06b8d4;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(7, 204, 236, 0.45);
+    }
+
+    &:active {
+      transform: translateY(0) scale(0.98);
+      transition-duration: 0.1s;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--white-color, #fff);
+      outline-offset: 3px;
+    }
+  }
+
+  // Уважение к настройке «уменьшить движение»
+  @media (prefers-reduced-motion: reduce) {
+    &__bg {
+      animation: none;
+    }
+    &__anim {
+      animation-duration: 0.35s;
+      animation-timing-function: ease-out;
+    }
+    &__content-inner > &__title.hero-slider-mobile__anim { animation-delay: 0s; }
+    &__content-inner > &__subtitle.hero-slider-mobile__anim { animation-delay: 0.05s; }
+    &__content-inner > &__text.hero-slider-mobile__anim { animation-delay: 0.1s; }
+    &__actions > &__play.hero-slider-mobile__anim { animation-delay: 0.15s; }
+    &__actions > &__btn.hero-slider-mobile__anim { animation-delay: 0.2s; }
+  }
+}
+
+// Десктопный слайдер (от 768px)
+:host ::ng-deep .hero-slider--desktop.vs-hero-wrapper {
+  @media (min-width: 768px) and (max-width: 991px) {
+    .ls-slide .ls-l {
+      font-family: var(--title-font, 'Montserrat', sans-serif);
+      text-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.85),
+        1px 1px 5px rgba(0, 0, 0, 0.7);
+    }
+    .ls-slide p.ls-l {
+      font-family: var(--body-font, 'Inter', sans-serif);
+    }
+  }
+}

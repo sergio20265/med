@@ -1,0 +1,50 @@
+<div class="phone-call-container">
+  <div class="phone-call-form">
+    <h3 class="form-title">Заказать звонок</h3>
+    <form (ngSubmit)="submit()" [formGroup]="myForm" novalidate class="contact-form">
+      <div class="input-wrapper">
+        <span class="p-float-label">
+          <input 
+            formControlName="name" 
+            pInputText 
+            type="text" 
+            id="name"
+            class="form-input"
+            [class.error]="nameErrors"
+          />
+          <label htmlFor="name">Ваше имя</label>
+        </span>
+        <div class="error-message" *ngIf="nameErrors">
+          {{ nameErrors }}
+        </div>
+      </div>
+      
+      <div class="input-wrapper">
+        <span class="p-float-label">
+          <p-inputMask 
+            formControlName="phone" 
+            mask="+7 (999) 999-99-99" 
+            id="phone"
+            class="form-input phone-input"
+            placeholder="+7 (___) ___-__-__"
+            [class.error]="phoneErrors"
+          ></p-inputMask>
+          <label htmlFor="phone">Номер телефона</label>
+        </span>
+        <div class="error-message" *ngIf="phoneErrors">
+          {{ phoneErrors }}
+        </div>
+      </div>
+      
+      <div class="button-wrapper">
+        <p-button 
+          [disabled]="myForm.invalid" 
+          label="Заказать звонок" 
+          type="submit"
+          class="submit-button"
+          icon="pi pi-phone"
+        ></p-button>
+      </div>
+    </form>
+  </div>
+</div>

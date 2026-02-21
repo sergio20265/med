@@ -1,0 +1,39 @@
+<section class="vs-team-wrapper ">
+  <div class="container">
+    <div class="row  text-center justify-content-center">
+      <div class="col-md-10 col-lg-8 col-xl-6 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="section-title">
+          <div class="sec-icon">
+            <i class="flaticon-ecg"></i>
+          </div>
+          <h2 class="h1 ">Персонал</h2>
+        </div>
+      </div>
+    </div>
+    <div #doctor_carusel *ngIf="staff_list" class="row vs-carousel wow fadeIn" data-arrows="true" data-lg-slide-show="2" data-slide-show="3"
+         data-wow-delay="0.3s">
+      <div *ngFor="let staff of staff_list['data']" class="col-xl-4 mb-30">
+        <div class="team-card">
+          <div class="team-head">
+            <img *ngIf="staff?.attributes?.img?.data === null" alt="{{staff.attributes.name}}"
+                 class="w-100" src="assets/img/team/t-1-1.png">
+            <img *ngIf="staff?.attributes?.img?.data"
+                 alt="{{staff.attributes.name}}"
+                 class="w-100"
+                 src="https://front-api.nmpansion.ru{{staff?.attributes?.img?.data?.attributes?.formats?.small?.url}}">
+
+          </div>
+          <div class="team-body">
+            <h3 class="h4 mb-0"><a class="text-reset"
+                                   routerLink="/staff-detail/{{staff.attributes.slug}}">{{staff['attributes']['name']}}</a>
+            </h3>
+
+            <p *ngFor="let job_title of staff?.attributes?.dolzhnosti_sotrudnikovs?.data"
+               class="fs-xs degi text-theme mb-2">
+              {{job_title?.attributes.title}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

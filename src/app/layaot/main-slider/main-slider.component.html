@@ -1,0 +1,64 @@
+<p-overlayPanel #op>
+  <app-phone-call></app-phone-call>
+</p-overlayPanel>
+
+<!-- Мобильный герой: только для экранов до 768px -->
+<section class="hero-slider-mobile d-block d-md-none" aria-label="Главный экран">
+  <div class="hero-slider-mobile__bg" aria-hidden="true">
+    <img src="https://nmpansion.ru/images/book_bg.jpg" alt="" fetchpriority="high" aria-hidden="true" />
+  </div>
+  <div class="hero-slider-mobile__overlay" aria-hidden="true"></div>
+  <div class="hero-slider-mobile__content">
+    <div class="hero-slider-mobile__content-inner">
+      <h1 class="hero-slider-mobile__title hero-slider-mobile__anim">Мы принимаем людей</h1>
+      <h2 class="hero-slider-mobile__subtitle hero-slider-mobile__anim">Разных возрастных групп</h2>
+      <p class="hero-slider-mobile__text hero-slider-mobile__anim">
+        В том числе: пожилых, с деменцией, болезнью Альцгеймера, лежачих больных, а также на программы реабилитации после инсультов, травм и перенесенных операций
+      </p>
+      <div class="hero-slider-mobile__actions">
+        <a class="hero-slider-mobile__play hero-slider-mobile__anim" href="https://rutube.ru/play/embed/2c8d629abcfe87a56789acee0f376787/" target="_blank" rel="noopener" aria-label="Смотреть видео">
+          <i class="fas fa-play" aria-hidden="true"></i>
+        </a>
+        <button type="button" class="hero-slider-mobile__btn hero-slider-mobile__anim" (click)="op.toggle($event)">
+          <span class="hero-slider-mobile__btn-text">Получить консультацию</span>
+          <i class="fas fa-bolt" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Десктопный слайдер: от 768px -->
+<section #slider class="vs-hero-wrapper hero-slider hero-slider--desktop position-relative d-none d-md-block">
+  <div class="vs-hero-carousel" data-container="1900" data-height="800" data-navprevnext="true"
+       data-slidertype="responsive">
+    <div class="ls-slide" data-ls="duration: 113000; transition2d: 5;">
+      <img alt="" class="ls-bg" src="https://nmpansion.ru/images/book_bg.jpg" aria-hidden="true">
+      <h1 class="text-title ls-l ls-responsive" data-ls="delayin: 600; easingin: easeInOutSine; texttransitionin: true; textstartatin: transitioninstart; textdurationin: 2000; texttypein: words_asc; textshiftin: 200; textoffsetyin: -100; offsetyout: -100; durationout: 2000; "
+          data-ls-laptop="left: 200px; top: 80px; font-size: 82px;"
+          data-ls-tablet="left: 200px; top: 40px; font-size: 92px;"
+          style="left: 450px; top: 150px; font-size: 72px; font-weight: 700;">
+        Мы принимаем людей</h1>
+      <h2 class="text-theme ls-l ls-responsive" data-ls="delayin: 0; easingin: easeInOutSine; texttransitionin: true; textstartatin: transitioninstart; textdurationin: 2000; texttypein: words_asc; textshiftin: 200; textoffsetyin: -100; offsetyout: -100; durationout: 2000; "
+          data-ls-laptop="left: 200px; top: 190px; font-size: 82px;"
+          data-ls-tablet="left: 200px; top: 170px; font-size: 92px;"
+          style="left: 450px; top: 232px; font-size: 72px; font-weight: 700;">
+        Разных возрастных групп</h2>
+      <p class="ls-l text-title ls-responsive" data-ls="delayin: 800; texttransitionin: true; textstartatin: transitioninstart; texttypein: lines_asc; textshiftin: 100; textoffsetyin: 100; textdurationin: 2000; offsetyout: 100; durationout: 2000; "
+         data-ls-laptop="left: 200px; top: 320px; font-size: 28px; width: 900px; line-height: 50px;"
+         data-ls-tablet="left: 200px; top: 300px; font-size: 36px; width: 1100px; line-height: 54px;"
+         style="left: 450px; top: 320px; width: 700px; font-size: 18px; font-weight: 500; white-space: normal; letter-spacing: 0.02em; line-height: 32px; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">
+        В том числе: пожилых, с деменцией, болезнью Альцгеймера, лежачих больных, а также на программы реабилитации после инсультов, травм и перенесенных операций</p>
+      <div class="ls-btn ls-l ls-responsive" data-ls-laptop="left: 200px; top: 520px;" data-ls-tablet="left: 200px; top: 520px;" style="top: 65%; left: 85%;">
+        <a class="play-btn popup-video style3" href="https://rutube.ru/play/embed/2c8d629abcfe87a56789acee0f376787/"><i class="fas fa-play"></i></a>
+      </div>
+      <div class="ls-btn ls-l ls-responsive" data-ls="offsetyin: 200; durationin: 2000; delayin: 1400; offsetyout: 300; durationout: 2000; " data-ls-laptop="left: 200px; top: 520px;" data-ls-tablet="left: 200px; top: 520px;" style="left: 450px; top: 450px;">
+        <p class="vs-btn style2" (click)="op.toggle($event)">Получить консультацию<i class="fas fa-bolt"></i></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-main-promo-one></app-main-promo-one>
+
+

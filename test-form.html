@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест API запросов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <h1>Тест API запросов - Форма обратной связи</h1>
+    
+    <form id="testForm">
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" value="Тестовый пользователь" required>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Телефон:</label>
+            <input type="tel" id="phone" name="phone" value="+7 (999) 123-45-67" required>
+        </div>
+        
+        <button type="submit" id="submitBtn">Отправить форму</button>
+    </form>
+    
+    <div id="result"></div>
+    
+    <h2>Информация о запросе</h2>
+    <div id="requestInfo" class="info">
+        API URL: https://front-api.nmpansion.ru/api/ezforms/submit<br>
+        Метод: POST<br>
+        Токен: Bearer 0cacc14d6b6cc78223a8197c01a61c69388c27cf6e8bde1ed36b08625720e5e4094cff52f0608f54b74112dd212813362bec1a0590b67dd73737890a2c7b9d801a4caebeb9a690e28b37adf8861e549f365be427e2c5924e7233cf3e9894a31ed49884b2e500e8cb6527b05fa6e6a3d20c8276a68481e3a2542facd8d1b85570
+    </div>
+
+    <script>
+        const API_URL = 'https://front-api.nmpansion.ru/api/ezforms/submit';
+        const API_TOKEN = 'Bearer 0cacc14d6b6cc78223a8197c01a61c69388c27cf6e8bde1ed36b08625720e5e4094cff52f0608f54b74112dd212813362bec1a0590b67dd73737890a2c7b9d801a4caebeb9a690e28b37adf8861e549f365be427e2c5924e7233cf3e9894a31ed49884b2e500e8cb6527b05fa6e6a3d20c8276a68481e3a2542facd8d1b85570';
+        
+        document.getElementById('testForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const resultDiv = document.getElementById('result');
+            
+            // Отключаем кнопку
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+            
+            // Очищаем предыдущий результат
+            resultDiv.innerHTML = '';
+            
+            // Получаем данные формы
+            const formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value
+            };
+            
+            console.log('Отправляем данные:', formData);
+            
+            try {
+                // Логируем информацию о запросе
+                console.log('URL:', API_URL);
+                console.log('Headers:', {
+                    'Content-Type': 'application/json',
+                    'Authorization': API_TOKEN,
+                    'Accept': 'application/json'
+                });
+                
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': API_TOKEN,
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        formData: formData
+                    })
+                });
+                
+                console.log('Статус ответа:', response.status);
+                console.log('Заголовки ответа:', response.headers);
+                
+                const responseText = await response.text();
+                console.log('Тело ответа:', responseText);
+                
+                if (response.ok) {
+                    resultDiv.className = 'result success';
+                    resultDiv.innerHTML = `✅ Успешно отправлено!\n\nСтатус: ${response.status}\nОтвет: ${responseText}`;
+                } else {
+                    resultDiv.className = 'result error';
+                    resultDiv.innerHTML = `❌ Ошибка ${response.status}\n\nОтвет сервера: ${responseText}\n\nВозможные причины:\n- Неверный токен авторизации\n- Токен истек\n- CORS проблемы\n- Неправильные заголовки запроса\n- IP адрес заблокирован`;
+                }
+                
+            } catch (error) {
+                console.error('Ошибка запроса:', error);
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `❌ Ошибка сети: ${error.message}\n\nВозможные причины:\n- Проблемы с сетью\n- CORS блокировка\n- Сервер недоступен`;
+            } finally {
+                // Включаем кнопку обратно
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Отправить форму';
+            }
+        });
+        
+        // Тест доступности API при загрузке страницы
+        window.addEventListener('load', async function() {
+            console.log('Проверяем доступность API...');
+            
+            try {
+                const response = await fetch('https://front-api.nmpansion.ru/api/v2', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': API_TOKEN
+                    }
+                });
+                
+                console.log('API доступен, статус:', response.status);
+            } catch (error) {
+                console.error('API недоступен:', error);
+            }
+        });
+    </script>
+</body>
+</html>

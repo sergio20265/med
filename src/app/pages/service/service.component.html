@@ -1,0 +1,24 @@
+<app-breadcumb [title]="'Услуги'"></app-breadcumb>
+
+<section class="vs-service-wrapper space-top space-md-bottom">
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let service of serivice_list" class="col-md-6 col-xl-4">
+        <div class="service-thumb">
+          <div class="sr-img">
+            <img alt="{{service.attributes.name}}" class="w-100"
+                 src="https://front-api.nmpansion.ru{{service.attributes.img.data.attributes.url}}">
+          </div>
+          <div class="sr-body">
+            <!--            <span class="sr-icon"><i class="flaticon-discuss fa-3x"></i></span>-->
+            <h3 class="h4 sr-title "><p class="text-reset">{{service.attributes.name}}</p></h3>
+            <div class="sr-content">
+              <!--              <p class="sr-text">{{service.attributes.description|slice:0:50}}</p>-->
+              <!--              <a class="link-btn" href="service-details.html">Подробнее<i class="fal fa-long-arrow-right"></i></a>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

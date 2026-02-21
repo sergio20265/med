@@ -1,0 +1,20 @@
+
+<app-breadcumb [title]="diagnos_detail?.data?.attributes?.title || 'Диагноз'"></app-breadcumb>
+<div *ngIf="diagnos_detail?.data?.attributes?.body" [innerHtml]="diagnos_detail.data.attributes.body" class="container"></div>
+<div class="container">
+  <p-tabView>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <span class="tab_colored_diag">Работаем с диагнозами</span>
+      </ng-template>
+      <app-diagnoses-list [breadcumb]="false"></app-diagnoses-list>
+    </p-tabPanel>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <span class="tab_colored_diag">Виды реабилитации</span>
+      </ng-template>
+      <app-rehabilitation [breadcumb]="false"></app-rehabilitation>
+    </p-tabPanel>
+  </p-tabView>
+</div>
+

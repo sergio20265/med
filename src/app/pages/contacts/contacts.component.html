@@ -1,0 +1,86 @@
+<app-breadcumb [title]="'Контакты'"></app-breadcumb>
+<!--==============================
+  Contact Form Area
+==============================-->
+<section class="vs-contact-wrapper vs-contact-layout1 space-top space-md-bottom">
+  <div class="container">
+    <div class="row gx-60 align-items-center">
+      <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
+        <form (ngSubmit)="submit()" [formGroup]="myForm" class="ajax-contact form-wrap3 mb-30" data-bg-color="#f3f6f7" method="POST">
+          <div class="form-title">
+            <h3 class="mt-n2 fls-n2 mb-0">Написать нам </h3>
+
+          </div>
+          <div class="form-group mb-15">
+            <input class="form-control style3"  formControlName="name" placeholder="Имя" type="text">
+            <i class="fal fa-user"></i>
+          </div>
+           <div class="form-group mb-15">
+            <input class="form-control style3"  formControlName="phone" placeholder="Номер телефона" type="text">
+            <i class="fal fa-user"></i>
+          </div>
+          <div class="form-group mb-15">
+            <input class="form-control style3"  formControlName="email"  placeholder="E-mail" type="text">
+            <i class="fal fa-envelope"></i>
+          </div>
+          <div class="form-group mb-15">
+            <textarea class="form-control style3" cols="30" formControlName="message"  placeholder="Сообщение"
+                      rows="3"></textarea>
+            <i class="fal fa-pencil-alt"></i>
+          </div>
+          <div class="form-btn pt-15">
+            <button class="vs-btn style2">Отправить<i class="fas fa-chevron-right"></i></button>
+          </div>
+          <p class="form-messages mb-0 mt-3"></p>
+        </form>
+      </div>
+      <div class="col-lg-6">
+        <div class="contact-information mb-30">
+
+          <h3 class="h4 pt-2 mb-10">Работаем</h3>
+          <table class="contact-info-table">
+            <tr>
+              <td>Без выходных</td>
+              <td>24/7</td>
+            </tr>
+
+          </table>
+          <h3 class="h4 pt-2 mb-10">Варианты проезда</h3>
+          <table class="contact-info-table">
+            <tr>
+              <td>Маршрутки от жд станции "Усад"</td>
+              <td>№1017<br>
+                №1019<br>
+                №1020
+              </td>
+            </tr>
+            <tr>
+              <td>На автомобиле</td>
+              <td>Владимирская область,<br>
+                посёлок Городищи,<br>
+                ул Больничный проезд, д 1
+              </td>
+            </tr>
+            <tr>
+              <td>Посмотреть в навигаторе</td>
+              <td><a href="yandexnavi://build_route_on_map?lat_from=55.74&lon_from=37.60&lat_to=55.76&lon_to=37.64">Открыть
+                в навигаторе</a>
+              </td>
+            </tr>
+
+          </table>
+          <h4 class="pt-2 mb-10">Адрес</h4>
+          <p class="fs-md"><i class="far fa-map-marker-alt me-2"></i>Посёлок Городищи, ул. Больничный проезд, д 1</p>
+          <h4 class="pt-2 mb-2">Телефоны</h4>
+          <h4 class="h3 font-theme2 mb-0">
+            <a href="tel:893003322228"><i class="far fa-phone-alt me-2"></i>8 (930) 033-22-228</a></h4>
+              <h4 class="h3 font-theme2 mb-0">
+            <a href="tel:84924332202"><i class="far fa-phone-alt me-2"></i>8 (49243) 3-22-02</a></h4>
+        </div>
+      </div>
+    </div>
+    <div class="ratio ratio-21x9 contact-map mt-70 mb-30">
+     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A8812f60e23e89dc2360a2d9ccd4341e7a3b1006456fbc6ed51ff76a45a7e927f&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+    </div>
+  </div>
+</section>

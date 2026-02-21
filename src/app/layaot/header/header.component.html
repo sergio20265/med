@@ -1,0 +1,163 @@
+
+<div *ngIf="visible"  class="vs-menu-wrapper vs-body-visible">
+  <div class="vs-menu-area text-center">
+    <button class="vs-menu-toggle"><i class="fal fa-times"></i></button>
+    <div class="mobile-logo">
+
+      <a routerLink="/"><img alt="Стационар Новая медицина" src="assets/img/stacionar-main/logo.png"></a>
+    </div>
+    <!--    <form action="#" class="mobile-menu-form">-->
+    <!--      <input class="form-control" placeholder="Поиск..." type="text">-->
+    <!--      <button type="submit"><i class="fas fa-search"></i></button>-->
+    <!--    </form>-->
+    <div class="vs-mobile-menu">
+      <ul>
+        <li *ngFor="let item of menuItems" [class.menu-item-has-children]="item.children">
+          <a (click)="close_menu()" [routerLink]="item.route">{{item.label}}</a>
+          <ul class="sub-menu" *ngIf="item.children">
+            <li *ngFor="let child of item.children">
+              <a (click)="close_menu()" [routerLink]="child.route">{{child.label}}</a>
+            </li>
+          </ul>
+        </li>
+
+        <!--        <li class="menu-item-has-children">-->
+        <!--          <a href="service.html">Services</a>-->
+        <!--          <ul class="sub-menu">-->
+        <!--            <li><a href="service.html">Services</a></li>-->
+        <!--            <li><a href="service-details.html">Services Details</a></li>-->
+        <!--          </ul>-->
+        <!--        </li>-->
+        <!--        <li class="menu-item-has-children">-->
+        <!--          <a href="blog.html">Blog</a>-->
+        <!--          <ul class="sub-menu">-->
+        <!--            <li><a href="blog.html">Blog</a></li>-->
+        <!--            <li><a href="blog-details.html">Blog Details</a></li>-->
+        <!--          </ul>-->
+        <!--        </li>-->
+        <!--        <li class="menu-item-has-children">-->
+        <!--          <a href="#">Pages</a>-->
+        <!--          <ul class="sub-menu">-->
+        <!--            <li><a href="shop.html">Our Shop <span class="new-label">New</span></a></li>-->
+        <!--            <li><a href="shop-details.html">Shop Details <span class="new-label">New</span></a></li>-->
+        <!--            <li><a href="cart.html">Shopping Cart <span class="new-label">New</span></a></li>-->
+        <!--            <li><a href="checkout.html">Checkout <span class="new-label">New</span></a></li>-->
+        <!--            <li><a href="team.html">Team</a></li>-->
+        <!--            <li><a href="team-details.html">Team Details</a></li>-->
+        <!--            <li><a href="project.html">Projects</a></li>-->
+        <!--            <li><a href="appointment.html">Appointment</a></li>-->
+        <!--            <li><a href="error.html">Error Page</a></li>-->
+        <!--          </ul>-->
+        <!--        </li>-->
+        <!--        <li>-->
+        <!--          <a href="contact.html">Contact Us</a>-->
+        <!--        </li>-->
+      </ul>
+    </div>
+  </div>
+</div>
+
+<header class="header-wrapper header-layout1">
+  <!-- Header Top -->
+  <div class="header-top bg-title py-2 d-none d-md-block">
+    <div class="container container-style1 py-1">
+      <div class="row justify-content-center justify-content-xl-between">
+        <div class="col-auto">
+          <ul class="header-top-info list-unstyled m-0">
+            <li><i class="far fa-envelope"></i><a class="text-reset" href="mailto:nmpansion@yandex.ru">nmpansion@yandex.ru</a>
+            </li>
+            <li><i class="far fa-map-marker-alt"></i>Владимирская область, посёлок Городищи,ул Больничный проезд, д 1
+            </li>
+            <li><i class="far fa-clock"></i>24/7</li>
+          </ul>
+        </div>
+        <div class="col-auto d-none d-xl-block">
+          <ul class="head-top-links text-end">
+            <li>
+              <!-- <ul class="header-social">
+
+                <li>
+                  <a href="https://www.instagram.com/nmpansion/"><i class="fab fa-instagram"></i></a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/pg/nmpansion.ru/posts/"><i class="fab fa-facebook-square"></i></a>
+                </li>
+                <li>
+                  <a href="https://vk.com/nmpansion"><i class="fab fa-vk"></i></a>
+                </li>
+                <li>
+                  <a href="https://ok.ru/profile/580869759631"><i class="fab fa-odnoklassniki-square"></i></a>
+                </li>
+              </ul> -->
+            </li>
+            <!-- <li>
+               &lt;!&ndash; Dropdown &ndash;&gt;
+               <a aria-expanded="false" class="dropdown-toggle" data-bs-toggle="dropdown" href="#" id="dropdownMenuLink1"
+                  role="button">
+                 <i class="fal fa-globe"></i> English
+               </a>
+               <ul aria-labelledby="dropdownMenuLink1" class="dropdown-menu">
+                 <li><a href="#">German</a></li>
+                 <li><a href="#">French</a></li>
+                 <li><a href="#">Italian</a></li>
+                 <li><a href="#">Latvian</a></li>
+                 <li><a href="#">Spanish</a></li>
+                 <li><a href="#">Greek</a></li>
+               </ul>
+             </li>-->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Sticky Active -->
+  <div class="sticky-wrap" style="">
+    <div class="sticky-active">
+      <!-- Header Main -->
+      <div class="header-main">
+        <div class="container container-style1 position-relative">
+          <div class="row align-items-center justify-content-between">
+            <div class="col-auto">
+              <div class="header1-logo py-2">
+                <a routerLink="/"><img alt="Стационар Новая медицина" src="assets/img/stacionar-main/logo.png"></a>
+              </div>
+            </div>
+            <div class="col text-end text-lg-center">
+              <nav class="main-menu menu-style1 d-none d-lg-block">
+                <ul>
+                  <li *ngFor="let item of menuItems" [class.menu-item-has-children]="item.children" [class.mega-menu-wrap]="item.route === '/'">
+                    <a [routerLink]="item.route">
+                      <span [class.has-new-label]="item.route === '/'">{{item.label}}</span>
+                    </a>
+                    <ul class="sub-menu" *ngIf="item.children">
+                      <li *ngFor="let child of item.children">
+                        <a [routerLink]="child.route">{{child.label}}</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+              <button class="vs-menu-toggle d-inline-block d-lg-none" (click)="close_menu()"><i class="fas fa-bars"></i></button>
+            </div>
+            <div class="col-auto gap-3 d-none d-lg-flex">
+              <!--              <a class="icon-btn style3 searchBoxTggler" href="#"><i class="far fa-search"></i></a>-->
+              <!--              <a class="icon-btn style3 sideMenuToggler" href="#"><i class="far fa-bars"></i></a>-->
+            </div>
+            <div class="col-auto d-none-xxxl">
+              <div class="header-call phone-box d-flex align-items-center style2">
+                <a class="box-icon" href="tel:+79300332222"><i class="fas fa-phone-alt"></i></a>
+                <div class="media-body">
+                  <span class="fs-xs text-title">Кол-центр</span>
+                  <p class="h4 fw-bold lh-1 mb-0"><a href="tel:+79300332222">+7 (930) 033-22-22 </a></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+

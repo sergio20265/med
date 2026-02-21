@@ -1,0 +1,145 @@
+/* You can add global styles to this file, and also import other style files */
+@import "src/assets/sass/style";
+//@import "src/assets/css/style.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+.watch .h1 {
+
+    margin-top: 50px;
+    text-align: center;
+}
+
+.diagnoses {
+    text-align: center;
+    background: url(/images/promo/Doctors-in-meeting.jpg) no-repeat center;
+    color: black;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    background-size: cover;
+}
+
+.mask {
+    background-color: rgba(255,255,255,0.88) !important;
+    border-radius: 5px !important;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.diagnos li {
+    float: left;
+    text-align: left;
+    padding-left: 43px;
+    width: 33.3%;
+    list-style: none;
+    position: relative;
+    line-height: 30px;
+}
+
+.diagnos li:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: 14px;
+    top: 5px;
+    width: 24px;
+    height: 24px;
+    background: url(/images/icon/checked.svg) no-repeat 0px 0px;
+}
+
+.call_back_other {
+    display: block;
+    background: #2E8E00;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 3px;
+    font-size: 18px;
+}
+
+.cimg {
+    border-radius: 50% 50%;
+    width: 130px;
+    height: 130px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.cimg .rotate {
+    position: absolute;
+    top: 0;
+    width: 130px;
+    height: 130px;
+    background: #00dba5;
+}
+
+.cimg .rotate {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    border-radius: 75px 0 75px 75px;
+    -webkit-transform: rotateZ(45deg);
+    -moz-transform: rotateZ(45deg);
+    -ms-transform: rotateZ(45deg);
+    -o-transform: rotateZ(45deg);
+    transform: rotateZ(45deg);
+}
+
+.cimg .number {
+    position: absolute;
+    top: 25px;
+    width: 130px;
+    height: 130px;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 700;
+    color: #FFF;
+}
+
+.cimg:hover .rotate {
+    border-radius: 75px 75px 75px 75px;
+    -webkit-transform: rotateZ(0deg);
+    -moz-transform: rotateZ(0deg);
+    -ms-transform: rotateZ(0deg);
+    -o-transform: rotateZ(0deg);
+    transform: rotateZ(0deg);
+}
+
+.section-title-center {
+    color: #2491d0;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.fancybox-inner {
+    max-height: 300px;
+}
+
+.bookform.bookform-1 .bookform-right {
+    background: #f1f8f9;
+    height: auto;
+    padding: 75px 19px 0px 0;
+}
+
+.tipsfaq {
+    background: url(/images/icon/med_pat.png);
+    padding: 70px 0;
+}
+
+.smoll {
+    font-size: 16px;
+}
+
+.shadow {
+    box-shadow: 0px 7px 20px 0px;
+}
+
+.ui-state-default,.ui-widget-content .ui-state-default,.ui-widget-header .ui-state-default {
+    border: 1px solid #333b8b;
+    background: #31a6e1 50% repeat-x;
+    color: #ffffff;
+}

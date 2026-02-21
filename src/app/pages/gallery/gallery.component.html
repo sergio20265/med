@@ -1,0 +1,52 @@
+<div class="gallery-container">
+  <div class="gallery-header">
+    <h2 class="gallery-title">Фотогалерея</h2>
+   
+  </div>
+  
+  <div class="enhanced-gallery">
+    <p-galleria 
+      *ngIf="isBrowser && images"
+      [circular]="true" 
+      [numVisible]="6" 
+      [responsiveOptions]="responsiveOptions"
+      [value]="images"
+      [showThumbnails]="true"
+      [showIndicators]="true"
+      [showItemNavigators]="true"
+      [autoPlay]="true"
+      [transitionInterval]="4000"
+      styleClass="custom-galleria">
+      
+      <ng-template let-item pTemplate="item">
+        <div class="gallery-item-wrapper">
+          <img 
+            alt="Стационар новая медицина" 
+            src="https://front-api.nmpansion.ru{{item.formats.medium.url}}"
+            class="gallery-main-image"
+            loading="lazy"/>
+          <div class="image-overlay">
+            <div class="overlay-content">
+              <i class="fas fa-expand-alt expand-icon"></i>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      
+      <ng-template let-item pTemplate="thumbnail">
+        <div class="gallery-thumbnail-wrapper">
+          <img 
+            alt="Стационар новая медицина" 
+            src="https://front-api.nmpansion.ru{{item.formats.thumbnail.url}}"
+            class="gallery-thumbnail-image"/>
+          <div class="thumbnail-overlay"></div>
+        </div>
+      </ng-template>
+      
+    </p-galleria>
+    
+    <div *ngIf="!isBrowser" class="gallery-placeholder">
+      <p>Загрузка галереи...</p>
+    </div>
+  </div>
+</div>

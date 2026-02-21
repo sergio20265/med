@@ -1,0 +1,35 @@
+<app-breadcumb [title]="'Персонал'"></app-breadcumb>
+<section class="vs-team-wrapper space">
+        <div class="container">
+            <div class="row " *ngIf="staff_list">
+<!--<a routerLink="/staff-detail/{{staff.attributes.slug}}" class="text-reset"></a>-->
+                <div *ngFor="let staff of staff_list.data"
+                  class="col-md-6 col-xl-4 mb-30 wow fadeInUp" data-wow-delay="0.3s">
+                  <div class="team-card">
+                        <div class="team-head">
+                            <img *ngIf="staff?.attributes?.img?.data === null" src="assets/img/team/t-1-1.png" alt="{{staff.attributes.name}}" class="w-100">
+                            <img *ngIf="staff?.attributes?.img?.data" src="https://front-api.nmpansion.ru{{staff?.attributes?.img?.data?.attributes?.formats?.small?.url}}" alt="{{staff.attributes.name}}" class="w-100">
+<!--                            <div class="team-card-links">-->
+<!--                                <a class="team-links-toggler" href="#"><i class="fas fa-share-alt"></i></a>-->
+<!--                                <div class="team-social">-->
+<!--                                    <a href="#"><i class="fab fa-facebook-f"></i></a>-->
+<!--                                    <a href="#"><i class="fab fa-twitter"></i></a>-->
+<!--                                    <a href="#"><i class="fas fa-basketball-ball"></i></a>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        </div>
+                        <div class="team-body">
+                            <h3 class="h4 mb-0">{{staff.attributes.name}}</h3>
+                            <p *ngFor="let job_title of staff?.attributes?.dolzhnosti_sotrudnikovs?.data" class="fs-xs degi text-theme mb-2">
+                              {{job_title?.attributes.title}}</p>
+<!--                            <p class="fs-xs">Conceptualize user-centric web-readiness via economically sound e-services. Interactively coordinate next-generation </p>-->
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>

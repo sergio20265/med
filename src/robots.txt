@@ -1,0 +1,2 @@
+Sitemap: https://nmrehab.ru/sitemap.xml
+User-agent: *

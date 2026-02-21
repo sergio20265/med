@@ -1,0 +1,43 @@
+.service-thumb {
+  .sr-img {
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+// Обеспечиваем одинаковую высоту карточек сервисов
+.service-thumb {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  .sr-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+// Дополнительные стили для улучшения внешнего вида
+.vs-service-wrapper {
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    
+    [class*="col-"] {
+      display: flex;
+      margin-bottom: 30px;
+    }
+  }
+}

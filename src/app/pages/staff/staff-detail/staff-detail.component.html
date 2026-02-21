@@ -1,0 +1,133 @@
+ <section class="vs-details-wrapper space-top space-md-bottom">
+        <div class="container">
+            <div class="row gx-40">
+                <div class="col-lg-5">
+
+                    <div class="member-header mb-40 overflow-hidden rounded-3 position-relative">
+                        <div class="member-details-img">
+<!--                            <img src="assets/img/team/t-d-1.jpg" alt="Member Image" class="w-100">-->
+                            <img *ngIf="staff_detail?.data?.attributes?.img?.data" src="http://front-api.nmpansion.ru{{staff_detail?.data?.attributes?.img?.data?.attributes?.url}}" alt="{{staff_detail?.data?.attributes.name}}" class="w-100">
+                        </div>
+
+                        <div class="member-angle-links">
+                            <div class="shape"><img src="assets/img/bg/member-shape.png" alt="Shape"></div>
+<!--                            <span class="middle-icon"><i class="fas fa-share-alt"></i></span>-->
+<!--                            <a href="#"><i class="fab fa-facebook-f"></i></a>-->
+<!--                            <a href="#"><i class="fab fa-linkedin-in"></i></a>-->
+<!--                            <a href="#"><i class="fab fa-twitter"></i></a>-->
+<!--                            <a href="#"><i class="fab fa-skype"></i></a>-->
+                        </div>
+
+                        <a href="#" class="certifate-link">Дипломы сертификаты<i class="far fa-chevron-circle-right"></i></a>
+                    </div>
+
+                    <div *ngIf="staff_detail?.data?.attributes?.schedule" class="team-schedule bg-smoke wow fadeInUp" data-wow-delay="0.3s">
+                        <h3 class="h4 border-title">Часы приема</h3>
+                        <table class="team-schedule-table">
+                            <tbody>
+                                <tr *ngFor="let schedule of staff_detail?.data?.attributes?.schedule">
+                                    <td>{{schedule.day }}</td>
+                                    <td>{{schedule.start}} - {{schedule.end}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <a href="tel:66925682596" class="vs-btn style2">(669) 2568 2596<i class="fas fa-phone"></i></a>
+                    </div>
+
+                </div>
+                <div class="col-lg-7">
+                    <div class="team-content">
+
+                        <h2 class="mb-0 mt-n2">{{staff_detail?.data?.attributes.name}}</h2>
+                        <p *ngFor="let job_title of staff_detail?.data?.attributes?.dolzhnosti_sotrudnikovs?.data" class="text-theme fs-xs">
+                          {{job_title?.attributes.title}}</p>
+<!--                        <p class="fs-md text-title">Rapidiously productivate multimedia based scenarios and economically sound ROI. Dynamically seize cross-platform "outside the box" thinking after enterprise markets. Efficiently enhance end-to-end relationships...</p>-->
+<!--                        <p>Productivate multimedia based scenarios and economically sound ROI. Dynamically seize cross-platform "outside the box" thinking after enterprise markets. Efficiently enhance end-to-end relationships after installed base best practices. Phosfluorescently customize proactive testing procedures via end-to-end networks. Competently scale holistic interfaces for performance based customer service.</p>-->
+<!--                        <table class="member-table">-->
+<!--                            <tbody>-->
+<!--                                <tr>-->
+<!--                                    <th><strong>Speciality</strong></th>-->
+<!--                                    <td>Medicine</td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <th><strong>Degrees</strong></th>-->
+<!--                                    <td><span class="text-theme">MBBS, M.D</span></td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <th><strong>Areas of Expertise</strong></th>-->
+<!--                                    <td>-->
+<!--                                        <ul class="member-info-list">-->
+<!--                                            <li>Cardiac Imaging – Non-invasive.</li>-->
+<!--                                            <li>Cardiac Rehabilitation and Exercise.</li>-->
+<!--                                            <li>Hypertrophic Cardiomyopathy.</li>-->
+<!--                                            <li>Inherited Heart Diseases.</li>-->
+<!--                                        </ul>-->
+<!--                                    </td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <th><strong>Office</strong></th>-->
+<!--                                    <td>374 William S Canning Blvd, Fall River MA 2721</td>-->
+<!--                                </tr>-->
+<!--                                <tr>-->
+<!--                                    <th><strong>University</strong></th>-->
+<!--                                    <td>Harvard University</td>-->
+<!--                                </tr>-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                        <form action="#" class="form-wrap1 shadow-none mb-30 rounded-3 overflow-hidden wow fadeInUp" data-wow-delay="0.3s" data-bg-color="#f3f6f7">-->
+<!--                            <div class="form-title-box bg-title" data-bg-src="assets/img/bg/bg-shape-9.jpg">-->
+<!--                                <div class="row justify-content-between align-items-center">-->
+<!--                                    <div class="col-xl-10">-->
+<!--                                        <h2 class="h4 mb-2 text-white">Book An Appointment</h2>-->
+<!--                                        <p class="mb-0 text-white-light">Scenarios and economically sound ROI. Dynamically seize cross platform "outside the box" thinking after enterprise...</p>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="form-box">-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-lg-6 form-group">-->
+<!--                                        <select class="form-select style3">-->
+<!--                                            <option hidden disabled selected>Select Services</option>-->
+<!--                                            <option>Aerospace Medicine</option>-->
+<!--                                            <option>Bariatric Surgery</option>-->
+<!--                                            <option>Infectious Diseases</option>-->
+<!--                                            <option>Laboratory Medicine</option>-->
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-lg-6 form-group">-->
+<!--                                        <select class="form-select style3">-->
+<!--                                            <option hidden disabled selected>Choose Doctor</option>-->
+<!--                                            <option>Aerospace Medicine</option>-->
+<!--                                            <option>Bariatric Surgery</option>-->
+<!--                                            <option>Infectious Diseases</option>-->
+<!--                                            <option>Laboratory Medicine</option>-->
+<!--                                        </select>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-lg-6 form-group">-->
+<!--                                        <input type="text" class="form-control  style3" placeholder="Your Name">-->
+<!--                                        <i class="fal small fa-user"></i>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-lg-6 form-group">-->
+<!--                                        <input type="email" class="form-control  style3" placeholder="Email Address">-->
+<!--                                        <i class="fal small fa-envelope"></i>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-lg-6 form-group">-->
+<!--                                        <input type="number" class="form-control  style3" placeholder="Your Phone">-->
+<!--                                        <i class="fal small fa-phone"></i>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-lg-6 form-group">-->
+<!--                                        <input type="text" class="dateTime-pick form-control  style3" placeholder="Select Date & Time">-->
+<!--                                        <i class="fal small fa-calendar-alt"></i>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-xl-12 text-center">-->
+<!--                                        <button type="submit" class="vs-btn style2">Make Appointment<i class="far fa-calendar-alt"></i></button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </form>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

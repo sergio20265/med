@@ -1,0 +1,22 @@
+<div class="breadcumb-wrapper ">
+  <div #ParallaxEffect class="parallax"  style="height: 400px; top: 112px;"  data-parallax-image="assets/img/breadcurmb/breadcurmb-1-1.jpg"></div>
+  <div class="container z-index-common">
+    <div class="breadcumb-content">
+      <h1 class="breadcumb-title" style="color: #ffffff">{{title}}</h1>
+      <div class="breadcumb-menu-wrap">
+        <i class="far fa-home-lg"></i>
+        <nav aria-label="breadcrumb">
+          <ul class="breadcumb-menu">
+            <li *ngFor="let crumb of breadcrumbs; let last = last" 
+                [class.active]="last">
+              <a *ngIf="crumb.url && !last" [routerLink]="crumb.url">{{crumb.label}}</a>
+              <span *ngIf="!crumb.url || last">{{crumb.label}}</span>
+              <i *ngIf="!last" class="fas fa-angle-right breadcrumb-separator"></i>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+

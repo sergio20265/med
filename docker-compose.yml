@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  stacionar-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.production
+    container_name: stacionar-site
+    ports:
+      - "4000:4000"
+    volumes:
+      # Монтируем локально собранное приложение
+      - ./dist:/app/dist:ro
+      # Опционально: монтируем node_modules для быстрого старта
+      - ./node_modules:/app/node_modules:ro
+    environment:
+      - NODE_ENV=production
+      - API_TOKEN=${API_TOKEN:-}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:4000', (res) => { process.exit(res.statusCode === 200 ? 0 : 1) })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - stacionar-network
+
+  # Nginx для production (опционально)
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: stacionar-nginx
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./ssl:/etc/nginx/ssl:ro
+  #   depends_on:
+  #     - stacionar-app
+  #   restart: unless-stopped
+  #   networks:
+  #     - stacionar-network
+  #   profiles:
+  #     - production
+
+networks:
+  stacionar-network:
+    driver: bridge

@@ -1,0 +1,521 @@
+.nutrition-info-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 60px 0;
+}
+
+.nutrition-info-card {
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  margin-bottom: 40px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.info-header {
+  text-align: center;
+  margin-bottom: 30px;
+  
+  .section-title {
+    color: #2c3e50;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    position: relative;
+  }
+  
+  .title-divider {
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    margin: 0 auto;
+    border-radius: 2px;
+  }
+}
+
+.info-content {
+  .info-text {
+    margin-bottom: 30px;
+    
+    .lead-text {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      line-height: 1.6;
+      
+      .info-icon {
+        color: #3498db;
+        margin-right: 15px;
+        font-size: 1.5rem;
+      }
+    }
+    
+    .description-text {
+      font-size: 1.1rem;
+      color: #5a6c7d;
+      line-height: 1.8;
+      text-align: center;
+      margin-bottom: 0;
+    }
+  }
+  
+  .info-features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      background: #f8f9fa;
+      padding: 15px 20px;
+      border-radius: 25px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: #e3f2fd;
+        border-color: #3498db;
+        transform: translateY(-2px);
+      }
+      
+      i {
+        color: #2ecc71;
+        margin-right: 10px;
+        font-size: 1.1rem;
+      }
+      
+      span {
+        color: #2c3e50;
+        font-weight: 500;
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
+
+// Стилизация аккордеонов с цветами шаблона
+.container {
+  p-accordion {
+    margin-top: 30px;
+    
+    ::ng-deep {
+      .p-accordion-tab {
+        margin-bottom: 20px;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        
+        &:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+      }
+      
+      .p-accordion-header {
+        background: linear-gradient(135deg, var(--theme-color) 0%, var(--theme-color4) 100%);
+        border: none;
+        border-radius: 8px;
+        margin-bottom: 2px;
+        position: relative;
+        overflow: hidden;
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+          transition: left 0.5s;
+        }
+        
+        &:hover {
+          background: linear-gradient(135deg, var(--theme-color4) 0%, var(--theme-color) 100%);
+          
+          &::before {
+            left: 100%;
+          }
+        }
+        
+        .p-accordion-header-link {
+          background: transparent !important;
+          color: var(--white-color) !important;
+          font-weight: 600;
+          font-size: 1.2rem;
+          padding: 20px 25px;
+          border: none;
+          transition: all 0.3s ease;
+          position: relative;
+          z-index: 1;
+          display: flex;
+          align-items: center;
+          text-decoration: none;
+          
+          &::before {
+            content: '📅';
+            margin-right: 12px;
+            font-size: 1.3rem;
+          }
+          
+          &:hover {
+            background: rgba(255, 255, 255, 0.1) !important;
+            transform: scale(1.02);
+          }
+          
+          &:focus {
+            box-shadow: 0 0 0 3px rgba(7, 204, 236, 0.3);
+            outline: none;
+          }
+          
+          // Убираем стандартные стили PrimeNG
+          .p-accordion-toggle-icon {
+            color: var(--white-color) !important;
+          }
+        }
+      }
+      
+      .p-accordion-content {
+        border: none;
+        background: var(--white-color);
+        
+        .p-accordion-content-wrapper {
+          padding: 0;
+        }
+      }
+      
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        
+        td {
+          padding: 15px 20px;
+          border-bottom: 1px solid var(--border-color);
+          vertical-align: middle;
+          transition: all 0.2s ease;
+          color: var(--body-color2);
+          
+          &:first-child {
+            background: var(--smoke-color);
+            font-weight: 600;
+            color: var(--title-color);
+            width: 220px;
+            font-size: 0.9rem;
+            border-right: 3px solid var(--border-color);
+          }
+          
+          &:nth-child(2) {
+            color: var(--body-color2);
+            font-size: 1rem;
+            line-height: 1.5;
+          }
+          
+          // Стилизация заголовков приемов пищи
+          strong {
+            color: var(--white-color);
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            margin: 5px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            
+            &::before {
+              margin-right: 10px;
+              font-size: 1.4rem;
+            }
+          }
+        }
+        
+        // Цветовая схема для разных приемов пищи с цветами шаблона
+        td strong {
+          background: linear-gradient(135deg, var(--theme-color2) 0%, var(--success-color) 100%) !important;
+          color: var(--white-color) !important;
+          display: block;
+          font-size: 1.3rem;
+          font-weight: 700;
+          padding: 15px 20px;
+          margin: -15px -20px 10px -20px;
+          border-radius: 8px 8px 0 0;
+          position: relative;
+          
+          &::before {
+            font-size: 1.4rem;
+            margin-right: 10px;
+            content: '🍳';
+          }
+        }
+        
+        // Специфичные стили для разных приемов пищи
+        td strong:contains("Завтрак") {
+          background: linear-gradient(135deg, var(--theme-color2) 0%, var(--success-color) 100%) !important;
+          
+          &::before {
+            content: '🍳';
+          }
+        }
+        
+        td strong:contains("Обед") {
+          background: linear-gradient(135deg, var(--theme-color3) 0%, var(--theme-color4) 100%) !important;
+          
+          &::before {
+            content: '🍽️';
+          }
+        }
+        
+        td strong:contains("16:00") {
+          background: linear-gradient(135deg, var(--yellow-color) 0%, #f39c12 100%) !important;
+          
+          &::before {
+            content: '☕';
+          }
+        }
+        
+        td strong:contains("Ужин") {
+          background: linear-gradient(135deg, #8e44ad 0%, #9b59b6 100%) !important;
+          
+          &::before {
+            content: '🌙';
+          }
+        }
+        
+        // Альтернативная стилизация для строк с едой
+        tr:not(:has(strong)):not(:has(td[colspan])) {
+          &:hover {
+            background: var(--secondary-color);
+            transform: translateX(5px);
+          }
+          
+          td:nth-child(2) {
+            position: relative;
+            
+            &::before {
+              content: '';
+              position: absolute;
+              left: 0;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 4px;
+              height: 60%;
+              background: linear-gradient(135deg, var(--theme-color), var(--theme-color4));
+              border-radius: 2px;
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+          }
+          
+          &:hover {
+            td:first-child {
+              background: var(--secondary-color);
+              color: var(--theme-color);
+            }
+            
+            td:nth-child(2) {
+              color: var(--title-color);
+              
+              &::before {
+                opacity: 1;
+              }
+            }
+          }
+        }
+        
+        // Разделители между приемами пищи
+        tr:has(strong) {
+          td {
+            border-top: 3px solid #e9ecef;
+            padding-top: 20px;
+            
+            &:first-child {
+              border-top: none;
+            }
+          }
+          
+          &:first-child td {
+            border-top: none;
+            padding-top: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Улучшенная адаптивность
+@media (max-width: 1200px) {
+  .container p-accordion ::ng-deep table td:first-child {
+    width: 180px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .nutrition-info-card {
+    padding: 30px;
+    margin: 0 10px 30px;
+  }
+  
+  .container p-accordion ::ng-deep {
+    .p-accordion-header .p-accordion-header-link {
+      font-size: 1.1rem;
+      padding: 18px 20px;
+    }
+    
+    table td {
+      padding: 12px 15px;
+      
+      &:first-child {
+        width: 160px;
+        font-size: 0.8rem;
+      }
+      
+      strong {
+        font-size: 1.2rem;
+        padding: 10px 15px;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .nutrition-info-card {
+    padding: 25px;
+    margin: 0 15px 30px;
+  }
+  
+  .info-header .section-title {
+    font-size: 2rem;
+  }
+  
+  .info-content .info-text .lead-text {
+    font-size: 1.1rem;
+    flex-direction: column;
+    
+    .info-icon {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+  
+  .info-features {
+    flex-direction: column;
+    align-items: center;
+    
+    .feature-item {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+  
+  .container p-accordion ::ng-deep {
+    .p-accordion-tab {
+      margin-bottom: 15px;
+    }
+    
+    .p-accordion-header .p-accordion-header-link {
+      font-size: 1rem;
+      padding: 15px 18px;
+      
+      &::before {
+        font-size: 1.1rem;
+        margin-right: 8px;
+      }
+    }
+    
+    table {
+      td {
+        padding: 10px 12px;
+        
+        &:first-child {
+          width: 140px;
+          font-size: 0.75rem;
+          padding: 8px 10px;
+        }
+        
+        &:nth-child(2) {
+          font-size: 0.9rem;
+        }
+        
+        strong {
+          font-size: 1.1rem;
+          padding: 8px 12px;
+          
+          &::before {
+            font-size: 1.2rem;
+            margin-right: 8px;
+          }
+        }
+      }
+      
+      tr:not(:has(strong)):not(:has(td[colspan])) {
+        &:hover {
+          transform: translateX(3px);
+        }
+        
+        td:nth-child(2)::before {
+          width: 3px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .nutrition-info-card {
+    padding: 20px;
+    margin: 0 10px 25px;
+  }
+  
+  .info-header .section-title {
+    font-size: 1.8rem;
+  }
+  
+  .container p-accordion ::ng-deep {
+    .p-accordion-header .p-accordion-header-link {
+      font-size: 0.95rem;
+      padding: 12px 15px;
+    }
+    
+    table {
+      td {
+        padding: 8px 10px;
+        
+        &:first-child {
+          width: 120px;
+          font-size: 0.7rem;
+          padding: 6px 8px;
+        }
+        
+        &:nth-child(2) {
+          font-size: 0.85rem;
+        }
+        
+        strong {
+          font-size: 1rem;
+          padding: 6px 10px;
+          
+          &::before {
+            font-size: 1.1rem;
+            margin-right: 6px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,709 @@
+<section class="registration-rules-section space-bottom">
+  <style>
+    .registration-rules-section {
+      background: linear-gradient(135deg, #f8fbff 0%, #ffffff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .registration-rules-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%2307ccec" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>') repeat;
+      z-index: 0;
+    }
+    
+    .container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .section-header {
+      margin-bottom: 3rem;
+    }
+    
+    .section-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #07ccec, #1296db);
+      color: white;
+      padding: 8px 24px;
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 15px rgba(7, 204, 236, 0.3);
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #27477d;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    .section-description {
+      font-size: 1.1rem;
+      color: #888c92;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .contact-card {
+      background: linear-gradient(135deg, #07ccec, #1296db);
+      border-radius: 20px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 40px rgba(7, 204, 236, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 50px rgba(7, 204, 236, 0.3);
+    }
+    
+    .contact-icon {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1.5rem;
+    }
+    
+    .contact-icon i {
+      font-size: 24px;
+      color: white;
+    }
+    
+    .contact-label {
+      display: block;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 14px;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    
+    .contact-number {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-number:hover {
+      color: #cdf8ff;
+    }
+    
+    .steps-navigation {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3rem;
+    }
+    
+    .steps-nav {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .step-btn {
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: 15px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.3s ease;
+      min-width: 200px;
+      text-align: left;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    }
+    
+    .step-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      border-color: #07ccec;
+    }
+    
+    .step-btn.active {
+      background: linear-gradient(135deg, #07ccec, #1296db);
+      border-color: transparent;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(7, 204, 236, 0.3);
+    }
+    
+    .step-number {
+      background: #f8f9fa;
+      color: #27477d;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .step-btn.active .step-number {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+    
+    .step-content h4 {
+      margin: 0 0 5px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #27477d;
+    }
+    
+    .step-btn.active .step-content h4 {
+      color: white;
+    }
+    
+    .step-content span {
+      font-size: 0.9rem;
+      color: #888c92;
+      margin: 0;
+    }
+    
+    .step-btn.active .step-content span {
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .step-card {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      margin-bottom: 2rem;
+    }
+    
+    .step-info {
+      padding-right: 2rem;
+    }
+    
+    .step-icon {
+      background: linear-gradient(135deg, #07ccec, #1296db);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .step-icon i {
+      font-size: 28px;
+      color: white;
+    }
+    
+    .step-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #27477d;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    
+    .step-description {
+      font-size: 1.1rem;
+      color: #888c92;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    
+    .step-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      background: #f8fbff;
+      border-radius: 10px;
+      border-left: 4px solid #07ccec;
+    }
+    
+    .feature-item i {
+      color: #07ccec;
+      font-size: 1.1rem;
+    }
+    
+    .feature-item span {
+      color: #27477d;
+      font-weight: 500;
+    }
+    
+    .documents-list {
+      display: grid;
+      gap: 1rem;
+    }
+    
+    .document-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: #f8fbff;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .document-item:hover {
+      background: #e6f7ff;
+      transform: translateX(5px);
+    }
+    
+    .document-item i {
+      color: #2cb624;
+      font-size: 1.1rem;
+    }
+    
+    .document-item span {
+      color: #27477d;
+      font-weight: 500;
+    }
+    
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .item-category {
+      background: #f8fbff;
+      padding: 1.5rem;
+      border-radius: 15px;
+      border-top: 4px solid #07ccec;
+    }
+    
+    .item-category h5 {
+      color: #27477d;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .item-category h5 i {
+      color: #07ccec;
+    }
+    
+    .item-category ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .item-category li {
+      padding: 0.5rem 0;
+      color: #888c92;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .item-category li::before {
+      content: '•';
+      color: #07ccec;
+      position: absolute;
+      left: 0;
+      font-weight: bold;
+    }
+    
+    .required-docs h5 {
+      color: #27477d;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .doc-checklist {
+      display: grid;
+      gap: 1rem;
+    }
+    
+    .doc-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: #f8fbff;
+      border-radius: 10px;
+      border-left: 4px solid #07ccec;
+      transition: all 0.3s ease;
+    }
+    
+    .doc-item:hover {
+      background: #e6f7ff;
+      transform: translateX(5px);
+    }
+    
+    .doc-item i {
+      color: #07ccec;
+      font-size: 1.2rem;
+      width: 20px;
+      text-align: center;
+    }
+    
+    .doc-item span {
+      color: #27477d;
+      font-weight: 500;
+    }
+    
+    .step-image img {
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    
+    .step-image img:hover {
+      transform: scale(1.02);
+    }
+    
+    .appointment-section {
+      background: linear-gradient(135deg, #27477d, #0033a0);
+      border-radius: 25px;
+      padding: 3rem;
+      margin-top: 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .appointment-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+      transform: rotate(45deg);
+    }
+    
+    .appointment-wrapper {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .appointment-title {
+      color: white;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .appointment-subtitle {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .step-btn {
+        min-width: 160px;
+        padding: 1rem;
+      }
+      
+      .step-card {
+        padding: 2rem 1.5rem;
+      }
+      
+      .step-info {
+        padding-right: 0;
+        margin-bottom: 2rem;
+      }
+      
+      .items-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-card {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .contact-icon {
+        margin-right: 0;
+        margin-bottom: 1rem;
+      }
+      
+      .appointment-section {
+        padding: 2rem 1.5rem;
+      }
+      
+      .appointment-title {
+        font-size: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .steps-nav {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .step-btn {
+        width: 100%;
+        max-width: 300px;
+      }
+    }
+  </style>
+  <div class="container">
+    <!-- Header Section -->
+    <div class="row justify-content-center text-center mb-5">
+      <div class="col-lg-8">
+        <div class="section-header wow fadeInUp" data-wow-delay="0.2s">
+          <span class="section-badge">Правила оформления</span>
+          <h2 class="section-title">Оформление в стационар</h2>
+          <p class="section-description">Следуйте простым шагам для быстрого и комфортного оформления</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Contact Info Card -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-6 col-md-8">
+        <div class="contact-card wow fadeInUp" data-wow-delay="0.3s">
+          <div class="contact-icon">
+            <i class="fas fa-phone-alt"></i>
+          </div>
+          <div class="contact-content">
+            <span class="contact-label">Круглосуточная поддержка</span>
+            <a href="tel:+79300332222" class="contact-number">+7 (930) 033-22-22</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Steps Navigation and Content -->
+    <div class="steps-container wow fadeInUp" data-wow-delay="0.4s">
+      <!-- Steps Navigation -->
+      <div class="steps-navigation mb-5">
+        <div class="nav steps-nav" id="nav-tab" role="tablist">
+          <button class="nav-link step-btn active" data-bs-target="#step-1" data-bs-toggle="tab" id="step-1-tab" role="tab" type="button">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Звонок</h4>
+              <span>Консультация</span>
+            </div>
+          </button>
+          <button class="nav-link step-btn" data-bs-target="#step-2" data-bs-toggle="tab" id="step-2-tab" role="tab" type="button">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Документы</h4>
+              <span>Подготовка</span>
+            </div>
+          </button>
+          <button class="nav-link step-btn" data-bs-target="#step-3" data-bs-toggle="tab" id="step-3-tab" role="tab" type="button">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Вещи</h4>
+              <span>Личные принадлежности</span>
+            </div>
+          </button>
+          <button class="nav-link step-btn" data-bs-target="#step-4" data-bs-toggle="tab" id="step-4-tab" role="tab" type="button">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h4>Заселение</h4>
+              <span>Оформление</span>
+            </div>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Steps Content -->
+      <div class="tab-content steps-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="step-1" role="tabpanel">
+          <div class="step-card">
+            <div class="row align-items-center">
+              <div class="col-lg-12">
+                <div class="step-info">
+                  <div class="step-icon">
+                    <i class="fas fa-phone"></i>
+                  </div>
+                  <h3 class="step-title">Позвонить в наш стационар</h3>
+                  <p class="step-description">Наши администраторы проведут предварительную консультацию, ответят на все вопросы и озвучат стоимость услуг. Мы поможем выбрать оптимальную программу лечения и договоримся о удобном времени госпитализации.</p>
+                  <div class="step-features">
+                    <div class="feature-item">
+                      <i class="fas fa-clock"></i>
+                      <span>Круглосуточная поддержка</span>
+                    </div>
+                    <div class="feature-item">
+                      <i class="fas fa-user-md"></i>
+                      <span>Консультация специалиста</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="step-2" role="tabpanel">
+          <div class="step-card">
+            <div class="row align-items-center">
+              <div class="col-lg-12">
+                <div class="step-info">
+                  <div class="step-icon">
+                    <i class="fas fa-file-medical"></i>
+                  </div>
+                  <h3 class="step-title">Подготовить медицинскую документацию</h3>
+                  <p class="step-description">Соберите все имеющиеся медицинские документы для более точной диагностики и составления индивидуального плана лечения.</p>
+                  <div class="documents-list">
+                    <div class="document-item">
+                      <i class="fas fa-check-circle"></i>
+                      <span>Выписки из больниц и поликлиник</span>
+                    </div>
+                    <div class="document-item">
+                      <i class="fas fa-check-circle"></i>
+                      <span>Результаты анализов и обследований</span>
+                    </div>
+                    <div class="document-item">
+                      <i class="fas fa-check-circle"></i>
+                      <span>Заключения специалистов</span>
+                    </div>
+                    <div class="document-item">
+                      <i class="fas fa-check-circle"></i>
+                      <span>Медицинская карта (при наличии)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="step-3" role="tabpanel">
+          <div class="step-card">
+            <div class="row align-items-center">
+              <div class="col-lg-12">
+                <div class="step-info">
+                  <div class="step-icon">
+                    <i class="fas fa-suitcase"></i>
+                  </div>
+                  <h3 class="step-title">Личные вещи</h3>
+                  <p class="step-description">Подготовьте необходимые личные вещи для комфортного пребывания. При необходимости мы можем обеспечить всем необходимым.</p>
+                  <div class="items-grid">
+                    <div class="item-category">
+                      <h5><i class="fas fa-tshirt"></i> Одежда</h5>
+                      <ul>
+                        <li>Сменное нижнее белье</li>
+                        <li>Домашняя одежда</li>
+                        <li>Теплые вещи</li>
+                      </ul>
+                    </div>
+                    <div class="item-category">
+                      <h5><i class="fas fa-soap"></i> Гигиена</h5>
+                      <ul>
+                        <li>Зубная щетка и паста</li>
+                        <li>Мочалка и полотенце</li>
+                        <li>Шампунь и мыло</li>
+                      </ul>
+                    </div>
+                    <div class="item-category">
+                      <h5><i class="fas fa-pills"></i> Медикаменты</h5>
+                      <ul>
+                        <li>Назначенные препараты</li>
+                        <li>Рецепты врачей</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+             
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="step-4" role="tabpanel">
+          <div class="step-card">
+            <div class="row align-items-center">
+              <div class="col-lg-12">
+                <div class="step-info">
+                  <div class="step-icon">
+                    <i class="fas fa-clipboard-check"></i>
+                  </div>
+                  <h3 class="step-title">Заселение и оформление</h3>
+                  <p class="step-description">Завершающий этап - оформление документов и заселение в комфортную палату с полным медицинским сопровождением.</p>
+                  <div class="required-docs">
+                    <h5>Необходимые документы:</h5>
+                    <div class="doc-checklist">
+                      <div class="doc-item">
+                        <i class="fas fa-id-card"></i>
+                        <span>Паспорт заказчика и проживающего</span>
+                      </div>
+                      <div class="doc-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Полис медицинского страхования</span>
+                      </div>
+                      <div class="doc-item">
+                        <i class="fas fa-file-medical-alt"></i>
+                        <span>Медицинская выписка</span>
+                      </div>
+                      <div class="doc-item">
+                        <i class="fas fa-lungs"></i>
+                        <span>Флюорография</span>
+                      </div>
+                      <div class="doc-item">
+                        <i class="fas fa-prescription"></i>
+                        <span>Рецепты (при наличии)</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Appointment Form Section -->
+  <div class="container mt-5">
+    <div class="appointment-section">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="appointment-wrapper">
+            <div class="text-center mb-4">
+              <h3 class="appointment-title">Готовы начать лечение?</h3>
+              <p class="appointment-subtitle">Заполните форму, и мы свяжемся с вами в ближайшее время</p>
+            </div>
+            <app-appointment-form></app-appointment-form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
