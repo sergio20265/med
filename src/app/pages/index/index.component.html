@@ -1,34 +1,617 @@
-<!-- <div class="video" *ngFor="let video of personal['files']">-->
-<!--   http://localhost:1337{{video['url']}}-->
-<!--&lt;!&ndash;    <video controls #videoPlayer>&ndash;&gt;-->
-<!--&lt;!&ndash;        <source src="http://localhost:1337{{video['url']}}" type="{{personal['files'][0]['mime']}}" />&ndash;&gt;-->
-<!--&lt;!&ndash;        Browser not supported&ndash;&gt;-->
-<!--&lt;!&ndash;    </video>&ndash;&gt;-->
-<!--</div>-->
-
-<app-main-slider></app-main-slider>
-
-<app-day-timer-patient></app-day-timer-patient>
-
-
-<app-registration-rules></app-registration-rules>
-<!-- <app-doctor-carusel></app-doctor-carusel> -->
-<div class="container">
-  <p-tabView>
-    <p-tabPanel>
-      <ng-template pTemplate="header">
-        <span class="tab_colored_diag">Работаем с диагнозами</span>
-      </ng-template>
-      <app-diagnoses-list [breadcumb]="false"></app-diagnoses-list>
-    </p-tabPanel>
-    <p-tabPanel>
-      <ng-template pTemplate="header">
-        <span class="tab_colored_diag">Виды реабилитации</span>
-      </ng-template>
-      <app-rehabilitation [breadcumb]="false"></app-rehabilitation>
-    </p-tabPanel>
-  </p-tabView>
+<!-- ====================================================
+  ПОПАП-ФОРМА (общая: Проверить места / Консультация)
+===================================================== -->
+<div *ngIf="showForm" class="lp-modal-overlay" (click)="closeFormOverlay($event)">
+  <div class="lp-modal" role="dialog">
+    <button class="lp-modal-close" (click)="toggleForm()"><i class="fal fa-times"></i></button>
+    <h4 class="lp-modal-title">Бесплатная консультация врача</h4>
+    <p class="lp-modal-sub">Ответим в течение 3–5 минут</p>
+    <div class="mb-3">
+      <input type="text" placeholder="Имя" class="form-control lp-modal-input">
+    </div>
+    <div class="mb-3">
+      <input type="tel" placeholder="Телефон" class="form-control lp-modal-input">
+    </div>
+    <div class="mb-4">
+      <select class="form-control lp-modal-input">
+        <option value="" disabled selected>Состояние пациента</option>
+        <option>После инсульта</option>
+        <option>После операции / эндопротезирования</option>
+        <option>После перелома / травмы</option>
+        <option>Деменция</option>
+        <option>Болезнь Паркинсона</option>
+        <option>Паллиативная помощь</option>
+      </select>
+    </div>
+    <button class="vs-btn style1 w-100 mb-3">Отправить</button>
+    <label class="lp-modal-agree d-flex align-items-start gap-2">
+      <input type="checkbox" checked style="margin-top:3px;flex-shrink:0;">
+      <span>Я соглашаюсь с политикой обработки персональных данных</span>
+    </label>
+  </div>
 </div>
-<app-gallery></app-gallery>
-<app-service></app-service>
 
+<!-- ПОПАП: Записаться на просмотр -->
+<div *ngIf="showViewForm" class="lp-modal-overlay" (click)="closeViewFormOverlay($event)">
+  <div class="lp-modal" role="dialog">
+    <button class="lp-modal-close" (click)="toggleViewForm()"><i class="fal fa-times"></i></button>
+    <h4 class="lp-modal-title">Записаться на просмотр</h4>
+    <p class="lp-modal-sub">Приедьте и лично оцените условия</p>
+    <div class="mb-3">
+      <input type="text" placeholder="Имя" class="form-control lp-modal-input">
+    </div>
+    <div class="mb-4">
+      <input type="tel" placeholder="Телефон" class="form-control lp-modal-input">
+    </div>
+    <button class="vs-btn style1 w-100 mb-3">Отправить заявку</button>
+    <label class="lp-modal-agree d-flex align-items-start gap-2">
+      <input type="checkbox" checked style="margin-top:3px;flex-shrink:0;">
+      <span>Я соглашаюсь с политикой обработки персональных данных</span>
+    </label>
+  </div>
+</div>
+
+
+<!-- ====================================================
+  ЭКРАН 1: Герой
+===================================================== -->
+<section class="lp-hero">
+  <div class="lp-hero-overlay"></div>
+
+  <!-- Слои врачей: каждый doctor-PNG перекрывает весь hero,
+       фигура каждого врача расположена в разных зонах кадра —
+       при right:0/bottom:0 они естественно встают рядом -->
+  <div class="hero-docs-layer d-none d-lg-block" aria-hidden="true">
+    <div class="hero-doc hero-doc-2"></div><!-- бордовый — задний план -->
+    <div class="hero-doc hero-doc-1"></div><!-- синий    — средний план -->
+    <div class="hero-doc hero-doc-0"></div><!-- женщина  — передний план -->
+  </div>
+
+  <!-- Подписи врачей (десктоп) -->
+  <div class="hero-docs-names d-none d-lg-flex">
+    <div class="hero-doc-name">
+      <strong>Попова Елена</strong>
+      <span>Зав. отделением, терапевт</span>
+    </div>
+    <div class="hero-doc-name">
+      <strong>Басиладзе Зураб</strong>
+      <span>Реабилитолог</span>
+    </div>
+    <div class="hero-doc-name">
+      <strong>Анохин Николай</strong>
+      <span>Инструктор ЛФК</span>
+    </div>
+  </div>
+
+  <div class="lp-hero-main">
+    <div class="container">
+      <div class="row align-items-end g-4">
+
+        <!-- Текстовый блок -->
+        <div class="col-lg-7" data-animate="fade-right">
+          <h1 class="text-white mb-2" style="font-size:clamp(1.8rem,4.5vw,3rem);font-weight:800;line-height:1.18;">
+            Реабилитационный стационар<br>для пожилых 24/7
+          </h1>
+          <p class="text-white mb-4" style="font-size:clamp(1.05rem,2.2vw,1.35rem);font-weight:500;opacity:0.93;line-height:1.5;">
+            после инсульта, переломов и эндопротезирования
+          </p>
+          <p class="mb-4" style="color:rgba(255,255,255,0.88);font-size:1rem;line-height:1.85;">
+            Индивидуальный план восстановления и круглосуточное медицинское наблюдение.<br>
+            Принимаем пациентов сразу после выписки.<br>
+            <span style="color:#f0a500;font-weight:600;">🚑 Организуем перевозку лежачих пациентов</span><br>
+            <strong style="color:#fff;">От 2 000 ₽/сутки — без скрытых платежей</strong>
+          </p>
+          <div class="d-flex flex-wrap gap-3 mb-3">
+            <button class="lp-btn-primary" (click)="toggleForm()">Проверить наличие мест</button>
+            <button class="lp-btn-outline" (click)="toggleForm()">Бесплатная консультация врача</button>
+          </div>
+          <p style="color:rgba(255,255,255,0.55);font-size:0.85rem;">Ответим в течение 3–5 минут.</p>
+        </div>
+		<div class="col-lg-5 col-abs">
+		  <div class="ls-btn ls-l ls-responsive" data-ls-laptop="left: 200px; top: 520px;" data-ls-tablet="left: 200px; top: 520px;" style="top: 15%; left: 95%;">
+			<a target="_blank" class="play-btn popup-video style3" href="https://rutube.ru/play/embed/2c8d629abcfe87a56789acee0f376787/"><i class="fas fa-play"></i></a><span>видео о центре</span>
+		  </div>
+		</div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Features strip внизу hero -->
+  <div class="lp-hero-features-bar">
+    <div class="container">
+      <div class="row g-0">
+        <div class="col-6 col-md-3 lp-hero-feat" data-animate="fade-up">
+          <i class="fas fa-clinic-medical"></i>
+          <strong>Полный спектр медицинских услуг</strong>
+          <p>Все виды анализов. Фармакологическое обеспечение. Приём по полису ОМС.</p>
+        </div>
+        <div class="col-6 col-md-3 lp-hero-feat" data-animate="fade-up">
+          <i class="far fa-clock"></i>
+          <strong>Круглосуточное наблюдение</strong>
+          <p>Медсёстры круглосуточно. Собственная станция скорой помощи.</p>
+        </div>
+        <div class="col-6 col-md-3 lp-hero-feat" data-animate="fade-up">
+          <i class="fas fa-hands-helping"></i>
+          <strong>Внимание и забота о пациенте</strong>
+          <p>Гигиена, питание, контроль препаратов, противопролежневые матрасы.</p>
+        </div>
+        <div class="col-6 col-md-3 lp-hero-feat" data-animate="fade-up">
+          <i class="fas fa-utensils"></i>
+          <strong>Сбалансированное питание</strong>
+          <p>Индивидуальная диета и программа питания для каждого пациента.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 2: Кому мы помогаем
+===================================================== -->
+<section class="lp-section bg-white">
+  <div class="container">
+
+    <div class="lp-section-head text-center" data-animate="fade-up">
+      <h2 class="lp-sec-title">Кому мы помогаем</h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-sm-6 col-lg-4" *ngFor="let d of directions; let i = index" [attr.data-animate]="'fade-up'" [style.transition-delay]="(i * 0.08) + 's'">
+        <div class="lp-dir-card">
+          <div class="lp-dir-icon">
+            <i [class]="d.icon"></i>
+          </div>
+          <h3 class="lp-dir-title">{{ d.title }}</h3>
+          <p class="lp-dir-text1">{{ d.text1 }}</p>
+          <p class="lp-dir-text2">{{ d.text2 }}</p>
+          <a [routerLink]="d.link" class="lp-dir-link">Подробнее →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 3: Почему под наблюдением безопаснее
+===================================================== -->
+<section class="lp-section" style="background:#f0f6fb;">
+  <div class="container">
+
+    <div class="lp-section-head text-center" data-animate="fade-up">
+      <h2 class="lp-sec-title">Почему под наблюдением безопаснее</h2>
+      <p class="lp-sec-sub">Без медицинского контроля дома часто возникают:</p>
+    </div>
+
+    <div class="row g-4 mb-5">
+      <div class="col-6 col-md-4 col-lg-2" *ngFor="let risk of risks; let i = index" [attr.data-animate]="'fade-up'" [style.transition-delay]="(i * 0.07) + 's'">
+        <div class="lp-risk-card">
+          <div class="lp-risk-icon">
+            <i [class]="risk.icon"></i>
+          </div>
+          <p class="lp-risk-label">{{ risk.label }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lp-safety-banner" data-animate="fade-up">
+      <i class="fas fa-shield-alt lp-safety-icon"></i>
+      <p class="lp-safety-text">
+        Мы берём пациента под круглосуточный контроль,<br>
+        чтобы минимизировать риски и сохранить результат лечения.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 4: Как проходит восстановление
+===================================================== -->
+<section class="lp-section bg-white">
+  <div class="container">
+
+    <div class="lp-section-head text-center" data-animate="fade-up">
+      <h2 class="lp-sec-title">Как проходит восстановление</h2>
+    </div>
+
+    <div class="row align-items-center g-5">
+
+      <div class="col-lg-6" data-animate="fade-right">
+        <div class="lp-steps-list">
+          <div class="lp-step" *ngFor="let step of steps; let i = index; let last = last">
+            <div class="lp-step-num">{{ i + 1 }}</div>
+            <div class="lp-step-body" [class.last]="last">
+              <p class="lp-step-text">{{ step }}</p>
+            </div>
+          </div>
+        </div>
+        <div class="lp-steps-quote">
+          Мы не просто ухаживаем — мы контролируем процесс восстановления
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-animate="fade-left">
+        <div class="lp-photo-grid">
+          <div class="lp-photo-side">
+            <img src="assets/img/dropme/К11.png" alt="ЛФК">
+            <img src="assets/img/dropme/К12.png" alt="Уход">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 5: Стоимость
+===================================================== -->
+<section class="lp-section" style="background:#f0f6fb;" id="price">
+  <div class="container">
+
+    <div class="lp-section-head text-center" data-animate="fade-up">
+      <h2 class="lp-sec-title">Стоимость</h2>
+    </div>
+
+    <div class="row g-4 align-items-stretch">
+
+      <!-- Карточка 1 -->
+      <div class="col-md-6 col-lg-4" data-animate="fade-right">
+        <div class="lp-price-card h-100">
+          <h3 class="lp-price-title">Базовый уход</h3>
+          <div class="lp-price-value">от 2 000 ₽<span>/сутки</span></div>
+          <p class="lp-price-label">Включено:</p>
+          <ul class="lp-price-list">
+            <li>Проживание</li>
+            <li>Питание</li>
+            <li>Помощь в гигиене</li>
+            <li>Контроль приёма лекарств</li>
+            <li>Профилактика пролежней</li>
+            <li>Наблюдение 24/7</li>
+          </ul>
+          <button class="lp-btn-primary w-100 mt-auto pt-3" (click)="toggleForm()">Узнать подробнее</button>
+        </div>
+      </div>
+
+      <!-- Карточка 2 -->
+      <div class="col-md-6 col-lg-4" data-animate="fade-up">
+        <div class="lp-price-card lp-price-card--featured h-100">
+          <div class="lp-price-badge">ПОПУЛЯРНЫЙ</div>
+          <h3 class="lp-price-title">Уход с реабилитацией</h3>
+          <div class="lp-price-value">от 4 000 ₽<span>/сутки</span></div>
+          <p class="lp-price-label">Включено всё из базового, плюс:</p>
+          <ul class="lp-price-list">
+            <li>Занятия с врачом-реабилитологом</li>
+            <li>ЛФК под контролем инструктора</li>
+            <li>Восстановление двигательной активности</li>
+            <li>Контроль врача</li>
+            <li>Индивидуальная программа</li>
+          </ul>
+          <button class="lp-btn-primary w-100 mt-auto pt-3" (click)="toggleForm()">Узнать подробнее</button>
+        </div>
+      </div>
+
+      <!-- Фото (2 штуки вертикально) -->
+      <div class="col-md-12 col-lg-4" data-animate="fade-left">
+        <div class="lp-price-photos">
+          <img src="assets/img/dropme/reab2.jpg" alt="Медицинский уход">
+        </div>
+      </div>
+
+    </div>
+
+    <div class="lp-price-notes">
+      <span>❗ Без скрытых платежей. Официальный договор.</span>
+      <span>❗ Стоимость фиксируется в договоре.</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 6: Перевозка
+===================================================== -->
+<section class="lp-section section-time">
+  <div class="container">
+    <div class="row align-items-center g-4">
+
+      <div class="col-lg-8" data-animate="fade-right">
+        <h2 class="text-white mb-3" style="font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;">Перевозка</h2>
+        <p style="color:rgba(255,255,255,0.85);font-size:1.05rem;line-height:1.7;margin-bottom:0;">
+          Организуем перевозку лежачих пациентов из больницы или дома.
+          Помогаем подобрать транспорт и сопровождаем процесс заселения.
+        </p>
+      </div>
+
+      <div class="col-lg-4 text-lg-end" data-animate="fade-left">
+        <div class="lp-ambulance-img">
+          <img src="assets/img/dropme/5251470042426184871.jpg" style="border-radius:10px;" alt="Перевозка">
+        </div>
+      </div>
+
+    </div>
+	<button class="lp-btn-primary mt-3" (click)="toggleForm()">Узнать условия перевозки</button>
+  </div>
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 7: Персонал
+===================================================== -->
+<section class="lp-section bg-white">
+  <div class="container">
+
+    <div class="lp-section-head text-center" data-animate="fade-up">
+      <h2 class="lp-sec-title">Персонал</h2>
+    </div>
+
+    <div class="row g-4 justify-content-center mb-4">
+      <div class="col-sm-6 col-md-4 col-lg-2" *ngFor="let s of staff; let i = index" [attr.data-animate]="'fade-up'" [style.transition-delay]="(i * 0.08) + 's'">
+        <div class="lp-staff-card text-center">
+          <div class="lp-staff-photo">
+            <img *ngIf="s.photo" [src]="s.photo" [alt]="s.name" loading="lazy">
+            <i *ngIf="!s.photo" class="fas fa-user-circle lp-staff-icon"></i>
+          </div>
+          <div class="lp-staff-text">
+            <h3 class="lp-staff-name">{{ s.name }}</h3>
+            <p class="lp-staff-role">{{ s.role }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center lp-staff-note">Каждый пациент находится под наблюдением медицинского персонала 24/7.</p>
+    <div class="text-center mt-3">
+      <a routerLink="/staff" class="lp-btn-primary mt-3">Познакомиться с командой</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 8: Фото-галерея
+===================================================== -->
+<section class="lp-section" style="background:#f5f8fb;">
+  <div class="container">
+
+    <div class="lp-section-head text-center" data-animate="fade-up">
+      <h2 class="lp-sec-title">Условия проживания</h2>
+      <p class="lp-sec-sub">Палаты, санузлы, ЛФК-зал, территория</p>
+    </div>
+
+    <div class="lp-gallery-grid" data-animate="fade-up">
+      <div class="lp-gallery-item"
+           *ngFor="let img of galleryImages; let i = index"
+           (click)="openLightbox(i)"
+           role="button"
+           tabindex="0"
+           (keydown.enter)="openLightbox(i)"
+           [attr.aria-label]="'Открыть фото: ' + img.alt">
+        <img [src]="img.src" [alt]="img.alt" loading="lazy">
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <p style="font-size:1rem;color:#444;margin-bottom:16px;">
+        Реальные фото без постановочных кадров. Вы можете приехать и лично убедиться, а также оценить условия.
+      </p>
+      <button class="lp-btn-primary" (click)="toggleViewForm()">Записаться на просмотр</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 9: Отзывы
+===================================================== -->
+<section class="lp-section bg-white">
+  <div class="container">
+
+    <div class="lp-section-head text-center" data-animate="fade-up">
+      <h2 class="lp-sec-title">Отзывы</h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" *ngFor="let r of reviews; let i = index" [attr.data-animate]="'fade-up'" [style.transition-delay]="(i * 0.1) + 's'">
+        <div class="lp-review-card">
+          <div class="lp-review-avatar">
+            <i class="fas fa-user"></i>
+          </div>
+          <p class="lp-review-text">«{{ r.text }}»</p>
+          <div class="lp-review-author">
+            <strong>{{ r.name }}</strong>
+            <span>{{ r.diagnosis }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lp-reviews-footer">
+      <p class="lp-reviews-counter">
+        Более 500 пациентов прошли реабилитацию в нашем стационаре.<br>
+        Вы можете приехать и лично пообщаться с администрацией центра и посмотреть условия.
+      </p>
+      <button class="lp-btn-primary" (click)="toggleViewForm()">Записаться на просмотр</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 10: Кому не подойдёт
+===================================================== -->
+<section class="lp-section" style="background:#fff8f0;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7 text-center" data-animate="fade-up">
+
+        <h2 class="lp-sec-title">Кому не подойдёт стационар</h2>
+        <p style="color:#666;margin-bottom:28px;">Наш реабилитационный стационар не подойдёт, если:</p>
+
+        <ul class="lp-notfor-list">
+          <li *ngFor="let item of notForUs">
+            <span class="lp-notfor-x">✗</span>
+            <span>{{ item }}</span>
+          </li>
+        </ul>
+
+        <p class="lp-notfor-note">
+          Мы специализируемся на медицинской реабилитации и уходе за пожилыми
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 11: FAQ
+===================================================== -->
+<section class="lp-section bg-white">
+  <div class="container">
+
+    <div class="lp-section-head text-center" data-animate="fade-up">
+      <h2 class="lp-sec-title">Часто задаваемые вопросы</h2>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-9" data-animate="fade-up">
+        <div class="lp-faq-item" *ngFor="let faq of faqs; let i = index">
+          <div class="lp-faq-q" (click)="toggleFaq(i)">
+            <span>{{ faq.question }}</span>
+            <i class="fas" [class.fa-chevron-down]="activeFaq !== i" [class.fa-chevron-up]="activeFaq === i"></i>
+          </div>
+          <div class="lp-faq-a" *ngIf="activeFaq === i">
+            <div [innerHTML]="faq.answer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 12: Реабилитацию важно начать вовремя
+===================================================== -->
+<section class="lp-section lp-cta-section">
+  <div class="container text-center" data-animate="fade-up">
+
+    <h2 class="lp-cta-title">Реабилитацию важно начать вовремя</h2>
+    <p class="lp-cta-text">
+      После инсульта, переломов, травм или операций первые недели имеют решающее значение.
+      Чем раньше начата реабилитация, тем выше шанс вернуть самостоятельность и снизить риск осложнений.
+    </p>
+    <p class="lp-cta-text" style="opacity:0.8;">
+      Мы принимаем ограниченное количество пациентов, чтобы обеспечить персональный медицинский контроль.
+    </p>
+    <p class="lp-cta-text" style="opacity:0.8;margin-bottom:32px;">
+      Позвоните нам — врач оценит вашу ситуацию и подскажет, подойдёт ли наш стационар.
+    </p>
+
+    <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+      <a href="tel:+79300332222" class="lp-btn-primary lp-cta-phone-btn">
+        <i class="fas fa-phone-alt me-2"></i>+7 (930) 033-22-22
+      </a>
+      <button class="lp-btn-outline" (click)="toggleForm()">Бесплатная консультация врача</button>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 13: Карта
+===================================================== -->
+<section>
+  <iframe
+    src="https://yandex.ru/map-widget/v1/?mode=search&text=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C+%D0%BF%D0%BE%D1%81%D1%91%D0%BB%D0%BE%D0%BA+%D0%93%D0%BE%D1%80%D0%BE%D0%B4%D0%B8%D1%89%D0%B8%2C+%D1%83%D0%BB+%D0%91%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D1%87%D0%BD%D1%8B%D0%B9+%D0%BF%D1%80%D0%BE%D0%B5%D0%B7%D0%B4%2C+%D0%B4+1&z=15"
+    width="100%"
+    height="420"
+    frameborder="0"
+    allowfullscreen="true"
+    title="Карта проезда — Владимирская область, посёлок Городищи"
+    style="display:block;">
+  </iframe>
+</section>
+
+
+<!-- ====================================================
+  ЭКРАН 14: Лицензия + реквизиты
+===================================================== -->
+<section class="lp-section" style="background:#f5f9fc;">
+  <div class="container">
+
+    <div class="lp-section-head text-center" data-animate="fade-up">
+      <h2 class="lp-sec-title">Лицензия</h2>
+      <p class="lp-sec-sub">Работаем официально. Договор заключается при заселении.</p>
+    </div>
+
+    <div class="row g-4 align-items-start">
+
+      <div class="col-lg-6" data-animate="fade-right">
+        <div class="lp-license-block">
+          <i class="fas fa-certificate lp-license-icon"></i>
+          <div>
+            <h4 class="lp-license-title">Медицинская лицензия</h4>
+            <p class="lp-license-num">№ЛО-33-01-003878</p>
+            <p class="lp-license-desc">Деятельность осуществляется на основании лицензии на медицинскую деятельность.</p>
+            <a routerLink="/license" class="lp-btn-outline-dark mt-2 d-inline-block">Посмотреть лицензию</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6" data-animate="fade-left">
+        <h4 class="lp-license-title mb-3">Реквизиты</h4>
+        <ul class="lp-requisites-list">
+          <li><strong>Адрес:</strong> Владимирская область, посёлок Городищи, ул. Больничный проезд, д. 1</li>
+          <li><strong>Телефон:</strong> <a href="tel:+79300332222">+7 (930) 033-22-22</a></li>
+          <li><strong>Email:</strong> <a href="mailto:nmpansion@yandex.ru">nmpansion@yandex.ru</a></li>
+          <li><strong>Режим работы:</strong> Круглосуточно</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================
+  ЛАЙТБОКС — нет внешних зависимостей, минимальный JS
+===================================================== -->
+<div class="lp-lightbox" *ngIf="lightboxOpen" (click)="closeLightbox()" role="dialog" aria-modal="true">
+
+  <!-- Кнопка закрытия -->
+  <button class="lp-lb-close" (click)="closeLightbox()" aria-label="Закрыть">&#x2715;</button>
+
+  <!-- Кнопка назад -->
+  <button class="lp-lb-nav lp-lb-prev" (click)="lightboxPrev(); $event.stopPropagation()" aria-label="Предыдущее фото">&#8249;</button>
+
+  <!-- Фото -->
+  <div class="lp-lb-stage" (click)="$event.stopPropagation()">
+    <img [src]="galleryImages[lightboxIndex].src"
+         [alt]="galleryImages[lightboxIndex].alt"
+         class="lp-lb-img">
+    <p class="lp-lb-caption">{{ galleryImages[lightboxIndex].alt }}</p>
+    <p class="lp-lb-counter">{{ lightboxIndex + 1 }} / {{ galleryImages.length }}</p>
+  </div>
+
+  <!-- Кнопка вперёд -->
+  <button class="lp-lb-nav lp-lb-next" (click)="lightboxNext(); $event.stopPropagation()" aria-label="Следующее фото">&#8250;</button>
+
+</div>

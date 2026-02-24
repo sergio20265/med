@@ -1,10 +1,8 @@
-import {AfterContentInit, Component, OnInit} from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIf, NgFor } from '@angular/common';
 
-// declare console init_mobile_menu: any;
-declare const init_mobile_menu:any
-declare const menuToggle:any
+declare const init_mobile_menu: any;
 
 interface MenuItem {
   label: string;
@@ -13,63 +11,45 @@ interface MenuItem {
 }
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    styles: [],
-    standalone: true,
-    imports: [NgIf, RouterLink, NgFor]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styles: [],
+  standalone: true,
+  imports: [NgIf, RouterLink, NgFor]
 })
-export class HeaderComponent  {
+export class HeaderComponent {
   visible: boolean = false;
+  showCallback: boolean = false;
 
   menuItems: MenuItem[] = [
     {
-      label: 'О нас',
+      label: 'Главная',
       route: '/',
-    
-    },
-    
-    // {
-    //   label: 'Персонал',
-    //   route: '/staff'
-    // },
-    {
-      label: 'Отзывы',
-      route: '/video-reviews'
     },
     {
-      label: 'Цены',
-      route: '/price'
+      label: 'Направления',
+      route: '/diagnos',
+      children: [
+        { label: 'Реабилитация после инсульта', route: '/rehabilitation/insult' },
+        { label: 'Перелом шейки бедра', route: '/rehabilitation/perelom-shejki-bedra' },
+        { label: 'После эндопротезирования', route: '/rehabilitation/endoprotezirovanie' },
+        { label: 'Деменция / Альцгеймер', route: '/diagnos/demenciya' },
+        { label: 'Болезнь Паркинсона', route: '/diagnos/parkinson' },
+        { label: 'Паллиативная помощь', route: '/diagnos/palliativ' },
+      ]
+    },
+    {
+      label: 'О нас',
+      route: '/about',
+      children: [
+        { label: 'Персонал', route: '/staff' },
+        { label: 'Лицензии', route: '/license' },
+        { label: 'Отзывы', route: '/video-reviews' },
+      ]
     },
     {
       label: 'Пациенту',
-      route: '/service',
-      children: [
-        {
-          label: 'Услуги',
-          route: '/service'
-        },
-        {
-          label: 'Рацион питания',
-          route: '/patient/raczion'
-        },
-        {
-          label: 'Транспортировка',
-          route: 'transport',
-        },
-        {
-          label: 'Реабилитация',
-          route: '/rehabilitation'
-        },
-        {
-          label: 'Диагнозы',
-          route: '/diagnos'
-        },
-        {
-          label: 'Лицензия',
-          route: '/license'
-        },
-      ]
+      route: '/patient'
     },
     {
       label: 'Контакты',
@@ -77,8 +57,7 @@ export class HeaderComponent  {
     }
   ];
 
-  ngAfterViewInit(){
-    // Check if we're in a browser environment before calling init_mobile_menu
+  ngAfterViewInit() {
     if (typeof window !== 'undefined') {
       try {
         init_mobile_menu();
@@ -89,6 +68,21 @@ export class HeaderComponent  {
   }
 
   close_menu() {
-   this.visible = !this.visible;
+    this.visible = !this.visible;
+  }
+
+  toggleCallback() {
+    this.showCallback = !this.showCallback;
+    if (this.showCallback) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  closeCallbackOverlay(event: MouseEvent) {
+    if ((event.target as HTMLElement).classList.contains('hdr-popup-overlay')) {
+      this.toggleCallback();
+    }
   }
 }

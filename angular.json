@@ -127,7 +127,7 @@
           },
           "defaultConfiguration": "development",
           "options": {
-            "port": 4201
+            "port": 4200
           }
         },
         "extract-i18n": {
@@ -227,5 +227,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "5e63d5f4-c62b-40aa-b735-b0b65ce0b145"
   }
 }

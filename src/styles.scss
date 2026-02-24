@@ -143,3 +143,1045 @@
     background: #31a6e1 50% repeat-x;
     color: #ffffff;
 }
+
+/* ============================================================
+   НОВАЯ ШАПКА САЙТА — nmrehab.ru redesign
+   ============================================================ */
+
+/* ── Информационная верхняя полоса ── */
+.hdr-info-bar {
+  background: #FFF;/*1a1e2d;*/
+  padding: 12px 0;
+}
+
+.hdr-info-inner {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.hdr-logo img {
+  max-height: 58px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.hdr-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: #fff;
+}
+
+.hdr-info-icon {
+  color: #f0a500;
+  font-size: 1.1rem;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.hdr-info-label {
+  display: block;
+  font-size: 0.72rem;
+  color: rgba(37,42,61,0.95);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+
+.hdr-info-value {
+  display: block;
+  font-size: 0.88rem;
+  color: #222;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.hdr-phone-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.hdr-phone-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #004991;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.hdr-phone-link:hover { color: #f0a500; }
+.hdr-phone-link i { color: #f0a500; }
+
+.hdr-callback-btn {
+  background: #f0a500;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.1s;
+}
+.hdr-callback-btn:hover { background: #d4920a; transform: translateY(-1px); }
+
+.hdr-burger {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px 8px;
+  margin-left: auto;
+}
+
+/* ── Подполоса с 3 кнопками ── */
+.hdr-actions-bar {
+  background: #252a3d;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 8px 0;
+}
+
+.hdr-actions-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.hdr-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.88);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 5px;
+  padding: 6px 14px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.hdr-action-btn i { font-size: 0.9rem; opacity: 0.85; }
+.hdr-action-btn:hover { background: rgba(240,165,0,0.15); border-color: #f0a500; color: #f0a500; }
+
+/* ── Навигационная полоса ── */
+.hdr-nav-bar {
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.hdr-nav-bar.sticky-wrap .sticky-active.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  box-shadow: 0 3px 18px rgba(0,0,0,0.15);
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+
+.hdr-nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.hdr-nav-item { position: relative; }
+
+.hdr-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 16px 18px;
+  color: #1a1e2d;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.hdr-nav-link:hover,
+.hdr-nav-item:hover > .hdr-nav-link { color: #f0a500; }
+
+.hdr-nav-arrow { font-size: 0.65rem; transition: transform 0.2s; }
+.hdr-nav-item:hover > .hdr-nav-link .hdr-nav-arrow { transform: rotate(180deg); }
+
+.hdr-sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 240px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+  z-index: 100;
+}
+.hdr-nav-item:hover > .hdr-sub-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.hdr-sub-link {
+  display: block;
+  padding: 9px 20px;
+  color: #1a1e2d;
+  font-size: 0.88rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.hdr-sub-link:hover { background: #f5f8ff; color: #f0a500; }
+
+/* ── Popup: Перезвоните мне ── */
+.hdr-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.hdr-popup {
+  background: #fff;
+  border-radius: 12px;
+  padding: 36px 32px;
+  max-width: 420px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+
+.hdr-popup-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #888;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  transition: color 0.2s;
+}
+.hdr-popup-close:hover { color: #1a1e2d; }
+
+.hdr-popup-title { color: #1a3a5c; font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; }
+.hdr-popup-sub { color: #666; font-size: 0.92rem; margin-bottom: 20px; }
+.hdr-popup-input { margin-bottom: 14px !important; }
+.hdr-popup-agree { font-size: 0.75rem; color: #aaa; margin-top: 12px; text-align: center; margin-bottom: 0; }
+.hdr-popup-agree a { color: #1a3a5c; }
+
+/* ── Адаптив хедер ── */
+@media (max-width: 991px) {
+  .hdr-info-bar { display: none; }
+  .hdr-actions-bar { display: none; }
+  .hdr-nav-bar { box-shadow: none; }
+}
+@media (min-width: 992px) {
+  .hdr-burger { display: none !important; }
+}
+@media (max-width: 1199px) {
+  .hdr-info-inner { gap: 16px; }
+  .hdr-nav-link { padding: 16px 12px; font-size: 0.88rem; }
+}
+
+/* Убираем старую шапку */
+.header-wrapper { display: none !important; }
+
+/* ============================================================
+   HERO — блок врачей и popup форма
+   ============================================================ */
+
+.hero-staff-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+}
+
+.hero-staff-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.hero-staff-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #2a4a7c;
+  flex-shrink: 0;
+}
+
+.hero-staff-info strong { display: block; color: #fff; font-size: 0.9rem; font-weight: 600; line-height: 1.3; }
+.hero-staff-info span { display: block; color: rgba(255,255,255,0.65); font-size: 0.78rem; line-height: 1.3; margin-top: 2px; }
+
+.hero-video-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(240,165,0,0.15);
+  border: 1px solid #f0a500;
+  border-radius: 10px;
+  padding: 12px 18px;
+  color: #f0a500;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.hero-video-btn i { font-size: 1.6rem; }
+.hero-video-btn:hover { background: rgba(240,165,0,0.25); color: #f0a500; }
+
+/* Popup-форма на главной странице */
+.lp-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lp-modal {
+  background: #fff;
+  border-radius: 14px;
+  padding: 38px 34px;
+  max-width: 440px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+}
+
+.lp-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+  padding: 4px;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.lp-modal-close:hover { color: #1a3a5c; }
+
+.lp-modal-title { color: #1a3a5c; font-size: 1.45rem; font-weight: 700; margin-bottom: 6px; }
+.lp-modal-sub { color: #777; font-size: 0.9rem; margin-bottom: 22px; }
+.lp-modal-input { height: 48px !important; border-radius: 8px !important; border: 1.5px solid #d0daea !important; font-size: 0.95rem !important; }
+.lp-modal-input:focus { border-color: #1a3a5c !important; box-shadow: 0 0 0 3px rgba(26,58,92,0.1) !important; }
+.lp-modal-agree { font-size: 0.78rem; color: #aaa; cursor: pointer; line-height: 1.4; }
+.lp-modal-agree a { color: #1a3a5c; text-decoration: underline; }
+
+@media (max-width: 480px) {
+  .lp-modal { padding: 28px 20px; }
+  .hdr-popup { padding: 28px 20px; }
+}
+.section-time{
+	background: url('assets/img/stacionar-main/bg_watch.jpg') no-repeat right center;
+	background-size:cover;
+	position:relative;
+}
+.section-time::before{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	content:"";
+	background: #0d1430;
+    opacity: 0.8;
+}
+.section-time button{position:relative}
+/* ============================================================
+   14 ЭКРАНОВ ГЛАВНОЙ СТРАНИЦЫ
+   ============================================================ */
+
+.lp-section { padding: 70px 0; }
+.lp-section-head { margin-bottom: 48px; }
+
+.lp-sec-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+  font-weight: 800;
+  color: #1a1e2d;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.lp-sec-sub { color: #666; font-size: 1.05rem; margin-bottom: 0; }
+
+/* ── Единая система кнопок ──────────────────────────────────
+   .lp-btn-primary     — оранжевый, главный CTA
+   .lp-btn-secondary   — тёмно-синий, вторичный CTA
+   .lp-btn-outline     — прозрачный, белая рамка (для тёмных фонов)
+   .lp-btn-outline-dark — прозрачный, синяя рамка (для светлых фонов)
+   ─────────────────────────────────────────────────────────── */
+
+/* Общая база для всех кнопок */
+.lp-btn-primary,
+.lp-btn-secondary,
+.lp-btn-outline,
+.lp-btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  padding: 13px 26px;
+  font-size: 0.97rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+  border: 2px solid transparent;
+  line-height: 1.2;
+}
+
+/* PRIMARY — оранжевый (главные CTA: "Проверить места", "Узнать подробнее" и т.д.) */
+.lp-btn-primary {
+  background: #f0a500;
+  color: #fff;
+  border-color: #f0a500;
+}
+.lp-btn-primary:hover {
+  background: #d4920a;
+  border-color: #d4920a;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* SECONDARY — тёмно-синий (не главные действия) */
+.lp-btn-secondary {
+  background: #1a3a5c;
+  color: #fff;
+  border-color: #1a3a5c;
+}
+.lp-btn-secondary:hover {
+  background: #0f2a4a;
+  border-color: #0f2a4a;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* OUTLINE — для тёмных/hero фонов */
+.lp-btn-outline {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,0.7);
+}
+.lp-btn-outline:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: #fff;
+  color: #fff;
+}
+
+/* OUTLINE-DARK — для светлых фонов */
+.lp-btn-outline-dark {
+  background: transparent;
+  color: #1a3a5c;
+  border-color: #1a3a5c;
+  padding: 11px 22px;
+  font-size: 0.92rem;
+}
+.lp-btn-outline-dark:hover {
+  background: #1a3a5c;
+  color: #fff;
+}
+
+/* ЭКРАН 2: Направления */
+.lp-dir-card {
+  border: 1px solid #e4edf5;
+  border-radius: 12px;
+  padding: 28px 22px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.lp-dir-card:hover { box-shadow: 0 8px 28px rgba(26,58,92,0.1); border-color: #c2d6ec; }
+
+.lp-dir-icon {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  background: #eaf2fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+.lp-dir-icon i { font-size: 1.6rem; color: #1a3a5c; }
+
+.lp-dir-title { font-size: 1.05rem; font-weight: 700; color: #1a1e2d; margin-bottom: 8px; }
+.lp-dir-text1 { color: #333; font-size: 0.9rem; line-height: 1.5; margin-bottom: 4px; }
+.lp-dir-text2 { color: #777; font-size: 0.85rem; line-height: 1.5; flex-grow: 1; margin-bottom: 16px; }
+.lp-dir-link { color: #1a3a5c; font-size: 0.88rem; font-weight: 600; text-decoration: none; align-self: flex-start; transition: color 0.2s; }
+.lp-dir-link:hover { color: #f0a500; }
+
+/* ЭКРАН 3: Риски */
+.lp-risk-card {
+  border: 1px solid #dce8f5;
+  border-radius: 10px;
+  padding: 20px 12px;
+  text-align: center;
+  background: #fff;
+  height: 100%;
+  transition: box-shadow 0.2s;
+}
+.lp-risk-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+
+.lp-risk-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #fde8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+}
+.lp-risk-icon i { font-size: 1.3rem; color: #c0392b; }
+.lp-risk-label { font-size: 0.85rem; font-weight: 600; color: #2d3748; margin: 0; line-height: 1.3; }
+
+.lp-safety-banner {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: #1a3a5c1c;
+  color: #fff;
+  border-radius: 12px;
+  padding: 22px 30px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.lp-safety-icon { font-size: 2.2rem; color: #f0a500; flex-shrink: 0; }
+.lp-safety-text { font-size: 1rem; font-weight: 500; line-height: 1.5; margin: 0;color: #1a3a5c; }
+
+/* ЭКРАН 4: Шаги */
+.lp-steps-list { display: flex; flex-direction: column; gap: 0; }
+
+.lp-step { display: flex; align-items: flex-start; gap: 16px; padding-bottom: 20px; }
+
+.lp-step-num {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #1a3a5c;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(26,58,92,0.25);
+}
+
+.lp-step-body { flex: 1; padding-top: 12px; border-bottom: 1px solid #eef2f7; padding-bottom: 20px; }
+.lp-step-body.last { border-bottom: none; }
+.lp-step-text { font-size: 1rem; font-weight: 500; color: #2d3748; margin: 0; line-height: 1.5; }
+
+.lp-steps-quote {
+  background: #f0f6fb;
+  border-left: 4px solid #f0a500;
+  border-radius: 0 8px 8px 0;
+  padding: 14px 20px;
+  color: #1a3a5c;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 24px;
+}
+
+.lp-photo-grid {
+  /*display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;*/
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.lp-photo-main { grid-column: 1; grid-row: 1 / 3; width: 100%; height: 100%; object-fit: cover; border-radius: 10px; min-height: 280px; }
+.lp-photo-side { grid-column: 2; grid-row: 1 / 3; display: flex; flex-direction: column; gap: 10px; }
+.lp-photo-side img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; }
+
+/* ЭКРАН 5: Стоимость */
+.lp-price-card {
+  background: #fff;
+  border: 2px solid #1a3a5c;
+  border-radius: 14px;
+  padding: 30px 28px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.lp-price-card--featured { border-color: #f0a500; background: linear-gradient(135deg, #fffdf5 0%, #fff 100%); }
+
+.lp-price-badge { display: inline-block; background: #f0a500; color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+.lp-price-title { font-size: 1.2rem; font-weight: 700; color: #1a1e2d; margin-bottom: 8px; }
+.lp-price-value { font-size: 2rem; font-weight: 800; color: #1a3a5c; margin-bottom: 18px; line-height: 1; }
+.lp-price-card--featured .lp-price-value { color: #c05f00; }
+.lp-price-value span { font-size: 0.9rem; font-weight: 400; color: #888; }
+.lp-price-label { font-size: 0.85rem; font-weight: 600; color: #555; margin-bottom: 10px; }
+
+.lp-price-list { list-style: none; padding: 0; margin: 0; flex-grow: 1; }
+.lp-price-list li { font-size: 0.9rem; color: #333; padding: 6px 0; border-bottom: 1px solid #f0f4f8; display: flex; align-items: center; gap: 8px; }
+.lp-price-list li::before { content: '✓'; color: #28a745; font-weight: 700; flex-shrink: 0; }
+.lp-price-card--featured .lp-price-list li::before { color: #f0a500; }
+
+.lp-price-notes { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; margin-top: 32px; padding: 18px 24px; background: #fff; border-radius: 10px; border: 1px solid #e0eaf4; }
+.lp-price-notes span { color: #444; font-size: 0.95rem; font-weight: 500; }
+
+/* ЭКРАН 6: Перевозка */
+.lp-ambulance-icon { font-size: 5rem; color: rgba(255,255,255,0.3); margin-bottom: 8px; }
+
+/* ЭКРАН 7: Персонал */
+.lp-staff-card { border: 1px solid #e4edf5; border-radius: 12px; padding: 0; height: 100%; transition: box-shadow 0.2s; overflow:hidden; }
+.lp-staff-card:hover { box-shadow: 0 6px 20px rgba(26,58,92,0.1); }
+
+.lp-staff-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: #eaf2fb;
+  margin: 0 0 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lp-staff-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.lp-staff-photo i, .lp-staff-icon { font-size: 2.8rem; color: #1a3a5c; opacity: 0.35; }
+.lp-staff-text { padding: 0 15px 15px; }
+.lp-staff-name { font-size: 0.88rem; font-weight: 700; color: #1a1e2d; margin-bottom: 4px; line-height: 1.3; }
+.lp-staff-role { font-size: 0.76rem; color: #777; margin: 0; line-height: 1.4; }
+.lp-staff-note { color: #555; font-size: 1rem; font-weight: 500; margin-bottom: 0; }
+
+/* ЭКРАН 8: Галерея */
+.lp-gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.lp-gallery-item { border-radius: 8px; overflow: hidden; aspect-ratio: 4/3; background: #e0eaf4; cursor: pointer; }
+.lp-gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.3s; }
+.lp-gallery-item:hover img { transform: scale(1.05); }
+.lp-gallery-item:hover { outline: 2px solid #f0a500; outline-offset: 2px; }
+
+/* ЭКРАН 9: Отзывы */
+.lp-review-card { border-left: 4px solid #1a3a5c; background: #f8fbff; border-radius: 0 12px 12px 0; padding: 26px 22px; height: 100%; display: flex; flex-direction: column; }
+.lp-review-avatar { width: 50px; height: 50px; border-radius: 50%; background: #1a3a5c; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; flex-shrink: 0; }
+.lp-review-avatar i { color: #fff; font-size: 1.2rem; }
+.lp-review-text { font-style: italic; font-size: 0.92rem; line-height: 1.7; color: #333; flex-grow: 1; margin-bottom: 16px; }
+.lp-review-author strong { display: block; color: #1a1e2d; font-size: 0.9rem; font-weight: 700; }
+.lp-review-author span { color: #888; font-size: 0.8rem; }
+.lp-reviews-footer { display: flex; flex-direction: column; align-items: center; gap: 16px; margin-top: 48px; text-align: center; }
+.lp-reviews-counter { font-size: 1rem; color: #444; line-height: 1.6; margin: 0; }
+
+/* ЭКРАН 10: Кому не подойдёт */
+.lp-notfor-list { list-style: none; padding: 0; margin: 0 auto 24px; text-align: left; max-width: 480px; }
+.lp-notfor-list li { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-bottom: 1px solid #f0e8e0; font-size: 1rem; color: #2d3748; }
+.lp-notfor-x { min-width: 26px; height: 26px; border-radius: 50%; background: #fde8e8; color: #c0392b; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+.lp-notfor-note { font-size: 0.95rem; color: #888; margin-top: 8px; }
+
+/* ЭКРАН 11: FAQ */
+.lp-faq-item { margin-bottom: 10px; border: 1px solid #dce8f0; border-radius: 10px; overflow: hidden; }
+.lp-faq-q { display: flex; justify-content: space-between; align-items: center; gap: 12px; background: #f0f6fb; padding: 15px 20px; cursor: pointer; user-select: none; transition: background 0.15s; }
+.lp-faq-q:hover { background: #e4f0f8; }
+.lp-faq-q span { font-weight: 600; color: #1a3a5c; font-size: 0.97rem; line-height: 1.4; }
+.lp-faq-q i { color: #1a3a5c; flex-shrink: 0; font-size: 0.8rem; }
+.lp-faq-a { padding: 16px 20px; color: #333; font-size: 0.95rem; line-height: 1.75; border-top: 1px solid #dce8f0; background: #fff; }
+
+/* ЭКРАН 12: CTA */
+.lp-cta-section { background: linear-gradient(135deg, #1a3a5c 0%, #0d2440 100%); }
+.lp-cta-title { color: #fff; font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; margin-bottom: 16px; }
+.lp-cta-text { color: rgba(255,255,255,0.85); font-size: 1.05rem; max-width: 620px; margin-left: auto; margin-right: auto; line-height: 1.7; margin-bottom: 12px; }
+.lp-cta-phone-btn { font-size: 1.1rem; padding: 14px 30px; }
+
+/* ЭКРАН 14: Лицензия */
+.lp-license-block { display: flex; align-items: flex-start; gap: 20px; background: #fff; border: 1px solid #dce8f0; border-radius: 12px; padding: 28px 24px; }
+.lp-license-icon { font-size: 2.5rem; color: #f0a500; flex-shrink: 0; }
+.lp-license-title { font-size: 1.1rem; font-weight: 700; color: #1a1e2d; margin-bottom: 4px; }
+.lp-license-num { font-size: 0.92rem; color: #1a3a5c; font-weight: 600; margin-bottom: 8px; }
+.lp-license-desc { font-size: 0.88rem; color: #666; margin-bottom: 0; line-height: 1.5; }
+
+.lp-requisites-list { list-style: none; padding: 0; margin: 0; }
+.lp-requisites-list li { font-size: 0.92rem; color: #555; padding: 8px 0; border-bottom: 1px solid #eef2f7; line-height: 1.5; }
+.lp-requisites-list li:last-child { border-bottom: none; }
+.lp-requisites-list a { color: #1a3a5c; text-decoration: none; font-weight: 500; }
+.lp-requisites-list a:hover { color: #f0a500; }
+
+/* Адаптив */
+@media (max-width: 991px) {
+  .lp-section { padding: 48px 0; }
+  .lp-gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .lp-photo-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 767px) {
+  .lp-section { padding: 36px 0; }
+  .lp-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+  .lp-photo-main { min-height: 200px; }
+  .lp-photo-side img { height: 95px; }
+  .lp-safety-banner { flex-direction: column; text-align: center; }
+  .lp-license-block { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .lp-gallery-grid { grid-template-columns: 1fr 1fr; }
+  .lp-price-card { padding: 22px 18px; }
+}
+
+/* ============================================================
+   HERO — новый layout (flex-column)
+   ============================================================ */
+.lp-hero {
+  background: url('assets/img/stacionar-main/book_bg.jpg') center/cover no-repeat;
+  min-height: 88vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.lp-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,22,48,0.72);
+  z-index: 0;
+}
+
+.lp-hero-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 80px 0 40px;
+  position: relative;
+  z-index: 3;
+}
+
+.hero-docs-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+    z-index: 0;
+    width: 80%;
+    left: 10%;
+    right: 10%;
+    bottom: 130px;
+}
+
+.hero-doc {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: auto;
+}
+
+.hero-doc-0 { background-image: url('assets/img/dropme/dh0.png'); }
+.hero-doc-1 { background-image: url('assets/img/dropme/dh1.png'); }
+.hero-doc-2 { background-image: url('assets/img/dropme/dh2.png'); }
+.col-lg-5.col-abs
+ {
+    position: absolute;
+    right: 14%;
+    width: 31%;
+    padding: 10px;
+    border-radius: 50px;
+    top: 72%;
+    background: #252a3d82;
+}
+.col-abs span{
+	display:inline-block;
+	padding-left:20px;
+	color: #fff;
+	    font-weight: 500;
+}
+/* Подписи врачей */
+.hero-docs-names {
+  position: absolute;
+  bottom: 150px; /* над полосой features */
+  right: 15%;
+  width: 56%;
+  z-index: 4;
+  pointer-events: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: 45px;
+}
+
+.hero-doc-name {
+  text-align: center;
+  background: rgba(10,22,48,0.78);
+  border-top: 2px solid #f0a500;
+  padding: 7px 14px 8px;
+  border-radius: 0 0 6px 6px;
+  backdrop-filter: blur(4px);
+  min-width: 140px;
+}
+
+.hero-doc-name strong {
+  display: block;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.hero-doc-name span {
+  color: rgba(255,255,255,0.72);
+  font-size: 0.67rem;
+  line-height: 1.3;
+}
+
+/* Hero features strip */
+.lp-hero-features-bar {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(90deg, #0d8f7a 0%, #0a6599 100%);
+}
+
+.lp-hero-feat {
+  padding: 20px 22px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.lp-hero-feat:last-child { border-right: none; }
+
+.lp-hero-feat i {
+  font-size: 1.7rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.lp-hero-feat strong {
+  display: block;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+
+.lp-hero-feat p {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.78rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 991px) {
+  .lp-hero-main { padding: 60px 0 30px; }
+  .hero-docs-names { display: none !important; }
+}
+
+@media (max-width: 767px) {
+  .lp-hero-feat {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 14px 16px;
+  }
+  .lp-hero-feat:last-child { border-bottom: none; }
+}
+
+/* ============================================================
+   SCROLL ANIMATIONS — минимальный pagespeed impact
+   ============================================================ */
+
+/* Базовое состояние (невидимый элемент) */
+[data-animate] {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-animate="fade-up"]    { transform: translateY(28px); }
+[data-animate="fade-left"]  { transform: translateX(28px); }
+[data-animate="fade-right"] { transform: translateX(-28px); }
+
+/* Видимое состояние — добавляется JS при попадании в viewport */
+[data-animate].anim-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Карточки персонала и отзывов — stagger через transition-delay в HTML */
+/* Hero — сразу видим (без задержки ожидания scroll) */
+.lp-hero [data-animate] {
+  opacity: 0;
+}
+.lp-hero [data-animate].anim-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ============================================================
+   ФОТО В БЛОКЕ СТОИМОСТИ
+   ============================================================ */
+.lp-price-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+}
+
+.lp-price-photos img {
+  width: 100%;
+  flex: 1;
+  min-height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* ============================================================
+   ЛАЙТБОКС — нет внешних зависимостей
+   ============================================================ */
+.lp-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0,0,0,0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lb-fade-in 0.18s ease;
+}
+
+@keyframes lb-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Центральный блок с фото */
+.lp-lb-stage {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lp-lb-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 6px;
+  display: block;
+  animation: lb-zoom-in 0.2s ease;
+}
+
+@keyframes lb-zoom-in {
+  from { transform: scale(0.94); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.lp-lb-caption {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+  margin: 12px 0 2px;
+  text-align: center;
+}
+
+.lp-lb-counter {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.78rem;
+  margin: 0;
+  text-align: center;
+}
+
+/* Кнопка закрытия */
+.lp-lb-close {
+  position: fixed;
+  top: 18px;
+  right: 22px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  z-index: 10001;
+}
+.lp-lb-close:hover { background: rgba(255,255,255,0.18); }
+
+/* Навигационные кнопки */
+.lp-lb-nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #fff;
+  font-size: 2.2rem;
+  line-height: 1;
+  width: 50px;
+  height: 70px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+  z-index: 10001;
+}
+.lp-lb-nav:hover { background: rgba(255,255,255,0.2); }
+.lp-lb-prev { left: 14px; }
+.lp-lb-next { right: 14px; }
+
+@media (max-width: 575px) {
+  .lp-lb-nav { width: 36px; height: 54px; font-size: 1.6rem; }
+  .lp-lb-prev { left: 6px; }
+  .lp-lb-next { right: 6px; }
+}

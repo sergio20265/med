@@ -1,35 +1,112 @@
 <app-breadcumb [title]="'Персонал'"></app-breadcumb>
-<section class="vs-team-wrapper space">
-        <div class="container">
-            <div class="row " *ngIf="staff_list">
-<!--<a routerLink="/staff-detail/{{staff.attributes.slug}}" class="text-reset"></a>-->
-                <div *ngFor="let staff of staff_list.data"
-                  class="col-md-6 col-xl-4 mb-30 wow fadeInUp" data-wow-delay="0.3s">
-                  <div class="team-card">
-                        <div class="team-head">
-                            <img *ngIf="staff?.attributes?.img?.data === null" src="assets/img/team/t-1-1.png" alt="{{staff.attributes.name}}" class="w-100">
-                            <img *ngIf="staff?.attributes?.img?.data" src="https://front-api.nmpansion.ru{{staff?.attributes?.img?.data?.attributes?.formats?.small?.url}}" alt="{{staff.attributes.name}}" class="w-100">
-<!--                            <div class="team-card-links">-->
-<!--                                <a class="team-links-toggler" href="#"><i class="fas fa-share-alt"></i></a>-->
-<!--                                <div class="team-social">-->
-<!--                                    <a href="#"><i class="fab fa-facebook-f"></i></a>-->
-<!--                                    <a href="#"><i class="fab fa-twitter"></i></a>-->
-<!--                                    <a href="#"><i class="fas fa-basketball-ball"></i></a>-->
-<!--                                </div>-->
-<!--                            </div>-->
-                        </div>
-                        <div class="team-body">
-                            <h3 class="h4 mb-0">{{staff.attributes.name}}</h3>
-                            <p *ngFor="let job_title of staff?.attributes?.dolzhnosti_sotrudnikovs?.data" class="fs-xs degi text-theme mb-2">
-                              {{job_title?.attributes.title}}</p>
-<!--                            <p class="fs-xs">Conceptualize user-centric web-readiness via economically sound e-services. Interactively coordinate next-generation </p>-->
 
-                        </div>
-                    </div>
+<section class="st-page">
+  <div class="container">
 
-                </div>
+    <!-- Вводный блок -->
+    <div class="st-intro">
+      <h1 class="st-intro-title">Наша команда</h1>
+      <p class="st-intro-sub">
+        Более 30 специалистов обеспечивают круглосуточный медицинский уход и реабилитацию.
+        Каждый сотрудник проходит обучение и работает по стандартам медицинской безопасности.
+      </p>
+    </div>
 
+    <!-- Категории персонала -->
+    <ng-container *ngFor="let group of staffGroups">
+
+      <!-- Заголовок категории -->
+      <div class="st-group-head">
+        <i [class]="group.icon + ' st-group-icon'"></i>
+        <h2 class="st-group-title">{{ group.category }}</h2>
+        <span class="st-group-count">{{ group.members.length }}</span>
+      </div>
+
+      <!-- ── Полные карточки (врачи, реабилитация, медсёстры, руководство) ── -->
+      <div class="row g-3 mb-4" *ngIf="!group.compact">
+
+        <!-- Руководство: 2 крупных карточки на весь ряд -->
+        <ng-container *ngIf="group.category === 'Руководство'">
+          <div class="col-sm-6 col-lg-4"
+               *ngFor="let m of group.members">
+            <div class="st-card st-card--leader">
+              <div class="st-card-photo st-card-photo--lg">
+                <img *ngIf="m.photo" [src]="m.photo" [alt]="m.name" loading="lazy">
+                <div *ngIf="!m.photo" class="st-card-initials">{{ initials(m.name) }}</div>
+              </div>
+              <div class="st-card-body">
+                <h3 class="st-card-name">{{ m.name }}</h3>
+                <p class="st-card-role">{{ m.role }}</p>
+              </div>
             </div>
+          </div>
+        </ng-container>
 
+        <!-- Врачи -->
+        <ng-container *ngIf="group.category === 'Врачи'">
+          <div class="col-sm-6 col-md-4 col-lg-3"
+               *ngFor="let m of group.members">
+            <div class="st-card">
+              <div class="st-card-photo">
+                <img *ngIf="m.photo" [src]="m.photo" [alt]="m.name" loading="lazy">
+                <div *ngIf="!m.photo" class="st-card-initials">{{ initials(m.name) }}</div>
+              </div>
+              <div class="st-card-body">
+                <h3 class="st-card-name">{{ m.name }}</h3>
+                <p class="st-card-role">{{ m.role }}</p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <!-- Реабилитация -->
+        <ng-container *ngIf="group.category === 'Реабилитация'">
+          <div class="col-sm-6 col-md-4 col-lg-3"
+               *ngFor="let m of group.members">
+            <div class="st-card st-card--rehab">
+              <div class="st-card-photo">
+                <img *ngIf="m.photo" [src]="m.photo" [alt]="m.name" loading="lazy">
+                <div *ngIf="!m.photo" class="st-card-initials">{{ initials(m.name) }}</div>
+              </div>
+              <div class="st-card-body">
+                <h3 class="st-card-name">{{ m.name }}</h3>
+                <p class="st-card-role">{{ m.role }}</p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+        <!-- Медсёстры -->
+        <ng-container *ngIf="group.category === 'Медсёстры'">
+          <div class="col-6 col-sm-4 col-md-3 col-lg-2"
+               *ngFor="let m of group.members">
+            <div class="st-card st-card--nurse">
+              <div class="st-card-photo st-card-photo--sm">
+                <img *ngIf="m.photo" [src]="m.photo" [alt]="m.name" loading="lazy">
+                <div *ngIf="!m.photo" class="st-card-initials">{{ initials(m.name) }}</div>
+              </div>
+              <div class="st-card-body">
+                <h3 class="st-card-name st-card-name--sm">{{ m.name }}</h3>
+                <p class="st-card-role st-card-role--sm">{{ m.role }}</p>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+
+      </div>
+
+      <!-- ── Компактный список (санитарки, буфет, прачечные, администраторы) ── -->
+      <div class="st-compact-grid mb-4" *ngIf="group.compact">
+        <div class="st-compact-item" *ngFor="let m of group.members">
+          <div class="st-compact-avatar">
+            <img *ngIf="m.photo" [src]="m.photo" [alt]="m.name" loading="lazy">
+            <span *ngIf="!m.photo">{{ initials(m.name) }}</span>
+          </div>
+          <span class="st-compact-name">{{ m.name }}</span>
         </div>
-    </section>
+      </div>
+
+    </ng-container>
+
+  </div>
+</section>

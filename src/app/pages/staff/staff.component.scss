@@ -1,0 +1,237 @@
+/* ======================================================
+   Страница «Персонал» — staff.component.scss
+   ====================================================== */
+
+/* ── Вводный блок ────────────────────────────────────── */
+.st-page {
+  padding: 56px 0 80px;
+  background: #f5f8fb;
+}
+
+.st-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 56px;
+}
+
+.st-intro-title {
+  font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  color: #1a1e2d;
+  margin-bottom: 14px;
+}
+
+.st-intro-sub {
+  font-size: 1.05rem;
+  color: #555;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Заголовок группы ────────────────────────────────── */
+.st-group-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #e2ecf5;
+}
+
+.st-group-head + .st-group-head {
+  margin-top: 48px;
+}
+
+.st-group-icon {
+  font-size: 1.25rem;
+  color: #f0a500;
+  width: 42px;
+  height: 42px;
+  background: #fff7e6;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.st-group-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1a3a5c;
+  margin: 0;
+  flex: 1;
+}
+
+.st-group-count {
+  background: #1a3a5c;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  line-height: 1.6;
+}
+
+/* ── Карточка сотрудника (полная) ────────────────────── */
+.st-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  border: 1px solid #e4edf5;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.st-card:hover {
+  box-shadow: 0 6px 24px rgba(26, 58, 92, 0.10);
+  border-color: #b8d0e8;
+}
+
+/* Акцент руководство */
+.st-card--leader {
+  border-top: 3px solid #f0a500;
+}
+
+/* Акцент реабилитация */
+.st-card--rehab {
+  border-top: 3px solid #0d8f7a;
+}
+
+/* ── Фото-блок ───────────────────────────────────────── */
+.st-card-photo {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: #e8f0f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.st-card-photo--lg {
+  aspect-ratio: 4/5;
+}
+
+.st-card-photo--sm {
+  aspect-ratio: 1/1;
+}
+
+.st-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.st-card:hover .st-card-photo img {
+  transform: scale(1.04);
+}
+
+/* Аватар-заглушка с инициалами */
+.st-card-initials {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #1a3a5c;
+  background: linear-gradient(135deg, #dbe8f4, #c4d8ed);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.04em;
+}
+
+/* ── Текст карточки ──────────────────────────────────── */
+.st-card-body {
+  padding: 14px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.st-card-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1e2d;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.st-card-name--sm {
+  font-size: 0.82rem;
+}
+
+.st-card-role {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.st-card-role--sm {
+  font-size: 0.72rem;
+}
+
+/* ── Компактный список ───────────────────────────────── */
+.st-compact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.st-compact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid #e4edf5;
+  border-radius: 8px;
+  padding: 8px 14px 8px 8px;
+  transition: box-shadow 0.18s;
+}
+
+.st-compact-item:hover {
+  box-shadow: 0 3px 10px rgba(26, 58, 92, 0.08);
+}
+
+.st-compact-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #dbe8f4, #c4d8ed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1a3a5c;
+}
+
+.st-compact-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.st-compact-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #2d3748;
+  white-space: nowrap;
+}
+
+/* ── Адаптивность ────────────────────────────────────── */
+@media (max-width: 575px) {
+  .st-page { padding: 36px 0 60px; }
+  .st-intro { margin-bottom: 36px; }
+  .st-compact-name { white-space: normal; }
+}

@@ -1,0 +1,10 @@
+/dist
+/DropMe
+/tmp
+/node_modules
+.env
+.angular
+.vscode
+.claude
+.DS_Store
+Thumbs.db
