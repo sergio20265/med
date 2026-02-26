@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { environment } from './environments/environment';
 import { ContactsComponent } from './pages/contacts/contacts.component';
+import { AboutComponent } from './pages/about/about.component';
 
 const BASE_URL = environment.baseUrl;
 
@@ -22,6 +23,7 @@ import { LicenseComponent } from './pages/license/license.component';
 import { TransportComponent } from './pages/transport/transport.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { ReabilitaciyaPosleInsultovComponent } from './pages/goroda/reabilitaciya-posle-insultov/reabilitaciya-posle-insultov.component';
+import { DirectionComponent } from './pages/direction/direction.component';
 // import {GoradaListComponent} from "./pages/goroda/gorada-list/gorada-list.component";
 
 const appRoutes: Routes = [
@@ -39,10 +41,20 @@ const appRoutes: Routes = [
     path: 'contact',
     component: ContactsComponent,
     data: {
-      title: 'Контакты - Частный стационар "Новая медицина"',
-      description: 'Контактная информация частного стационара "Новая медицина". Адрес, телефоны, режим работы, схема проезда. Запись на консультацию и госпитализацию.',
-      keywords: 'контакты, адрес, телефон, запись, консультация, частный стационар, новая медицина',
+      title: 'Контакты реабилитационного стационара «Новая медицина»',
+      description: 'Адрес, телефон, режим работы. Владимирская область, пос. Городищи, ул. Больничный проезд, д. 1. Звоните +7 (930) 033-22-22.',
+      keywords: 'контакты, адрес, телефон, запись, консультация, реабилитационный стационар, новая медицина',
       canonical: `${BASE_URL}/contact`
+    },
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
+    data: {
+      title: 'О нас — Реабилитационный стационар «Новая медицина»',
+      description: 'Реабилитационный стационар в составе сети медицинских центров «Новая медицина». Более 15 лет работы, 9 медицинских центров, официальная лицензия.',
+      keywords: 'о нас, реабилитационный стационар, Новая медицина, история, о центре',
+      canonical: `${BASE_URL}/about`
     },
   },
   { 
@@ -150,6 +162,62 @@ const appRoutes: Routes = [
       canonical: `${BASE_URL}/rehabilitation`
     },
   },
+  // ── Статические лендинги направлений (до параметрических роутов) ──
+  {
+    path: 'rehabilitation/insult',
+    component: DirectionComponent,
+    data: {
+      slug: 'insult',
+      title: 'Реабилитация после инсульта в стационаре 24/7 | Новая медицина',
+      canonical: `${BASE_URL}/rehabilitation/insult`
+    },
+  },
+  {
+    path: 'rehabilitation/perelom-shejki-bedra',
+    component: DirectionComponent,
+    data: {
+      slug: 'perelom-shejki-bedra',
+      title: 'Реабилитация после перелома шейки бедра | Новая медицина',
+      canonical: `${BASE_URL}/rehabilitation/perelom-shejki-bedra`
+    },
+  },
+  {
+    path: 'rehabilitation/endoprotezirovanie',
+    component: DirectionComponent,
+    data: {
+      slug: 'endoprotezirovanie',
+      title: 'Реабилитация после эндопротезирования сустава | Новая медицина',
+      canonical: `${BASE_URL}/rehabilitation/endoprotezirovanie`
+    },
+  },
+  {
+    path: 'diagnos/demenciya',
+    component: DirectionComponent,
+    data: {
+      slug: 'demenciya',
+      title: 'Уход при деменции и болезни Альцгеймера 24/7 | Новая медицина',
+      canonical: `${BASE_URL}/diagnos/demenciya`
+    },
+  },
+  {
+    path: 'diagnos/parkinson',
+    component: DirectionComponent,
+    data: {
+      slug: 'parkinson',
+      title: 'Уход при болезни Паркинсона 24/7 | Новая медицина',
+      canonical: `${BASE_URL}/diagnos/parkinson`
+    },
+  },
+  {
+    path: 'diagnos/palliativ',
+    component: DirectionComponent,
+    data: {
+      slug: 'palliativ',
+      title: 'Паллиативная помощь в стационаре 24/7 | Новая медицина',
+      canonical: `${BASE_URL}/diagnos/palliativ`
+    },
+  },
+  // ── Обобщённый роут реабилитации (API) ──────────────────────
   {
     path: 'rehabilitation/:slug',
     component: DiagnosComponent,

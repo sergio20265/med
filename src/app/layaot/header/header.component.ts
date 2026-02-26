@@ -48,8 +48,8 @@ export class HeaderComponent {
       ]
     },
     {
-      label: 'Пациенту',
-      route: '/patient'
+      label: 'Цены',
+      route: '/price'
     },
     {
       label: 'Контакты',

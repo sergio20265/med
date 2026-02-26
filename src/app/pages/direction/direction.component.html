@@ -1,0 +1,376 @@
+<!-- ── ГЕРОЙ (структура как на главной) ───────────────────── -->
+<section class="lp-hero" *ngIf="data">
+  <div class="lp-hero-overlay"></div>
+
+  <!-- Слои врачей -->
+  <div class="hero-docs-layer d-none d-lg-block" aria-hidden="true">
+    <div class="hero-doc hero-doc-2"></div>
+    <div class="hero-doc hero-doc-1"></div>
+    <div class="hero-doc hero-doc-0"></div>
+  </div>
+
+  <!-- Подписи врачей (десктоп) -->
+  <div class="hero-docs-names d-none d-lg-flex">
+    <div class="hero-doc-name">
+      <strong>Попова Елена</strong>
+      <span>Главный врач</span>
+    </div>
+    <div class="hero-doc-name">
+      <strong>Басиладзе Зураб</strong>
+      <span>Реабилитолог</span>
+    </div>
+    <div class="hero-doc-name">
+      <strong>Анохин Николай</strong>
+      <span>Инструктор ЛФК</span>
+    </div>
+  </div>
+
+  <div class="lp-hero-main">
+    <div class="container">
+      <div class="row align-items-end g-4">
+        <div class="col-lg-7 col-full">
+          <h1 class="text-white mb-2 no-color-1" style="font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:800;line-height:1.18;">
+            {{ data.h1 }}
+          </h1>
+          <p class="text-white mb-4 no-color-1 font-normal" style="font-size:clamp(1.05rem,2.2vw,1.35rem);font-weight:500;opacity:0.93;line-height:1.5;">
+            {{ data.subtitle }}
+          </p>
+          <p class="mb-4" style="color:rgba(0,0,0,0.88);font-size:1rem;line-height:1.85;">
+            {{ data.description }}<br>
+            <span *ngIf="data.hasTransport" style="color:#f0a500;font-weight:600;margin-bottom:4px;display:inline-block;">🚑 Организуем перевозку лежачих пациентов</span>
+            <br *ngIf="data.hasTransport">
+            <strong style="color:#27477d;">{{ data.price }} — стоимость фиксируется в договоре</strong>
+          </p>
+          <div class="d-flex flex-wrap gap-3 mb-3">
+            <button class="lp-btn-primary" (click)="openCheckModal()">Проверить наличие мест</button>
+            <button class="lp-btn-primary" (click)="openConsultModal()">Бесплатная консультация врача</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features strip внизу hero -->
+  <div class="lp-hero-features-bar">
+    <div class="container">
+      <div class="row g-0">
+        <div class="col-6 col-md-3 lp-hero-feat">
+          <i class="fas fa-clinic-medical"></i>
+          <strong>Полный спектр медицинских услуг</strong>
+          <p>Все виды анализов. Фармакологическое обеспечение.</p>
+        </div>
+        <div class="col-6 col-md-3 lp-hero-feat">
+          <i class="far fa-clock"></i>
+          <strong>Круглосуточное наблюдение</strong>
+          <p>Медсёстры круглосуточно. Контроль состояния 24/7.</p>
+        </div>
+        <div class="col-6 col-md-3 lp-hero-feat">
+          <i class="fas fa-hands-helping"></i>
+          <strong>Внимание и забота о пациенте</strong>
+          <p>Гигиена, питание, контроль препаратов, противопролежневые матрасы.</p>
+        </div>
+        <div class="col-6 col-md-3 lp-hero-feat">
+          <i class="fas fa-utensils"></i>
+          <strong>Сбалансированное питание</strong>
+          <p>Индивидуальная диета и программа питания для каждого пациента.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ── КОГДА К НАМ ОБРАЩАЮТСЯ ─────────────────────────────── -->
+<section class="lp-section bg-white" *ngIf="data">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <h2 class="lp-sec-title">Когда к нам обращаются</h2>
+        <div class="dir-when-list">
+          <div class="dir-when-item" *ngFor="let item of data.whenToContact">
+            <div class="dir-when-icon"><i class="fas fa-check"></i></div>
+            <span>{{ item }}</span>
+          </div>
+        </div>
+        <div class="dir-hero-btns mt-4">
+          <button class="lp-btn-primary" (click)="openCheckModal()">
+            <i class="fas fa-bed me-2"></i>Проверить наличие мест
+          </button>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <img [src]="data.imgWhen" alt="Реабилитационный стационар" class="dir-section-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── ПОЧЕМУ ОПАСНО ───────────────────────────────────────── -->
+<section class="lp-section dir-danger-section" *ngIf="data">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5 d-none d-lg-block">
+        <img [src]="data.imgDanger" alt="Медицинское наблюдение" class="dir-section-img">
+      </div>
+      <div class="col-lg-7">
+        <h2 class="lp-sec-title">{{ data.whyDangerousTitle }}</h2>
+        <div class="dir-danger-list">
+          <div class="dir-danger-item" *ngFor="let item of data.whyDangerous">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>{{ item }}</span>
+          </div>
+        </div>
+        <p class="dir-danger-note" *ngIf="data.whyDangerousNote">{{ data.whyDangerousNote }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── КАК ПРОХОДИТ ВОССТАНОВЛЕНИЕ ───────────────────────── -->
+<section class="lp-section" style="background:#f5f8fb;" *ngIf="data">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6">
+        <h2 class="lp-sec-title">{{ data.howItWorksTitle }}</h2>
+        <div class="dir-steps">
+          <div class="dir-step" *ngFor="let step of data.howItWorks; let i = index">
+            <div class="dir-step-num">{{ i + 1 }}</div>
+            <div class="dir-step-text">{{ step }}</div>
+          </div>
+        </div>
+        <p class="dir-steps-note" *ngIf="data.howItWorksNote">{{ data.howItWorksNote }}</p>
+      </div>
+      <div class="col-lg-6 d-none d-lg-block">
+        <img [src]="data.imgHow" alt="Реабилитация в стационаре" class="dir-section-img">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── ЧТО ВХОДИТ + 30 ДНЕЙ ──────────────────────────────── -->
+<section class="lp-section bg-white" *ngIf="data">
+  <div class="container">
+    <div class="row g-5">
+
+      <div class="col-lg-6">
+        <div class="dir-included-card">
+          <h2 class="lp-sec-title" style="font-size:1.4rem;">Что входит в стоимость</h2>
+          <p style="color:#555;margin-bottom:16px;">Стоимость фиксируется в договоре. Без скрытых платежей.</p>
+          <ul class="dir-check-list">
+            <li *ngFor="let item of data.whatsIncluded">{{ item }}</li>
+          </ul>
+          <div class="dir-price-tag">{{ data.price }}</div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="dir-results-card">
+          <h2 class="lp-sec-title" style="font-size:1.4rem;">{{ data.in30daysTitle }}</h2>
+          <p style="color:#555;margin-bottom:16px;">При регулярном уходе и реабилитации пациент:</p>
+          <div class="dir-result-item" *ngFor="let item of data.in30days">
+            <i class="fas fa-check-circle"></i>
+            <span>{{ item }}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── А ЕСЛИ ОТКЛАДЫВАТЬ + ПРОБНЫЙ ДЕНЬ ─────────────────── -->
+<section class="lp-section" style="background:#f0f6fb;" *ngIf="data">
+  <div class="container">
+    <div class="row g-5">
+
+      <div class="col-lg-6">
+        <h2 class="lp-sec-title">А если откладывать</h2>
+        <p class="p-hq" style="color:#555;margin-bottom:16px;">Промедление увеличивает риск:</p>
+        <div class="dir-delay-list">
+          <div class="dir-delay-item" *ngFor="let item of data.ifDelay">
+            <i class="fas fa-arrow-right"></i>
+            <span>{{ item }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="dir-trial-card">
+          <div class="dir-trial-badge">Пробный день — 50% стоимости</div>
+          <h3 class="dir-trial-title">Оцените нас без риска</h3>
+          <p class="dir-trial-text">{{ data.trialDayText }}</p>
+          <button class="lp-btn-primary mt-3" (click)="openCheckModal()">
+            <i class="fas fa-calendar-check me-2"></i>Записаться на пробный день
+          </button>
+        </div>
+      </div>
+
+    </div>
+	 <div class="dir-bg">
+    <img src="assets/img/dropme/k81.webp" alt="Пробный день">
+  </div>
+  </div>
+ 
+</section>
+
+
+<!-- ── ПЕРСОНАЛ ────────────────────────────────────────────── -->
+<section class="lp-section bg-white" style="padding-bottom:0">
+  <div class="container">
+
+    <div class="lp-section-head text-center">
+      <h2 class="lp-sec-title">Персонал</h2>
+    </div>
+
+    <div class="row g-4 justify-content-center mb-4">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let s of staff; let i = index" [style.transition-delay]="(i * 0.08) + 's'">
+        <div class="lp-staff-card text-center">
+          <div class="lp-staff-photo">
+            <img *ngIf="s.photo" [src]="s.photo" [alt]="s.name" loading="lazy">
+            <i *ngIf="!s.photo" class="fas fa-user-circle lp-staff-icon"></i>
+          </div>
+          <div class="lp-staff-text">
+            <h3 class="lp-staff-name">{{ s.name }}</h3>
+            <p class="lp-staff-role">{{ s.role }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-center lp-staff-note">Каждый пациент находится под наблюдением медицинского персонала 24/7.</p>
+    <div class="text-center mt-3">
+      <a routerLink="/staff" class="lp-btn-primary mt-3">Познакомиться с командой</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ── ГАЛЕРЕЯ ─────────────────────────────────────────────── -->
+<section class="lp-section bg-white">
+  <div class="container">
+    <div class="lp-section-head text-center">
+      <h2 class="lp-sec-title">Условия проживания</h2>
+      <p class="lp-sec-sub">Палаты, санузлы, ЛФК-зал, территория</p>
+    </div>
+    <div class="lp-gallery-grid">
+      <div class="lp-gallery-item"
+           *ngFor="let img of galleryImages; let i = index"
+           (click)="openLightbox(i)"
+           role="button"
+           tabindex="0"
+           (keydown.enter)="openLightbox(i)"
+           [attr.aria-label]="'Открыть фото: ' + img.alt">
+        <img [src]="img.src" [alt]="img.alt" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Лайтбокс -->
+<div class="lp-lightbox" *ngIf="lightboxOpen" (click)="closeLightbox()" role="dialog" aria-modal="true">
+  <button class="lp-lb-close" (click)="closeLightbox()" aria-label="Закрыть">&#x2715;</button>
+  <button class="lp-lb-nav lp-lb-prev" (click)="lightboxPrev(); $event.stopPropagation()" aria-label="Предыдущее фото">&#8249;</button>
+  <div class="lp-lb-stage" (click)="$event.stopPropagation()">
+    <img [src]="galleryImages[lightboxIndex].src"
+         [alt]="galleryImages[lightboxIndex].alt"
+         class="lp-lb-img">
+    <p class="lp-lb-caption">{{ galleryImages[lightboxIndex].alt }}</p>
+    <p class="lp-lb-counter">{{ lightboxIndex + 1 }} / {{ galleryImages.length }}</p>
+  </div>
+  <button class="lp-lb-nav lp-lb-next" (click)="lightboxNext(); $event.stopPropagation()" aria-label="Следующее фото">&#8250;</button>
+</div>
+
+
+<!-- ── КОМУ НЕ ПОДОЙДЁМ ────────────────────────────────────── -->
+<section class="lp-section" style="background:#f5f8fb;margin-bottom:130px;" *ngIf="data">
+  <div class="container">
+    <div class="row g-5 align-items-center justify-content-center">
+
+      <div style="width:100%;" class="col-lg-5" *ngIf="data.notForUs.length > 0">
+        <h2 class="lp-sec-title">Кому мы не подойдём</h2>
+        <div class="dir-notforus-list">
+          <div class="dir-notforus-item" *ngFor="let item of data.notForUs">
+            <i class="fas fa-times-circle"></i>
+            <span>{{ item }}</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+	<div style="width:100%;" [class]="data.notForUs.length > 0 ? 'col-lg-7' : 'col-lg-8 text-center'">
+        <div class="dir-cta-block">
+          <p class="dir-cta-final" *ngIf="data.finalText">{{ data.finalText }}</p>
+          <div class="dir-cta-btns">
+            <button class="lp-btn-primary" (click)="openCheckModal()">
+              <i class="fas fa-bed me-2"></i>Проверить свободные места
+            </button>
+            <button class="lp-btn-primary" (click)="openConsultModal()">
+              <i class="fas fa-user-md me-2"></i>Бесплатная консультация
+            </button>
+          </div>
+          <a href="tel:+79300332222" class="dir-phone-link">
+            <i class="fas fa-phone-alt me-2"></i>+7 (930) 033-22-22
+          </a>
+        </div>
+      </div>
+  </div>
+</section>
+
+
+<!-- ── МОДАЛКА: Проверить места ────────────────────────────── -->
+<div class="lp-modal-overlay" *ngIf="showCheckModal" (click)="closeOnOverlay($event, 'check')">
+  <div class="lp-modal" role="dialog">
+    <button class="lp-modal-close" (click)="closeModals()"><i class="fal fa-times"></i></button>
+    <div *ngIf="!checkSent">
+      <h4 class="lp-modal-title">Проверить наличие мест</h4>
+      <p class="lp-modal-sub">Ответим в течение 3–5 минут</p>
+      <form [formGroup]="checkForm" (ngSubmit)="submitCheck()">
+        <div class="mb-3">
+          <input type="text" formControlName="name" placeholder="Ваше имя" class="form-control lp-modal-input">
+        </div>
+        <div class="mb-4">
+          <input type="tel" formControlName="phone" placeholder="+7 (___) ___-__-__" class="form-control lp-modal-input">
+        </div>
+        <button type="submit" class="lp-btn-primary w-100 mb-3" [disabled]="checkForm.invalid">
+          Проверить наличие мест
+        </button>
+      </form>
+    </div>
+    <div *ngIf="checkSent" class="lp-about-form-success">
+      <i class="fas fa-check-circle"></i>
+      <p>Заявка отправлена! Мы свяжемся с вами в ближайшее время.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── МОДАЛКА: Консультация ───────────────────────────────── -->
+<div class="lp-modal-overlay" *ngIf="showConsultModal" (click)="closeOnOverlay($event, 'consult')">
+  <div class="lp-modal" role="dialog">
+    <button class="lp-modal-close" (click)="closeModals()"><i class="fal fa-times"></i></button>
+    <div *ngIf="!consultSent">
+      <h4 class="lp-modal-title">Бесплатная консультация врача</h4>
+      <p class="lp-modal-sub">Ответим в течение 3–5 минут</p>
+      <form [formGroup]="consultForm" (ngSubmit)="submitConsult()">
+        <div class="mb-3">
+          <input type="text" formControlName="name" placeholder="Ваше имя" class="form-control lp-modal-input">
+        </div>
+        <div class="mb-4">
+          <input type="tel" formControlName="phone" placeholder="+7 (___) ___-__-__" class="form-control lp-modal-input">
+        </div>
+        <button type="submit" class="lp-btn-primary w-100 mb-3" [disabled]="consultForm.invalid">
+          Получить консультацию
+        </button>
+      </form>
+    </div>
+    <div *ngIf="consultSent" class="lp-about-form-success">
+      <i class="fas fa-check-circle"></i>
+      <p>Спасибо! Мы свяжемся с вами в ближайшее время.</p>
+    </div>
+  </div>
+</div>

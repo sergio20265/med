@@ -27,7 +27,7 @@
     }
 
     &:after {
-      content: '/';
+      content: '';
       position: absolute;
       right: 0;
       color: $title-color;
@@ -69,7 +69,6 @@
 .breadcumb-menu-wrap {
   position: relative;
   width: max-content;
-  margin-left: auto;
   margin-top: 95px;
   margin-bottom: -60px;
   --icon-size: 44px;

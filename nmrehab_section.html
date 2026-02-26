@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Новая Медицина — Оформление в стационар</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #333;
+      background: #f7f9fc;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== SECTION TITLE ===== */
+    .section-label {
+      text-align: center;
+      color: #e74c3c;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1a2e4a;
+      margin-bottom: 12px;
+    }
+    .section-subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 48px;
+      font-size: 1rem;
+    }
+
+    /* ===== ADMISSION / ОФОРМЛЕНИЕ ===== */
+    .admission {
+      background: #fff;
+      padding: 80px 20px;
+    }
+    .admission-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+    }
+    .admission-phone {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #eaf6fb;
+      border-radius: 12px;
+      padding: 16px 28px;
+    }
+    .admission-phone .icon { font-size: 1.6rem; }
+    .admission-phone span { font-size: 0.85rem; color: #666; display: block; }
+    .admission-phone a { font-size: 1.2rem; font-weight: 700; color: #1a2e4a; }
+
+    .steps {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto 60px;
+    }
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      flex: 1;
+      min-width: 160px;
+    }
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 28px;
+      right: -30px;
+      width: 60px;
+      height: 2px;
+      background: #ddd;
+    }
+    .step-num {
+      width: 56px; height: 56px;
+      background: #1a2e4a;
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+    .step h4 { font-size: 1rem; color: #1a2e4a; margin-bottom: 4px; }
+    .step p { font-size: 0.82rem; color: #888; }
+
+    /* Detail cards */
+    .admission-details {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+    }
+    .detail-card {
+      background: #f4f8ff;
+      border-radius: 16px;
+      padding: 32px 28px;
+    }
+    .detail-card h3 {
+      font-size: 1.1rem;
+      color: #1a2e4a;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .detail-card h3 .step-badge {
+      background: #1a2e4a;
+      color: #fff;
+      border-radius: 50%;
+      width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .detail-card p, .detail-card li {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .detail-card ul { list-style: none; padding: 0; }
+    .detail-card ul li::before {
+      content: '✔ ';
+      color: #27ae60;
+      font-size: 0.8rem;
+    }
+    .detail-card .sub-title {
+      font-weight: 600;
+      color: #1a2e4a;
+      margin: 14px 0 6px;
+      font-size: 0.9rem;
+    }
+    .badge-tag {
+      display: inline-block;
+      background: #fff;
+      border: 1px solid #dde6f0;
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-size: 0.78rem;
+      color: #555;
+      margin: 3px 3px 3px 0;
+    }
+
+    /* ===== CONSULTATION FORM ===== */
+    .consult {
+      background: linear-gradient(135deg, #1a2e4a 0%, #2c5282 100%);
+      padding: 60px 20px;
+      text-align: center;
+      color: #fff;
+    }
+    .consult h2 { font-size: 1.8rem; margin-bottom: 8px; }
+    .consult p { font-size: 0.95rem; opacity: 0.85; margin-bottom: 32px; }
+    .consult form {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .consult input {
+      flex: 1;
+      min-width: 200px;
+      padding: 14px 20px;
+      border-radius: 8px;
+      border: none;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .consult button {
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .consult button:hover { background: #c0392b; }
+
+    /* ===== DIAGNOSES ===== */
+    .diagnoses {
+      padding: 80px 20px;
+      background: #fff;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      padding: 10px 24px;
+      border-radius: 30px;
+      border: 2px solid #1a2e4a;
+      background: transparent;
+      color: #1a2e4a;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: #1a2e4a;
+      color: #fff;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+    .diag-item {
+      background: #f4f8ff;
+      border-radius: 10px;
+      padding: 12px 18px;
+      font-size: 0.88rem;
+      color: #1a2e4a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+    .diag-item:hover { background: #dce9fb; }
+    .diag-item::before { content: '●'; color: #e74c3c; font-size: 0.5rem; flex-shrink: 0; }
+
+    /* ===== GALLERY ===== */
+    .gallery-section {
+      padding: 80px 20px;
+      background: #f7f9fc;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .gallery-item {
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: #d0dcea;
+      position: relative;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    /* Placeholder when images are not available */
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: #aabbcc;
+    }
+
+    @media (max-width: 600px) {
+      .step:not(:last-child)::after { display: none; }
+      .section-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ========== ОФОРМЛЕНИЕ В СТАЦИОНАР ========== -->
+<section class="admission">
+  <p class="section-label">Правила оформления</p>
+  <h2 class="section-title">Оформление в стационар</h2>
+  <p class="section-subtitle">Следуйте простым шагам для быстрого и комфортного оформления</p>
+
+  <div class="admission-top">
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Звонок</h4>
+        <p>Консультация</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Документы</h4>
+        <p>Подготовка</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Вещи</h4>
+        <p>Личные принадлежности</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Заселение</h4>
+        <p>Оформление</p>
+      </div>
+    </div>
+    <div class="admission-phone">
+      <div class="icon">📞</div>
+      <div>
+        <span>Круглосуточная поддержка</span>
+        <a href="tel:+79300332222">+7 (930) 033-22-22</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="admission-details">
+    <!-- Step 1 -->
+    <div class="detail-card">
+      <h3><span class="step-badge">1</span> Позвонить в наш стационар</h3>
+      <p>Наши администраторы проведут предварительную консультацию, ответят на все вопросы и озвучат стоимость услуг. Мы поможем выбрать оптимальную программу лечения и договоримся о удобном времени госпитализации.</p>
+      <br>
+      <span class="badge-tag">📞 Круглосуточная поддержка</span>
+      <span class="badge-tag">💬 Консультация специалиста</span>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="detail-card">
+      <h3><span class="step-badge">2</span> Подготовить медицинскую документацию</h3>
+      <p>Соберите все имеющиеся медицинские документы для более точной диагностики и составления индивидуального плана лечения.</p>
+      <ul style="margin-top:14px;">
+        <li>Выписки из больниц и поликлиник</li>
+        <li>Результаты анализов и обследований</li>
+        <li>Заключения специалистов</li>
+        <li>Медицинская карта (при наличии)</li>
+      </ul>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="detail-card">
+      <h3><span class="step-badge">3</span> Личные вещи</h3>
+      <p>Подготовьте необходимые личные вещи для комфортного пребывания. При необходимости мы можем обеспечить всем необходимым.</p>
+      <p class="sub-title">👕 Одежда</p>
+      <ul>
+        <li>Сменное нижнее белье</li>
+        <li>Домашняя одежда</li>
+        <li>Тёплые вещи</li>
+      </ul>
+      <p class="sub-title">🧴 Гигиена</p>
+      <ul>
+        <li>Зубная щётка и паста</li>
+        <li>Мочалка и полотенце</li>
+        <li>Шампунь и мыло</li>
+      </ul>
+      <p class="sub-title">💊 Медикаменты</p>
+      <ul>
+        <li>Назначенные препараты</li>
+        <li>Рецепты врачей</li>
+      </ul>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="detail-card">
+      <h3><span class="step-badge">4</span> Заселение и оформление</h3>
+      <p>Завершающий этап — оформление документов и заселение в комфортную палату с полным медицинским сопровождением.</p>
+      <p class="sub-title">📄 Необходимые документы:</p>
+      <ul>
+        <li>Паспорт заказчика и проживающего</li>
+        <li>Полис медицинского страхования</li>
+        <li>Медицинская выписка</li>
+        <li>Флюорография</li>
+        <li>Рецепты (при наличии)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ФОРМА КОНСУЛЬТАЦИИ ========== -->
+<section class="consult">
+  <h2>Получить консультацию</h2>
+  <p>Мы Вам перезвоним</p>
+  <form onsubmit="return false;">
+    <input type="text" placeholder="Ваше имя" />
+    <input type="tel" placeholder="Номер телефона" />
+    <button type="submit">Получить консультацию</button>
+  </form>
+</section>
+
+<!-- ========== ДИАГНОЗЫ И РЕАБИЛИТАЦИЯ ========== -->
+<section style="padding: 80px 20px; background: #fff;">
+  <div class="diagnoses">
+    <h2 class="section-title">Принимаем постояльцев с диагнозами</h2>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab(this, 'diagnoses-tab')">Работаем с диагнозами</button>
+      <button class="tab-btn" onclick="switchTab(this, 'rehab-tab')">Виды реабилитации</button>
+    </div>
+
+    <div id="diagnoses-tab" class="tab-content active">
+      <div class="diag-item">Артрит</div>
+      <div class="diag-item">Болезни опорно-двигательного аппарата</div>
+      <div class="diag-item">Болезнь Альцгеймера</div>
+      <div class="diag-item">Болезнь Паркинсона</div>
+      <div class="diag-item">Варикоз</div>
+      <div class="diag-item">Гипертония</div>
+      <div class="diag-item">Деменция</div>
+      <div class="diag-item">Депрессия</div>
+      <div class="diag-item">Заболевания нервной системы</div>
+      <div class="diag-item">Заболевания суставов</div>
+      <div class="diag-item">Запоры</div>
+      <div class="diag-item">Катаракта</div>
+      <div class="diag-item">Неврозы</div>
+      <div class="diag-item">Остеопороз</div>
+      <div class="diag-item">Остеохондроз</div>
+      <div class="diag-item">Перенесённый инсульт</div>
+      <div class="diag-item">Перенесённый инфаркт</div>
+      <div class="diag-item">Подагра</div>
+      <div class="diag-item">Сахарный диабет</div>
+      <div class="diag-item">Сердечно-сосудистые заболевания</div>
+      <div class="diag-item">Старческое слабоумие</div>
+      <div class="diag-item">Травмы и переломы различной тяжести</div>
+      <div class="diag-item">Энурез</div>
+    </div>
+
+    <div id="rehab-tab" class="tab-content">
+      <div class="diag-item">Болезнь Альцгеймера</div>
+      <div class="diag-item">Болезнь Паркинсона</div>
+      <div class="diag-item">Лечение деменции</div>
+      <div class="diag-item">Лечение переломов у пожилых людей</div>
+      <div class="diag-item">Пансионат для престарелых на лето</div>
+      <div class="diag-item">Перелом шейки бедра</div>
+      <div class="diag-item">После инсульта</div>
+      <div class="diag-item">После инфаркта</div>
+      <div class="diag-item">После остеохондроза</div>
+      <div class="diag-item">Рассеянный склероз</div>
+      <div class="diag-item">Реабилитация больных атеросклерозом</div>
+      <div class="diag-item">Реабилитация зрения</div>
+      <div class="diag-item">Реабилитация и восстановление после Ковида</div>
+      <div class="diag-item">Реабилитация инвалидов</div>
+      <div class="diag-item">Реабилитация после операций</div>
+      <div class="diag-item">Реабилитация суставов</div>
+      <div class="diag-item">Уход за больными с сахарным диабетом</div>
+      <div class="diag-item">Уход за лежачими больными</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ФОТОГАЛЕРЕЯ ========== -->
+<section class="gallery-section">
+  <p class="section-label">Наша клиника</p>
+  <h2 class="section-title">Фотогалерея</h2>
+  <p class="section-subtitle">Комфортные условия пребывания для наших пациентов</p>
+
+  <div class="gallery-grid">
+    <!-- Реальные изображения с сайта -->
+    <div class="gallery-item">
+      <img src="https://nmrehab.ru/assets/img/promo/17419_1.jpg" alt="Стационар фото 1"
+           onerror="this.parentElement.innerHTML='<div class=\'gallery-placeholder\'>🏥</div>'" />
+    </div>
+    <div class="gallery-item">
+      <img src="https://nmpansion.ru/images/book_bg.jpg" alt="Стационар фото 2"
+           onerror="this.parentElement.innerHTML='<div class=\'gallery-placeholder\'>🛏️</div>'" />
+    </div>
+    <!-- Placeholder карточки для демонстрации сетки -->
+    <div class="gallery-item" style="background:#c8d8ea;">
+      <div class="gallery-placeholder">🌿</div>
+    </div>
+    <div class="gallery-item" style="background:#d0e4d4;">
+      <div class="gallery-placeholder">🏃</div>
+    </div>
+    <div class="gallery-item" style="background:#e4d8c8;">
+      <div class="gallery-placeholder">🍽️</div>
+    </div>
+    <div class="gallery-item" style="background:#d4cce4;">
+      <div class="gallery-placeholder">👨‍⚕️</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function switchTab(btn, tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+  }
+</script>
+
+</body>
+</html>

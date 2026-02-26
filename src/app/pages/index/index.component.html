@@ -71,7 +71,7 @@
   <div class="hero-docs-names d-none d-lg-flex">
     <div class="hero-doc-name">
       <strong>Попова Елена</strong>
-      <span>Зав. отделением, терапевт</span>
+      <span>Главный врач</span>
     </div>
     <div class="hero-doc-name">
       <strong>Басиладзе Зураб</strong>
@@ -88,30 +88,30 @@
       <div class="row align-items-end g-4">
 
         <!-- Текстовый блок -->
-        <div class="col-lg-7" data-animate="fade-right">
-          <h1 class="text-white mb-2" style="font-size:clamp(1.8rem,4.5vw,3rem);font-weight:800;line-height:1.18;">
-            Реабилитационный стационар<br>для пожилых 24/7
+        <div class="col-lg-7 col-full" data-animate="fade-right">
+          <h1 class="text-white mb-2 no-color-1" style="font-size:clamp(1.8rem,4.5vw,2.8rem);font-weight:800;line-height:1.18;">
+            Реабилитационный стационар для пожилых 24/7
           </h1>
-          <p class="text-white mb-4" style="font-size:clamp(1.05rem,2.2vw,1.35rem);font-weight:500;opacity:0.93;line-height:1.5;">
+          <p class="text-white mb-4 no-color-1" style="font-size:clamp(1.05rem,2.2vw,2rem);font-weight:500;opacity:0.93;line-height:1.5;">
             после инсульта, переломов и эндопротезирования
           </p>
-          <p class="mb-4" style="color:rgba(255,255,255,0.88);font-size:1rem;line-height:1.85;">
+          <p class="mb-4" style="color:rgba(0,0,0,0.88);font-size:1rem;line-height:1.85;">
             Индивидуальный план восстановления и круглосуточное медицинское наблюдение.<br>
             Принимаем пациентов сразу после выписки.<br>
-            <span style="color:#f0a500;font-weight:600;">🚑 Организуем перевозку лежачих пациентов</span><br>
-            <strong style="color:#fff;">От 2 000 ₽/сутки — без скрытых платежей</strong>
+            <span style="color:#f0a500;font-weight:600;margin-top:1rem;display: inline-block;">🚑 Организуем перевозку лежачих пациентов</span><br>
+            <strong style="color:#27477d;">От 2 000 ₽/сутки — без скрытых платежей</strong>
           </p>
           <div class="d-flex flex-wrap gap-3 mb-3">
             <button class="lp-btn-primary" (click)="toggleForm()">Проверить наличие мест</button>
-            <button class="lp-btn-outline" (click)="toggleForm()">Бесплатная консультация врача</button>
+            <button class="lp-btn-primary" (click)="toggleForm()">Бесплатная консультация врача</button>
           </div>
-          <p style="color:rgba(255,255,255,0.55);font-size:0.85rem;">Ответим в течение 3–5 минут.</p>
-        </div>
-		<div class="col-lg-5 col-abs">
+          <div class="col-lg-5 col-abs col-min">
 		  <div class="ls-btn ls-l ls-responsive" data-ls-laptop="left: 200px; top: 520px;" data-ls-tablet="left: 200px; top: 520px;" style="top: 15%; left: 95%;">
-			<a target="_blank" class="play-btn popup-video style3" href="https://rutube.ru/play/embed/2c8d629abcfe87a56789acee0f376787/"><i class="fas fa-play"></i></a><span>видео о центре</span>
+			<a target="_blank" class="play-btn popup-video style3" href="https://rutube.ru/play/embed/2c8d629abcfe87a56789acee0f376787/"><i class="fas fa-play"></i></a><span>видео o стационаре</span>
 		  </div>
 		</div>
+        </div>
+		
 
       </div>
     </div>
@@ -239,8 +239,8 @@
       <div class="col-lg-6" data-animate="fade-left">
         <div class="lp-photo-grid">
           <div class="lp-photo-side">
-            <img src="assets/img/dropme/К11.png" alt="ЛФК">
-            <img src="assets/img/dropme/К12.png" alt="Уход">
+            <img src="assets/img/dropme/К11.jpg" alt="ЛФК">
+            <img src="assets/img/dropme/how.jpg" alt="Уход">
           </div>
         </div>
       </div>
@@ -284,7 +284,6 @@
       <!-- Карточка 2 -->
       <div class="col-md-6 col-lg-4" data-animate="fade-up">
         <div class="lp-price-card lp-price-card--featured h-100">
-          <div class="lp-price-badge">ПОПУЛЯРНЫЙ</div>
           <h3 class="lp-price-title">Уход с реабилитацией</h3>
           <div class="lp-price-value">от 4 000 ₽<span>/сутки</span></div>
           <p class="lp-price-label">Включено всё из базового, плюс:</p>
@@ -309,8 +308,7 @@
     </div>
 
     <div class="lp-price-notes">
-      <span>❗ Без скрытых платежей. Официальный договор.</span>
-      <span>❗ Стоимость фиксируется в договоре.</span>
+      <span>Без скрытых платежей. Официальный договор. Стоимость фиксируется в договоре.</span>
     </div>
 
   </div>
@@ -355,7 +353,7 @@
     </div>
 
     <div class="row g-4 justify-content-center mb-4">
-      <div class="col-sm-6 col-md-4 col-lg-2" *ngFor="let s of staff; let i = index" [attr.data-animate]="'fade-up'" [style.transition-delay]="(i * 0.08) + 's'">
+      <div class="col-sm-6 col-md-4 col-lg-3" *ngFor="let s of staff; let i = index" [attr.data-animate]="'fade-up'" [style.transition-delay]="(i * 0.08) + 's'">
         <div class="lp-staff-card text-center">
           <div class="lp-staff-photo">
             <img *ngIf="s.photo" [src]="s.photo" [alt]="s.name" loading="lazy">
@@ -385,8 +383,7 @@
   <div class="container">
 
     <div class="lp-section-head text-center" data-animate="fade-up">
-      <h2 class="lp-sec-title">Условия проживания</h2>
-      <p class="lp-sec-sub">Палаты, санузлы, ЛФК-зал, территория</p>
+      <h2 class="lp-sec-title">Фотогалерея</h2>
     </div>
 
     <div class="lp-gallery-grid" data-animate="fade-up">
@@ -458,7 +455,7 @@
       <div class="col-lg-7 text-center" data-animate="fade-up">
 
         <h2 class="lp-sec-title">Кому не подойдёт стационар</h2>
-        <p style="color:#666;margin-bottom:28px;">Наш реабилитационный стационар не подойдёт, если:</p>
+        <p style="color:#666;margin-bottom:28px;" class="lpp">Наш реабилитационный стационар не подойдёт, если:</p>
 
         <ul class="lp-notfor-list">
           <li *ngFor="let item of notForUs">
@@ -512,22 +509,28 @@
   <div class="container text-center" data-animate="fade-up">
 
     <h2 class="lp-cta-title">Реабилитацию важно начать вовремя</h2>
-    <p class="lp-cta-text">
-      После инсульта, переломов, травм или операций первые недели имеют решающее значение.
-      Чем раньше начата реабилитация, тем выше шанс вернуть самостоятельность и снизить риск осложнений.
-    </p>
-    <p class="lp-cta-text" style="opacity:0.8;">
-      Мы принимаем ограниченное количество пациентов, чтобы обеспечить персональный медицинский контроль.
-    </p>
-    <p class="lp-cta-text" style="opacity:0.8;margin-bottom:32px;">
-      Позвоните нам — врач оценит вашу ситуацию и подскажет, подойдёт ли наш стационар.
-    </p>
-
-    <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
-      <a href="tel:+79300332222" class="lp-btn-primary lp-cta-phone-btn">
+    <div class="lp-end-box">
+	  <div class="lp-end-col1">
+    	<p class="lp-cta-text">
+		После инсульта, переломов, травм или операций первые недели имеют решающее значение.
+		Чем раньше начата реабилитация, тем выше шанс вернуть самостоятельность и снизить риск осложнений.
+		</p>
+		<p class="lp-cta-text" style="opacity:0.8;">
+		Мы принимаем ограниченное количество пациентов, чтобы обеспечить персональный медицинский контроль.
+		</p>
+		<p class="lp-cta-text" style="opacity:0.8;margin-bottom:32px;">
+		Позвоните нам — врач оценит вашу ситуацию и подскажет, подойдёт ли наш стационар.
+		</p>
+	  </div>
+	  <div class="lp-end-col2">
+		<img src="assets/img/dropme/455.jpg" alt="Реабилитаци">
+	  </div>
+	</div>
+	<div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
+	  <a href="tel:+79300332222" class="lp-btn-primary lp-cta-phone-btn">
         <i class="fas fa-phone-alt me-2"></i>+7 (930) 033-22-22
       </a>
-      <button class="lp-btn-outline" (click)="toggleForm()">Бесплатная консультация врача</button>
+      <button class="lp-btn-primary" (click)="toggleForm()">Бесплатная консультация врача</button>
     </div>
 
   </div>
@@ -537,6 +540,9 @@
 <!-- ====================================================
   ЭКРАН 13: Карта
 ===================================================== -->
+<section class="lp-section">
+  <div class="container text-center" data-animate="fade-up"><h2 class="lp-sec-title">Как до нас добраться</h2></div>
+</section>
 <section>
   <iframe
     src="https://yandex.ru/map-widget/v1/?mode=search&text=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BC%D0%B8%D1%80%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C+%D0%BF%D0%BE%D1%81%D1%91%D0%BB%D0%BE%D0%BA+%D0%93%D0%BE%D1%80%D0%BE%D0%B4%D0%B8%D1%89%D0%B8%2C+%D1%83%D0%BB+%D0%91%D0%BE%D0%BB%D1%8C%D0%BD%D0%B8%D1%87%D0%BD%D1%8B%D0%B9+%D0%BF%D1%80%D0%BE%D0%B5%D0%B7%D0%B4%2C+%D0%B4+1&z=15"
@@ -570,7 +576,7 @@
             <h4 class="lp-license-title">Медицинская лицензия</h4>
             <p class="lp-license-num">№ЛО-33-01-003878</p>
             <p class="lp-license-desc">Деятельность осуществляется на основании лицензии на медицинскую деятельность.</p>
-            <a routerLink="/license" class="lp-btn-outline-dark mt-2 d-inline-block">Посмотреть лицензию</a>
+            <a routerLink="/license" class="lp-btn-primary-dark mt-2 d-inline-block">Посмотреть лицензию</a>
           </div>
         </div>
       </div>

@@ -1,0 +1,150 @@
+/* about.component.scss */
+.lp-about-h1 {
+  font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+  font-weight: 800;
+  color: #1a1e2d;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+.lp-about-lead {
+  font-size: 1.08rem;
+  color: #444;
+  line-height: 1.75;
+}
+
+.lp-about-p {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-bottom: 12px;
+}
+
+/* Статистика */
+.lp-about-stats-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.lp-about-stat {
+  background: #f0f6fb;
+  border-radius: 12px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-left: 4px solid #f0a500;
+}
+
+.lp-about-stat-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a3a5c;
+  line-height: 1;
+}
+
+.lp-about-stat-label {
+  font-size: 0.82rem;
+  color: #666;
+  line-height: 1.3;
+}
+
+/* Список */
+.lp-about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lp-about-list li {
+  padding: 8px 0 8px 28px;
+  position: relative;
+  color: #333;
+  font-size: 0.97rem;
+  border-bottom: 1px solid #f0f0f0;
+  line-height: 1.5;
+}
+
+.lp-about-list li::before {
+  content: '✔';
+  position: absolute;
+  left: 0;
+  color: #f0a500;
+  font-weight: 700;
+  font-size: 0.85rem;
+  top: 9px;
+}
+
+/* Trust list */
+.lp-about-trust-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lp-about-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1rem;
+  color: #2d3748;
+}
+
+.lp-about-trust-item i {
+  color: #f0a500;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Форма */
+.lp-about-form-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 28px rgba(26,58,92,0.10);
+  border: 1px solid #e4edf5;
+}
+
+.lp-about-form-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #1a1e2d;
+  margin-bottom: 8px;
+}
+
+.lp-about-form-group {
+  margin-bottom: 14px;
+}
+
+.lp-about-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #d0dde8;
+  border-radius: 7px;
+  font-size: 1rem;
+  color: #1a1e2d;
+  background: #f8fbff;
+  transition: border-color 0.2s;
+  outline: none;
+
+  &:focus { border-color: #f0a500; }
+}
+
+.lp-about-form-success {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 18px;
+  background: #f0fff4;
+  border-radius: 8px;
+  border: 1px solid #c3e6cb;
+
+  i { color: #28a745; font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+  p { margin: 0; color: #155724; font-size: 0.97rem; }
+}
+
+@media (max-width: 575px) {
+  .lp-about-stats-row { grid-template-columns: 1fr 1fr; }
+  .lp-about-form-card { padding: 22px 16px; }
+}

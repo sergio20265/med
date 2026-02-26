@@ -10,7 +10,7 @@
 
 .st-intro {
   text-align: center;
-  max-width: 680px;
+  max-width: 800px;
   margin: 0 auto 56px;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .st-intro-sub {
-  font-size: 1.05rem;
+  font-size: 1.4rem;
   color: #555;
   line-height: 1.7;
   margin: 0;
@@ -43,7 +43,7 @@
 }
 
 .st-group-icon {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: #f0a500;
   width: 42px;
   height: 42px;
@@ -56,7 +56,7 @@
 }
 
 .st-group-title {
-  font-size: 1.3rem;
+  font-size: 2rem;
   font-weight: 800;
   color: #1a3a5c;
   margin: 0;
@@ -66,7 +66,7 @@
 .st-group-count {
   background: #1a3a5c;
   color: #fff;
-  font-size: 0.78rem;
+  font-size: 1rem;
   font-weight: 700;
   padding: 3px 10px;
   border-radius: 20px;
@@ -156,7 +156,7 @@
 }
 
 .st-card-name {
-  font-size: 0.95rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #1a1e2d;
   margin: 0;
@@ -164,18 +164,18 @@
 }
 
 .st-card-name--sm {
-  font-size: 0.82rem;
+  font-size: 1.3rem;
 }
 
 .st-card-role {
-  font-size: 0.8rem;
+  font-size: 1.3rem;
   color: #666;
   margin: 0;
   line-height: 1.4;
 }
 
 .st-card-role--sm {
-  font-size: 0.72rem;
+  font-size: 1rem;
 }
 
 /* ── Компактный список ───────────────────────────────── */
@@ -223,7 +223,7 @@
 }
 
 .st-compact-name {
-  font-size: 0.88rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: #2d3748;
   white-space: nowrap;

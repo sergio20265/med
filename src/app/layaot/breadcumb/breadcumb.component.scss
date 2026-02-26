@@ -13,38 +13,33 @@
     align-items: center;
     
     a {
-      color: #ffffff;
+      color: #07ccec;
       text-decoration: none;
       transition: color 0.3s ease;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
       font-weight: 500;
       
       &:hover {
-        color: #ffffff;
+        color: #252a3d;
         text-decoration: underline;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
       }
     }
     
     span {
-      color: #ffffff;
+      color: #07ccec;
       font-weight: 600;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
     }
     
     &.active span {
-      color: #ffffff;
+      color: #252a3d;
       font-weight: 700;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
     }
   }
 }
 
 .breadcrumb-separator {
   margin: 0 8px;
-  color: #ffffff;
-  font-size: 12px;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  color: #252a3d;
+  font-size: 15px;
   font-weight: 500;
 }
 

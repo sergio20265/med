@@ -100,6 +100,8 @@ export class BreadcumbComponent implements OnInit, OnDestroy, OnChanges {
         return 'Диагнозы';
       case 'rehabilitation':
         return 'Реабилитация';
+      case 'about':
+        return 'О нас';
       case 'contact':
         return 'Контакты';
       case 'service':

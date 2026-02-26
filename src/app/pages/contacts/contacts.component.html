@@ -1,86 +1,238 @@
 <app-breadcumb [title]="'Контакты'"></app-breadcumb>
-<!--==============================
-  Contact Form Area
-==============================-->
-<section class="vs-contact-wrapper vs-contact-layout1 space-top space-md-bottom">
+
+<!-- ── H1 + основные контакты ────────────────────────── -->
+<section class="lp-section bg-white">
   <div class="container">
-    <div class="row gx-60 align-items-center">
-      <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-        <form (ngSubmit)="submit()" [formGroup]="myForm" class="ajax-contact form-wrap3 mb-30" data-bg-color="#f3f6f7" method="POST">
-          <div class="form-title">
-            <h3 class="mt-n2 fls-n2 mb-0">Написать нам </h3>
+    <h1 class="lp-about-h1">Контакты реабилитационного стационара</h1>
+    <div class="row g-5 align-items-start">
 
-          </div>
-          <div class="form-group mb-15">
-            <input class="form-control style3"  formControlName="name" placeholder="Имя" type="text">
-            <i class="fal fa-user"></i>
-          </div>
-           <div class="form-group mb-15">
-            <input class="form-control style3"  formControlName="phone" placeholder="Номер телефона" type="text">
-            <i class="fal fa-user"></i>
-          </div>
-          <div class="form-group mb-15">
-            <input class="form-control style3"  formControlName="email"  placeholder="E-mail" type="text">
-            <i class="fal fa-envelope"></i>
-          </div>
-          <div class="form-group mb-15">
-            <textarea class="form-control style3" cols="30" formControlName="message"  placeholder="Сообщение"
-                      rows="3"></textarea>
-            <i class="fal fa-pencil-alt"></i>
-          </div>
-          <div class="form-btn pt-15">
-            <button class="vs-btn style2">Отправить<i class="fas fa-chevron-right"></i></button>
-          </div>
-          <p class="form-messages mb-0 mt-3"></p>
-        </form>
-      </div>
       <div class="col-lg-6">
-        <div class="contact-information mb-30">
 
-          <h3 class="h4 pt-2 mb-10">Работаем</h3>
-          <table class="contact-info-table">
-            <tr>
-              <td>Без выходных</td>
-              <td>24/7</td>
-            </tr>
+        <div class="lp-contact-info-block">
+          <div class="lp-contact-info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Адрес</strong>
+              <span>Владимирская область, посёлок Городищи,<br>ул. Больничный проезд, д. 1</span>
+            </div>
+          </div>
+          <div class="lp-contact-info-item">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <strong>Телефон</strong>
+              <a href="tel:+79300332222" class="lp-contact-phone">+7 (930) 033-22-22</a>
+            </div>
+          </div>
+          <div class="lp-contact-info-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <strong>Приём звонков</strong>
+              <span>ежедневно с 9:00 до 19:00</span>
+            </div>
+          </div>
+          <div class="lp-contact-info-item">
+            <i class="fas fa-bed"></i>
+            <div>
+              <strong>Заселение</strong>
+              <span>возможно в день обращения (при наличии мест)</span>
+            </div>
+          </div>
+        </div>
 
-          </table>
-          <h3 class="h4 pt-2 mb-10">Варианты проезда</h3>
-          <table class="contact-info-table">
-            <tr>
-              <td>Маршрутки от жд станции "Усад"</td>
-              <td>№1017<br>
-                №1019<br>
-                №1020
-              </td>
-            </tr>
-            <tr>
-              <td>На автомобиле</td>
-              <td>Владимирская область,<br>
-                посёлок Городищи,<br>
-                ул Больничный проезд, д 1
-              </td>
-            </tr>
-            <tr>
-              <td>Посмотреть в навигаторе</td>
-              <td><a href="yandexnavi://build_route_on_map?lat_from=55.74&lon_from=37.60&lat_to=55.76&lon_to=37.64">Открыть
-                в навигаторе</a>
-              </td>
-            </tr>
-
-          </table>
-          <h4 class="pt-2 mb-10">Адрес</h4>
-          <p class="fs-md"><i class="far fa-map-marker-alt me-2"></i>Посёлок Городищи, ул. Больничный проезд, д 1</p>
-          <h4 class="pt-2 mb-2">Телефоны</h4>
-          <h4 class="h3 font-theme2 mb-0">
-            <a href="tel:893003322228"><i class="far fa-phone-alt me-2"></i>8 (930) 033-22-228</a></h4>
-              <h4 class="h3 font-theme2 mb-0">
-            <a href="tel:84924332202"><i class="far fa-phone-alt me-2"></i>8 (49243) 3-22-02</a></h4>
+        <div class="d-flex gap-3 flex-wrap mt-4">
+          <a href="tel:+79300332222" class="lp-btn-primary">
+            <i class="fas fa-phone-alt me-2"></i>Позвонить
+          </a>
+          <a href="https://t.me/+dnM4EbcdmwM3ZjAy" target="_blank" rel="noopener" class="lp-btn-primary">
+            <i class="fab fa-telegram me-2"></i>Telegram
+          </a>
         </div>
       </div>
+
+      <!-- Форма записи на просмотр -->
+      <div class="col-lg-5 offset-lg-1">
+        <div class="lp-about-form-card">
+          <h3 class="lp-about-form-title">Записаться на просмотр</h3>
+          <p style="color:#666;font-size:1.2rem;margin-bottom:18px;">
+            Приедьте лично и оцените условия. Без давления и обязательств.
+          </p>
+          <form [formGroup]="viewForm" (ngSubmit)="submitView()" *ngIf="!formSent">
+            <div class="lp-about-form-group">
+              <input type="text" formControlName="name" placeholder="Ваше имя" class="lp-about-input">
+            </div>
+            <div class="lp-about-form-group">
+              <input type="tel" formControlName="phone" placeholder="+7 (___) ___-__-__" class="lp-about-input">
+            </div>
+            <button type="submit" class="lp-btn-primary w-100" [disabled]="viewForm.invalid">
+              Записаться на просмотр
+            </button>
+          </form>
+          <div *ngIf="formSent" class="lp-about-form-success">
+            <i class="fas fa-check-circle"></i>
+            <p>Заявка отправлена! Мы свяжемся с вами в ближайшее время.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <div class="ratio ratio-21x9 contact-map mt-70 mb-30">
-     <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A8812f60e23e89dc2360a2d9ccd4341e7a3b1006456fbc6ed51ff76a45a7e927f&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+  </div>
+</section>
+
+
+<!-- ── Карта ──────────────────────────────────────────── -->
+<section class="lp-section" style="background:#f5f8fb;padding-bottom:0;">
+  <div class="container">
+    <div class="lp-section-head text-center">
+      <h2 class="lp-sec-title">Как нас найти</h2>
+    </div>
+  </div>
+  <div class="lp-contact-map-wrap">
+    <iframe
+      src="https://yandex.ru/map-widget/v1/?um=constructor%3A8812f60e23e89dc2360a2d9ccd4341e7a3b1006456fbc6ed51ff76a45a7e927f&source=constructor"
+      width="100%" height="450" frameborder="0" loading="lazy"
+      title="Карта — Реабилитационный стационар Новая медицина"></iframe>
+  </div>
+</section>
+
+
+<!-- ── Как добраться ─────────────────────────────────── -->
+<section class="lp-section bg-white">
+  <div class="container">
+    <div class="row g-5">
+
+      <div class="col-lg-6">
+        <h2 class="lp-sec-title">
+          <i class="fas fa-car me-2" style="color:#f0a500;font-size:1.2rem;"></i>На автомобиле
+        </h2>
+        <div class="lp-contact-directions">
+          <div class="lp-contact-dir-item">
+            <span class="lp-contact-dir-city">От Ногинска</span>
+            <span class="lp-contact-dir-sep"></span>
+            <span class="lp-contact-dir-time">~30 мин</span>
+          </div>
+          <div class="lp-contact-dir-item">
+            <span class="lp-contact-dir-city">От Электростали</span>
+            <span class="lp-contact-dir-sep"></span>
+            <span class="lp-contact-dir-time">~35 мин</span>
+          </div>
+          <div class="lp-contact-dir-item">
+            <span class="lp-contact-dir-city">Орехово-Зуево</span>
+            <span class="lp-contact-dir-sep"></span>
+            <span class="lp-contact-dir-time">~20 мин</span>
+          </div>
+          <div class="lp-contact-dir-item">
+            <span class="lp-contact-dir-city">От Ликино-Дулёво</span>
+            <span class="lp-contact-dir-sep"></span>
+            <span class="lp-contact-dir-time">~15 мин</span>
+          </div>
+          <div class="lp-contact-dir-item">
+            <span class="lp-contact-dir-city">От Павловского Посада</span>
+            <span class="lp-contact-dir-sep"></span>
+            <span class="lp-contact-dir-time">~40 мин</span>
+          </div>
+          <div class="lp-contact-dir-item">
+            <span class="lp-contact-dir-city">От Электрогорска</span>
+            <span class="lp-contact-dir-sep"></span>
+            <span class="lp-contact-dir-time">~25 мин</span>
+          </div>
+          <div class="lp-contact-dir-item">
+            <span class="lp-contact-dir-city">От Покрова</span>
+            <span class="lp-contact-dir-sep"></span>
+            <span class="lp-contact-dir-time">~25 мин</span>
+          </div>
+          <div class="lp-contact-dir-item">
+            <span class="lp-contact-dir-city">От Петушков</span>
+            <span class="lp-contact-dir-sep"></span>
+            <span class="lp-contact-dir-time">~20 мин</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <h2 class="lp-sec-title">
+          <i class="fas fa-train me-2" style="color:#f0a500;font-size:1.2rem;"></i>На общественном транспорте
+        </h2>
+        <div class="lp-contact-transport-info">
+          <div class="lp-contact-tr-item">
+            <i class="fas fa-train"></i>
+            <div>
+              <strong>Электричка до ст. Усад</strong>
+              <span>Горьковское направление</span>
+            </div>
+          </div>
+          <div class="lp-contact-tr-item">
+            <i class="fas fa-bus"></i>
+            <div>
+              <strong>Далее автобус или такси</strong>
+              <span>Маршрутки №1017, №1019, №1020 до пос. Городищи</span>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+
+    </div>
+	<div class="lp-ct-images">
+	  <div class="lp-ct-image">
+		<img src="assets/img/dropme/ct.webp" alt="Вход">
+	  </div>
+	</div>
+	<!-- Можно ли приехать заранее -->
+        <div class="lp-contact-visit-card mt-4">
+          <h3 class="lp-contact-visit-title">Можно ли приехать заранее?</h3>
+          <p>Да, вы можете записаться на просмотр центра и лично оценить условия.</p>
+          <div class="lp-contact-visit-items">
+            <div><i class="fas fa-calendar-check me-2" style="color:#f0a500;"></i>Просмотр по предварительной записи</div>
+            <div>
+              <i class="fas fa-phone-alt me-2" style="color:#f0a500;"></i>
+              Запишитесь: <a href="tel:+79300332222" style="color:#1a3a5c;font-weight:600;">+7 (930) 033-22-22</a>
+            </div>
+          </div>
+        </div>
+  </div>
+</section>
+
+
+<!-- ── Перевозка лежачих пациентов ────────────────────── -->
+<section class="lp-section" style="background:#f0f6fb;margin-bottom:130px;">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+
+      <div class="col-lg-7">
+        <h2 class="lp-sec-title">Организуем перевозку лежачих пациентов</h2>
+        <p class="lp-about-p">
+          Если пациент не может передвигаться самостоятельно, мы поможем организовать
+          транспортировку из больницы или дома.
+        </p>
+        <ul class="lp-price-check-list">
+          <li>Подберём подходящий транспорт</li>
+          <li>Согласуем время</li>
+          <li>Поможем с оформлением</li>
+        </ul>
+      </div>
+
+      <div class="col-lg-5">
+        <div class="lp-about-form-card">
+          <h3 class="lp-about-form-title">Узнать условия перевозки</h3>
+          <form [formGroup]="transportForm" (ngSubmit)="submitTransport()" *ngIf="!transportFormSent">
+            <div class="lp-about-form-group">
+              <input type="text" formControlName="name" placeholder="Ваше имя" class="lp-about-input">
+            </div>
+            <div class="lp-about-form-group">
+              <input type="tel" formControlName="phone" placeholder="+7 (___) ___-__-__" class="lp-about-input">
+            </div>
+            <button type="submit" class="lp-btn-primary w-100" [disabled]="transportForm.invalid">
+              Узнать условия перевозки
+            </button>
+          </form>
+          <div *ngIf="transportFormSent" class="lp-about-form-success">
+            <i class="fas fa-check-circle"></i>
+            <p>Заявка отправлена! Мы свяжемся с вами в ближайшее время.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

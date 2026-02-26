@@ -1,4 +1,269 @@
+<app-breadcumb [title]="'Цены'"></app-breadcumb>
 
-<app-breadcumb [title]="'Прайс-лист'"></app-breadcumb>
-<div class="container" *ngIf="price_page && price_page.body" [innerHTML]="price_page.body"></div>
+<!-- ── H1 ─────────────────────────────────────────────── -->
+<section class="lp-section bg-white">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="text-center">
+        <h1 class="lp-price-h1">Стоимость ухода и реабилитации в стационаре</h1>
+        <p class="lp-price-lead">
+          Прозрачные цены, официальное оформление, без скрытых платежей.
+          Мы рассчитаем стоимость индивидуально под состояние пациента.
+        </p>
+        <div class="lp-price-badges">
+          <span class="lp-price-badge"><i class="fas fa-bed me-2"></i>Стоимость фиксируется в договоре</span>
+          <span class="lp-price-badge"><i class="fas fa-phone-alt me-2"></i>Бесплатная консультация врача</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+
+<!-- ── Почему цены фиксированные ─────────────────────── -->
+<section class="lp-section" style="background:#f0f6fb;">
+  <div class="container">
+    <h2 class="lp-sec-title text-center" style="margin-bottom:2rem;">Почему цены фиксированные и прозрачные</h2>
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        
+        <p class="lp-price-p">
+          Наша цель — дать вам понимание расходов и исключить неожиданные доплаты.
+          Что это значит для вас:
+        </p>
+        <ul class="lp-price-check-list">
+          <li>Вы видите сумму до заселения</li>
+          <li>Она фиксируется в договоре</li>
+          <li>Нет удобных доплат в процессе</li>
+          <li>Вся ответственность за уход — наша</li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <div class="lp-price-trust-card">
+          <div class="lp-price-trust-item">
+            <i class="fas fa-shield-alt"></i>
+            <div>
+              <strong>Официальный договор</strong>
+              <span>Всё закреплено юридически при заселении</span>
+            </div>
+          </div>
+          <div class="lp-price-trust-item">
+            <i class="fas fa-ruble-sign"></i>
+            <div>
+              <strong>Без скрытых платежей</strong>
+              <span>Цена, озвученная при заселении — окончательная</span>
+            </div>
+          </div>
+          <div class="lp-price-trust-item">
+            <i class="fas fa-user-md"></i>
+            <div>
+              <strong>Бесплатная консультация</strong>
+              <span>Врач оценит состояние и рассчитает точную стоимость</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Тарифы ─────────────────────────────────────────── -->
+<section class="lp-section bg-white">
+  <div class="container">
+    <div class="lp-section-head text-center">
+      <h2 class="lp-sec-title">Тарифы</h2>
+      <p class="lp-sec-sub">Выберите подходящий вариант — или узнайте стоимость индивидуально</p>
+    </div>
+
+    <div class="row g-4 justify-content-center">
+
+      <!-- Базовый уход -->
+      <div class="col-lg-5">
+        <div class="lp-price-plan">
+          <div class="lp-price-plan-head">
+            <span class="lp-price-plan-label">Базовый уход</span>
+            <div class="lp-price-plan-price">от <strong>2 000 ₽</strong><span>/сутки</span></div>
+          </div>
+          <p class="lp-price-plan-who">
+            <strong>Кому подходит:</strong> пациентам, которые нуждаются в уходе и контроле состояния,
+            но не требуют активной реабилитации.
+          </p>
+          <p class="lp-price-plan-included">Включено:</p>
+          <ul class="lp-price-list">
+            <li>Проживание в комфортной, оборудованной палате</li>
+            <li>4-разовое питание</li>
+            <li>Контроль приёма лекарств</li>
+            <li>Помощь в гигиене</li>
+            <li>Профилактика пролежней</li>
+            <li>Наблюдение 24/7</li>
+          </ul>
+          <a href="tel:+79300332222" class="lp-btn-outline-dark w-100 text-center d-block mt-auto">
+            Узнать точную стоимость
+          </a>
+        </div>
+      </div>
+
+      <!-- Уход с реабилитацией -->
+      <div class="col-lg-5">
+        <div class="lp-price-plan lp-price-plan--accent">
+          <div class="lp-price-plan-head">
+            <span class="lp-price-plan-label">Уход с реабилитацией</span>
+            <div class="lp-price-plan-price">от <strong>4 000 ₽</strong><span>/сутки</span></div>
+          </div>
+          <p class="lp-price-plan-who">
+            <strong>Кому подходит:</strong> пациентам после инсульта, перелома, эндопротезирования,
+            с нарушением движения и речи.
+          </p>
+          <p class="lp-price-plan-included">Включено всё из базового ухода, плюс:</p>
+          <ul class="lp-price-list">
+            <li>Занятия с врачом-реабилитологом</li>
+            <li>ЛФК под контролем инструктора</li>
+            <li>Восстановление двигательных навыков</li>
+            <li>Работа с речью</li>
+            <li>Расширенные процедуры под врачебным контролем</li>
+          </ul>
+          <a href="tel:+79300332222" class="lp-btn-primary w-100 text-center d-block mt-auto">
+            Узнать точную стоимость
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Сравнение с домашним уходом ───────────────────── -->
+<section class="lp-section" style="background:#f5f8fb;">
+  <div class="container">
+    <div class="lp-section-head text-center">
+      <h2 class="lp-sec-title">Почему такая цена выгодна</h2>
+      <p class="lp-sec-sub">Сравнение с домашним уходом</p>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="lp-price-compare-table">
+          <div class="lp-price-compare-head">
+            <div class="lp-price-compare-col"></div>
+            <div class="lp-price-compare-col lp-price-compare-col--home phome">Домашний уход</div>
+            <div class="lp-price-compare-col lp-price-compare-col--us pus">Наш стационар</div>
+          </div>
+          <div class="lp-price-compare-row">
+            <div class="lp-price-compare-col">Медицинский контроль 24/7</div>
+            <div class="lp-price-compare-col lp-price-compare-col--home"><i class="fas fa-times lp-icon-no"></i></div>
+            <div class="lp-price-compare-col lp-price-compare-col--us"><i class="fas fa-check lp-icon-yes"></i></div>
+          </div>
+          <div class="lp-price-compare-row">
+            <div class="lp-price-compare-col">Профессиональные упражнения ЛФК</div>
+            <div class="lp-price-compare-col lp-price-compare-col--home"><i class="fas fa-times lp-icon-no"></i></div>
+            <div class="lp-price-compare-col lp-price-compare-col--us"><i class="fas fa-check lp-icon-yes"></i></div>
+          </div>
+          <div class="lp-price-compare-row">
+            <div class="lp-price-compare-col">Профилактика осложнений</div>
+            <div class="lp-price-compare-col lp-price-compare-col--home"><i class="fas fa-times lp-icon-no"></i></div>
+            <div class="lp-price-compare-col lp-price-compare-col--us"><i class="fas fa-check lp-icon-yes"></i></div>
+          </div>
+          <div class="lp-price-compare-row">
+            <div class="lp-price-compare-col">Персонал с опытом</div>
+            <div class="lp-price-compare-col lp-price-compare-col--home"><i class="fas fa-times lp-icon-no"></i></div>
+            <div class="lp-price-compare-col lp-price-compare-col--us"><i class="fas fa-check lp-icon-yes"></i></div>
+          </div>
+          <div class="lp-price-compare-row">
+            <div class="lp-price-compare-col">Фиксированная цена</div>
+            <div class="lp-price-compare-col lp-price-compare-col--home"><i class="fas fa-times lp-icon-no"></i></div>
+            <div class="lp-price-compare-col lp-price-compare-col--us"><i class="fas fa-check lp-icon-yes"></i></div>
+          </div>
+        </div>
+        <p class="lp-price-compare-note">
+          Часто уход дома обходится дороже, при этом отсутствует медицинский контроль.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── Что влияет на стоимость + Пробный день ─────── -->
+<section class="lp-section bg-white">
+  <div class="container">
+    <div class="row g-5">
+
+      <div class="col-lg-6">
+        <h2 class="lp-sec-title">Что влияет на стоимость</h2>
+        <p class="lp-price-p">Стоимость может зависеть от:</p>
+        <ul class="lp-price-dot-list">
+          <li>тяжести состояния пациента</li>
+          <li>необходимости ежедневной ЛФК</li>
+          <li>наличия осложнений</li>
+          <li>дополнительных процедур и наблюдений</li>
+        </ul>
+        <p class="lp-price-p">
+          После бесплатной консультации врача мы рассчитаем точную стоимость для вашего случая.
+        </p>
+
+        <h2 class="lp-sec-title mt-5">Оплата и договор</h2>
+        <ul class="lp-price-check-list">
+          <li>Оплата по договору</li>
+          <li>Без скрытых платежей</li>
+          <li>Возможна оплата частями</li>
+          <li>Финансовая прозрачность</li>
+        </ul>
+        <p class="lp-price-p">
+          <i class="fas fa-file-alt me-2" style="color:#f0a500;"></i>
+          Мы заключаем официальный договор на оказание услуг при заселении.
+        </p>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="lp-price-trial-card">
+          <div class="lp-price-trial-badge">Пробный день</div>
+          <div class="lp-price-trial-price">50%<span> от стоимости</span></div>
+          <p class="lp-price-trial-desc">Чтобы вы могли:</p>
+          <ul class="lp-price-check-list">
+            <li>Оценить условия</li>
+            <li>Познакомиться с персоналом</li>
+            <li>Понять, подходит ли программа</li>
+            <li>Получить первичную консультацию врача</li>
+          </ul>
+          <p class="lp-price-trial-note">
+            Если вы решите остаться — пробный день зачтётся в оплату.
+          </p>
+          <a href="tel:+79300332222" class="lp-btn-primary w-100 text-center d-block">
+            <i class="fas fa-phone-alt me-2"></i>Узнать об условиях
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── CTA-форма ──────────────────────────────────────── -->
+<section class="lp-cta-section" style="margin-bottom:130px">
+  <div class="container">
+    <div class="row align-items-center g-4 justify-content-center">
+      <div class="col-lg-5 text-center text-lg-start">
+        <h2 class="lp-sec-title" style="color:#fff;">Рассчитайте стоимость для вашего случая</h2>
+        <p style="color:rgba(255,255,255,0.8);font-size:1.4rem;">
+          Оставьте заявку — мы перезвоним и ответим на все вопросы.
+        </p>
+      </div>
+      <div class="col-lg-4">
+        <form [formGroup]="priceForm" (ngSubmit)="submitPrice()" *ngIf="!formSent" class="lp-price-cta-form">
+          <input type="text"  formControlName="name"  placeholder="Ваше имя" class="lp-cta-input mb-3">
+          <input type="tel"   formControlName="phone" placeholder="+7 (___) ___-__-__" class="lp-cta-input mb-3">
+          <button type="submit" class="lp-btn-primary w-100" [disabled]="priceForm.invalid">
+            Узнать стоимость сейчас
+          </button>
+        </form>
+        <div *ngIf="formSent" class="lp-about-form-success">
+          <i class="fas fa-check-circle"></i>
+          <p>Спасибо! Мы свяжемся с вами в ближайшее время.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

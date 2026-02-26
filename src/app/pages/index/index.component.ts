@@ -161,39 +161,43 @@ export class IndexComponent implements AfterViewInit {
     {
       name: 'Попова Елена Владимировна',
       role: 'Зав. отделением, врач-терапевт, гастроэнтеролог',
-      photo: 'assets/img/dropme/popova.jpg'
+      photo: 'assets/img/team/popova_ev.png'
     },
     {
-      name: 'Басиладзе Зураб Георгиевич',
-      role: 'Реабилитолог',
-      photo: 'assets/img/team/Basiladze_Zurab.jpg'
-    },
-    {
-      name: 'Анохин Николай',
-      role: 'Инструктор ЛФК, кинезиотерапевт',
-      photo: 'assets/img/team/Anohin_Nikolaj.jpg'
+      name: 'Левко Наталья Ивановна',
+      role: 'Врач-УЗИ',
+      photo: 'assets/img/team/levko_ni.png'
     },
     {
       name: 'Пилипейко Тамара',
-      role: 'Старшая медсестра',
-      photo: 'assets/img/team/Pilipejko_Tamara.jpg'
+      role: 'Cтаршая медсестра',
+      photo: 'assets/img/team/pilipeyko.png'
     },
   ];
 
   // ЭКРАН 8: Галерея
   galleryImages = [
-    { src: 'assets/img/dropme/palata1.jpg', alt: 'Палата стационара' },
-    { src: 'assets/img/dropme/palata2.jpg', alt: 'Условия проживания' },
-    { src: 'assets/img/dropme/palata3.jpg', alt: 'Коридор стационара' },
-    { src: 'assets/img/dropme/reab1.jpg', alt: 'Реабилитация' },
-    { src: 'assets/img/dropme/reab2.jpg', alt: 'Занятия ЛФК' },
-    { src: 'assets/img/dropme/reab3.jpg', alt: 'Медицинский уход' },
-    { src: 'assets/img/dropme/К1.png', alt: 'Территория' },
-    { src: 'assets/img/dropme/К2.png', alt: 'Корпус стационара' },
-    { src: 'assets/img/dropme/К4.png', alt: 'Палата' },
-    { src: 'assets/img/dropme/К5.png', alt: 'Условия' },
-    { src: 'assets/img/dropme/К7.png', alt: 'Зал ЛФК' },
-    { src: 'assets/img/dropme/К8.png', alt: 'Коридор' },
+    { src: 'assets/img/dropme/К8.png', alt: 'Медицинский уход' },
+    { src: 'assets/img/dropme/gal2.jpg', alt: 'Условия проживания' },
+    { src: 'assets/img/dropme/gal3.jpg', alt: 'Коридор стационара' },
+    { src: 'assets/img/dropme/gal4.jpg', alt: 'Реабилитация' },
+    { src: 'assets/img/dropme/К17.png', alt: 'Занятия ЛФК' },
+    { src: 'assets/img/dropme/gal7.jpg', alt: 'Медицинский уход' },
+    { src: 'assets/img/dropme/gal5.jpg', alt: 'Территория' },
+    { src: 'assets/img/dropme/gal4.jpg', alt: 'Готовка' },
+    { src: 'assets/img/dropme/455.jpg', alt: 'Занятия' },
+    { src: 'assets/img/dropme/reab3.jpg', alt: 'Условия' },
+    { src: 'assets/img/dropme/gal8.jpg', alt: 'Пациенты' },
+    { src: 'assets/img/dropme/gal9.jpg', alt: 'Палата' },
+	{ src: 'assets/img/dropme/К7.png', alt: 'Уход' },
+	{ src: 'assets/img/dropme/gal10.jpg', alt: 'Восстановление' },
+	{ src: 'assets/img/dropme/gal11.jpg', alt: 'В стационаре' },
+	{ src: 'assets/img/dropme/gal12.jpg', alt: 'Помощь' },
+	{ src: 'assets/img/dropme/К9.jpg', alt: 'Лечение' },
+	{ src: 'assets/img/dropme/reab5.jpg', alt: 'Реабилитация' },
+	{ src: 'assets/img/dropme/gal13.jpg', alt: 'Досуг' },
+	{ src: 'assets/img/dropme/gal14.jpg', alt: 'Отдых' },
+	{ src: 'assets/img/dropme/gal15.jpg', alt: 'Отдых' },
   ];
 
   // ЭКРАН 9: Отзывы
@@ -213,16 +217,7 @@ export class IndexComponent implements AfterViewInit {
       diagnosis: 'После эндопротезирования',
       text: 'Папу выписали из больницы, но дома он почти не двигался из-за боли и страха. В стационаре разработали план восстановления и постепенно увеличивали нагрузку. Через 5 недель он начал ходить с ходунками. Спасибо за профессиональный подход.'
     },
-    {
-      name: 'Сын пациентки',
-      diagnosis: 'Деменция',
-      text: 'Мама терялась на улице и забывала принимать лекарства. В центре обеспечили круглосуточный контроль и безопасную среду. Мы спокойны, что она под наблюдением.'
-    },
-    {
-      name: 'Дочь пациента',
-      diagnosis: 'Паллиативная помощь',
-      text: 'Папа нуждался в постоянном уходе и контроле боли. Персонал относился очень внимательно, состояние было под контролем. Для нас было важно, что он находился в достойных условиях.'
-    },
+    
   ];
 
   // ЭКРАН 10: Кому не подойдём
