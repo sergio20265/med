@@ -2315,6 +2315,21 @@ padding:5px 0;
   .hero-doc-name strong { font-size: 1rem;}
   .hero-doc-name span { font-size: 0.9rem;}
 }
+@media (max-width: 1024px) {
+.col-full{width:100%}
+.hero-docs-layer *, .hero-docs-names * {display:none}
+}
+@media (min-width: 1200px) {
+.hero-docs-layer
+ {
+    width: 60%;
+    inset: 0 0 130px 42%;
+}
+.hero-docs-names {
+    bottom: 180px;
+    right: 6%;
+	}
+}
 /* ============================================================
    FULLHD
    ============================================================ */
