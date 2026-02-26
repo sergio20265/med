@@ -156,48 +156,48 @@ export class IndexComponent implements AfterViewInit {
     {
       name: 'Жигарёв Антон Юрьевич',
       role: 'Директор стационара',
-      photo: 'assets/img/team/Zhigaryov_Anton.jpg'
+      photo: 'assets/img/team/Zhigaryov_Anton.webp'
     },
     {
       name: 'Попова Елена Владимировна',
-      role: 'Зав. отделением, врач-терапевт, гастроэнтеролог',
-      photo: 'assets/img/team/popova_ev.png'
+      role: 'Главный врач, врач-терапевт, гастроэнтеролог',
+      photo: 'assets/img/team/popova_ev.webp'
     },
     {
       name: 'Левко Наталья Ивановна',
       role: 'Врач-УЗИ',
-      photo: 'assets/img/team/levko_ni.png'
+      photo: 'assets/img/team/levko_ni.webp'
     },
     {
       name: 'Пилипейко Тамара',
       role: 'Cтаршая медсестра',
-      photo: 'assets/img/team/pilipeyko.png'
+      photo: 'assets/img/team/pilipeyko.webp'
     },
   ];
 
   // ЭКРАН 8: Галерея
-  galleryImages = [
-    { src: 'assets/img/dropme/К8.png', alt: 'Медицинский уход' },
-    { src: 'assets/img/dropme/gal2.jpg', alt: 'Условия проживания' },
-    { src: 'assets/img/dropme/gal3.jpg', alt: 'Коридор стационара' },
-    { src: 'assets/img/dropme/gal4.jpg', alt: 'Реабилитация' },
-    { src: 'assets/img/dropme/К17.png', alt: 'Занятия ЛФК' },
-    { src: 'assets/img/dropme/gal7.jpg', alt: 'Медицинский уход' },
-    { src: 'assets/img/dropme/gal5.jpg', alt: 'Территория' },
-    { src: 'assets/img/dropme/gal4.jpg', alt: 'Готовка' },
-    { src: 'assets/img/dropme/455.jpg', alt: 'Занятия' },
-    { src: 'assets/img/dropme/reab3.jpg', alt: 'Условия' },
-    { src: 'assets/img/dropme/gal8.jpg', alt: 'Пациенты' },
-    { src: 'assets/img/dropme/gal9.jpg', alt: 'Палата' },
-	{ src: 'assets/img/dropme/К7.png', alt: 'Уход' },
-	{ src: 'assets/img/dropme/gal10.jpg', alt: 'Восстановление' },
-	{ src: 'assets/img/dropme/gal11.jpg', alt: 'В стационаре' },
-	{ src: 'assets/img/dropme/gal12.jpg', alt: 'Помощь' },
-	{ src: 'assets/img/dropme/К9.jpg', alt: 'Лечение' },
-	{ src: 'assets/img/dropme/reab5.jpg', alt: 'Реабилитация' },
-	{ src: 'assets/img/dropme/gal13.jpg', alt: 'Досуг' },
-	{ src: 'assets/img/dropme/gal14.jpg', alt: 'Отдых' },
-	{ src: 'assets/img/dropme/gal15.jpg', alt: 'Отдых' },
+	galleryImages = [
+    { src: 'assets/img/dropme/К8.webp',    alt: 'Медицинский уход' },
+    { src: 'assets/img/dropme/gal2.webp',  alt: 'Условия проживания' },
+	{ src: 'assets/img/dropme/gal6.webp',  alt: 'стационар' },
+    { src: 'assets/img/dropme/gal3.webp',  alt: 'Коридор стационара' },
+	{ src: 'assets/img/dropme/gal12.webp', alt: 'Помощь' },
+    { src: 'assets/img/dropme/gal4.webp',  alt: 'Реабилитация' },
+    { src: 'assets/img/dropme/К17.webp',   alt: 'Занятия ЛФК' },
+    { src: 'assets/img/dropme/gal7.webp',  alt: 'Медицинский уход' },
+    { src: 'assets/img/dropme/gal5.webp',  alt: 'Территория' },
+    { src: 'assets/img/dropme/reab3.webp', alt: 'Условия' },
+    { src: 'assets/img/dropme/gal8.webp',  alt: 'Пациенты' },
+    { src: 'assets/img/dropme/gal9.webp',  alt: 'Палата' },
+    { src: 'assets/img/dropme/К7.webp',    alt: 'Уход' },
+    { src: 'assets/img/dropme/gal10.webp', alt: 'Восстановление' },
+	{ src: 'assets/img/dropme/gal51.webp',    alt: 'Лечение' },
+    { src: 'assets/img/dropme/К9.webp',    alt: 'Лечение' },
+    { src: 'assets/img/dropme/reab5.webp', alt: 'Реабилитация' },
+	{ src: 'assets/img/dropme/gal15.webp', alt: 'Отдых' },
+    { src: 'assets/img/dropme/gal13.webp', alt: 'Досуг' },
+    { src: 'assets/img/dropme/gal14.webp', alt: 'Отдых' },
+	{ src: 'assets/img/dropme/К10.webp', alt: 'Палата' },
   ];
 
   // ЭКРАН 9: Отзывы

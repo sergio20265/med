@@ -35,12 +35,12 @@ export class StaffComponent {
         {
           name: 'Жигарёв Антон Юрьевич',
           role: 'Директор стационара',
-          photo: 'assets/img/team/Zhigaryov_Anton.jpg'
+          photo: 'assets/img/team/Zhigaryov_Anton.webp'
         },
         {
           name: 'Ганина Татьяна Евгеньевна',
           role: 'Заместитель директора',
-          photo: 'assets/img/team/ganina_te.png'
+          photo: 'assets/img/team/ganina_te.webp'
         },
       ]
     },
@@ -53,23 +53,23 @@ export class StaffComponent {
       members: [
         {
           name: 'Попова Елена Владимировна',
-          role: 'Зав.отделением, врач-терапевт, гастроэнтеролог',
-          photo: 'assets/img/team/popova_ev.png'
+          role: 'Главный врач, врач-терапевт, гастроэнтеролог',
+          photo: 'assets/img/team/popova_ev.webp'
         },
         {
           name: 'Стригунов Денис Юрьевич',
           role: 'Врач-невролог, нейрохирург, мануальный терапевт',
-          photo: 'assets/img/team/strigunov.png'
+          photo: 'assets/img/team/strigunov.webp'
         },
         {
           name: 'Левко Наталья Ивановна',
           role: 'Врач-УЗИ',
-          photo: 'assets/img/team/levko_ni.png'
+          photo: 'assets/img/team/levko_ni.webp'
         },
         {
           name: 'Ушаков Николай Александрович',
           role: 'Врач-инфекционист, врач-дерматовенеролог',
-          photo: 'assets/img/team/ushakov.png'
+          photo: 'assets/img/team/ushakov.webp'
         },
       ]
     },
@@ -83,17 +83,17 @@ export class StaffComponent {
         {
           name: 'Китаев Дмитрий',
           role: 'Инструктор ЛФК',
-          photo: 'assets/img/team/kitaev.png'
+          photo: 'assets/img/team/kitaev.webp'
         },
         {
           name: 'Анохин Николай',
           role: 'Инструктор ЛФК, кинезиотерапевт',
-          photo: 'assets/img/team/Anohin_Nikolaj.jpg'
+          photo: 'assets/img/team/Anohin_Nikolaj.webp'
         },
 		{
           name: 'Латкин Дмитрий',
           role: 'Помощник инструктора',
-          photo: 'assets/img/team/latkin.png'
+          photo: 'assets/img/team/latkin.webp'
         },
         {
           name: 'Архаров Владимир',
@@ -112,12 +112,12 @@ export class StaffComponent {
         {
           name: 'Пилипейко Тамара',
           role: 'Старшая медсестра',
-          photo: 'assets/img/team/pilipeyko.png'
+          photo: 'assets/img/team/pilipeyko.webp'
         },
         { name: 'Власова Алина',      role: 'Палатная медсестра', photo: '' },
-        { name: 'Былкина Кристина',   role: 'Палатная медсестра', photo: 'assets/img/team/bylkina.png' },
+        { name: 'Былкина Кристина',   role: 'Палатная медсестра', photo: 'assets/img/team/bylkina.webp' },
         { name: 'Вишнякова Ольга',    role: 'Палатная медсестра', photo: '' },
-        { name: 'Беликова Алина',     role: 'Палатная медсестра', photo: 'assets/img/team/belikova.png' },
+        { name: 'Беликова Алина',     role: 'Палатная медсестра', photo: 'assets/img/team/belikova.webp' },
         { name: 'Изюмова Светлана',   role: 'Палатная медсестра', photo: '' },
         { name: 'Панфилова Екатерина',role: 'Палатная медсестра', photo: '' },
       ]
@@ -130,12 +130,12 @@ export class StaffComponent {
       compact: true,
       members: [
         { name: 'Уварова Ольга',         role: '', photo: '' },
-        { name: 'Ефремова Евгения',       role: '', photo: 'assets/img/team/efremova.png' },
+        { name: 'Ефремова Евгения',       role: '', photo: 'assets/img/team/efremova.webp' },
         { name: 'Шивагорнова Светлана',   role: '', photo: '' },
-        { name: 'Витмаер Ирина',          role: '', photo: 'assets/img/team/vitmaer.png' },
+        { name: 'Витмаер Ирина',          role: '', photo: 'assets/img/team/vitmaer.webp' },
         { name: 'Акишина Е.',             role: '', photo: '' },
-        { name: 'Баганова Алла',          role: '', photo: 'assets/img/team/Baganova_Alla.jpg' },
-        { name: 'Панфилова Людмила',      role: '', photo: 'assets/img/team/panfilova_l.png' },
+        { name: 'Баганова Алла',          role: '', photo: 'assets/img/team/Baganova_Alla.webp' },
+        { name: 'Панфилова Людмила',      role: '', photo: 'assets/img/team/panfilova_l.webp' },
       ]
     },
 
@@ -145,7 +145,7 @@ export class StaffComponent {
       icon: 'fas fa-utensils',
       compact: true,
       members: [
-        { name: 'Маликова Оксана', role: '', photo: 'assets/img/team/malikova.png' },
+        { name: 'Маликова Оксана', role: '', photo: 'assets/img/team/malikova.webp' },
         { name: 'Ибрагимова И.',   role: '', photo: '' },
       ]
     },
@@ -167,7 +167,7 @@ export class StaffComponent {
       icon: 'fas fa-clipboard-list',
       compact: true,
       members: [
-        { name: 'Алексеева Татьяна', role: '', photo: 'assets/img/team/alekseeva.png' },
+        { name: 'Алексеева Татьяна', role: '', photo: 'assets/img/team/alekseeva.webp' },
         { name: 'Боева Марина',      role: '', photo: '' },
       ]
     },

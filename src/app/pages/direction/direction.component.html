@@ -242,7 +242,7 @@
       </div>
     </div>
 
-    <p class="text-center lp-staff-note">Каждый пациент находится под наблюдением медицинского персонала 24/7.</p>
+    <p class="text-center lp-staff-note">Каждый пациент находится под наблюдением медицинского персонала 24/7.<br>В случае необходимости возим на МРТ и КТ, вызываем любых узких специалистов из сети клиник "Новая медицина".</p>
     <div class="text-center mt-3">
       <a routerLink="/staff" class="lp-btn-primary mt-3">Познакомиться с командой</a>
     </div>
@@ -340,6 +340,10 @@
         <button type="submit" class="lp-btn-primary w-100 mb-3" [disabled]="checkForm.invalid">
           Проверить наличие мест
         </button>
+        <label class="lp-modal-agree d-flex align-items-start gap-2">
+          <input type="checkbox" checked style="margin-top:3px;flex-shrink:0;">
+          <span>Я соглашаюсь с <a href="assets/documents/politika.pdf" target="_blank" rel="noopener" style="color:#f0a500;">политикой обработки персональных данных</a></span>
+        </label>
       </form>
     </div>
     <div *ngIf="checkSent" class="lp-about-form-success">
@@ -366,6 +370,10 @@
         <button type="submit" class="lp-btn-primary w-100 mb-3" [disabled]="consultForm.invalid">
           Получить консультацию
         </button>
+        <label class="lp-modal-agree d-flex align-items-start gap-2">
+          <input type="checkbox" checked style="margin-top:3px;flex-shrink:0;">
+          <span>Я соглашаюсь с <a href="assets/documents/politika.pdf" target="_blank" rel="noopener" style="color:#f0a500;">политикой обработки персональных данных</a></span>
+        </label>
       </form>
     </div>
     <div *ngIf="consultSent" class="lp-about-form-success">

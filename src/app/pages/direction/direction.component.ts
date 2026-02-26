@@ -482,10 +482,10 @@ export class DirectionComponent implements OnInit {
 
   // ── Персонал ─────────────────────────────────────────
   staff = [
-    { name: 'Жигарёв Антон Юрьевич', role: 'Директор стационара', photo: 'assets/img/team/Zhigaryov_Anton.jpg' },
-    { name: 'Попова Елена Владимировна', role: 'Зав. отделением, врач-терапевт', photo: 'assets/img/team/popova_ev.png' },
-    { name: 'Стригунов Денис Юрьевич', role: 'Врач-невролог, нейрохирург', photo: 'assets/img/team/strigunov.png' },
-    { name: 'Пилипейко Тамара', role: 'Старшая медсестра', photo: 'assets/img/team/pilipeyko.png' },
+    { name: 'Жигарёв Антон Юрьевич', role: 'Директор стационара', photo: 'assets/img/team/Zhigaryov_Anton.webp' },
+    { name: 'Попова Елена Владимировна', role: 'Главный врач, врач-терапевт', photo: 'assets/img/team/popova_ev.webp' },
+    { name: 'Стригунов Денис Юрьевич', role: 'Врач-невролог, нейрохирург', photo: 'assets/img/team/strigunov.webp' },
+    { name: 'Пилипейко Тамара', role: 'Старшая медсестра', photo: 'assets/img/team/pilipeyko.webp' },
   ];
 
   // ── Галерея ───────────────────────────────────────────
@@ -493,26 +493,26 @@ export class DirectionComponent implements OnInit {
   lightboxIndex = 0;
 
   galleryImages = [
-    { src: 'assets/img/dropme/К8.png',    alt: 'Медицинский уход' },
-    { src: 'assets/img/dropme/gal2.jpg',  alt: 'Условия проживания' },
-    { src: 'assets/img/dropme/gal3.jpg',  alt: 'Коридор стационара' },
-    { src: 'assets/img/dropme/gal4.jpg',  alt: 'Реабилитация' },
-    { src: 'assets/img/dropme/К17.png',   alt: 'Занятия ЛФК' },
-    { src: 'assets/img/dropme/gal7.jpg',  alt: 'Медицинский уход' },
-    { src: 'assets/img/dropme/gal5.jpg',  alt: 'Территория' },
-    { src: 'assets/img/dropme/455.jpg',   alt: 'Занятия' },
-    { src: 'assets/img/dropme/reab3.jpg', alt: 'Условия' },
-    { src: 'assets/img/dropme/gal8.jpg',  alt: 'Пациенты' },
-    { src: 'assets/img/dropme/gal9.jpg',  alt: 'Палата' },
-    { src: 'assets/img/dropme/К7.png',    alt: 'Уход' },
-    { src: 'assets/img/dropme/gal10.jpg', alt: 'Восстановление' },
-    { src: 'assets/img/dropme/gal11.jpg', alt: 'В стационаре' },
-    { src: 'assets/img/dropme/gal12.jpg', alt: 'Помощь' },
-    { src: 'assets/img/dropme/К9.jpg',    alt: 'Лечение' },
-    { src: 'assets/img/dropme/reab5.jpg', alt: 'Реабилитация' },
-    { src: 'assets/img/dropme/gal13.jpg', alt: 'Досуг' },
-    { src: 'assets/img/dropme/gal14.jpg', alt: 'Отдых' },
-    { src: 'assets/img/dropme/gal15.jpg', alt: 'Отдых' },
+    { src: 'assets/img/dropme/К8.webp',    alt: 'Медицинский уход' },
+    { src: 'assets/img/dropme/gal2.webp',  alt: 'Условия проживания' },
+    { src: 'assets/img/dropme/gal3.webp',  alt: 'Коридор стационара' },
+    { src: 'assets/img/dropme/gal4.webp',  alt: 'Реабилитация' },
+    { src: 'assets/img/dropme/К17.webp',   alt: 'Занятия ЛФК' },
+    { src: 'assets/img/dropme/gal7.webp',  alt: 'Медицинский уход' },
+    { src: 'assets/img/dropme/gal5.webp',  alt: 'Территория' },
+    { src: 'assets/img/dropme/455.webp',   alt: 'Занятия' },
+    { src: 'assets/img/dropme/reab3.webp', alt: 'Условия' },
+    { src: 'assets/img/dropme/gal8.webp',  alt: 'Пациенты' },
+    { src: 'assets/img/dropme/gal9.webp',  alt: 'Палата' },
+    { src: 'assets/img/dropme/К7.webp',    alt: 'Уход' },
+    { src: 'assets/img/dropme/gal10.webp', alt: 'Восстановление' },
+    { src: 'assets/img/dropme/gal11.webp', alt: 'В стационаре' },
+    { src: 'assets/img/dropme/gal12.webp', alt: 'Помощь' },
+    { src: 'assets/img/dropme/К9.webp',    alt: 'Лечение' },
+    { src: 'assets/img/dropme/reab5.webp', alt: 'Реабилитация' },
+    { src: 'assets/img/dropme/gal13.webp', alt: 'Досуг' },
+    { src: 'assets/img/dropme/gal14.webp', alt: 'Отдых' },
+    { src: 'assets/img/dropme/gal15.webp', alt: 'Отдых' },
   ];
 
   openLightbox(i: number): void {
