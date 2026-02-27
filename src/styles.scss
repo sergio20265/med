@@ -3,9 +3,11 @@
 //@import "src/assets/css/style.css";
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
-body .lp-modal input[type=checkbox] {
-    visibility: auto; 
-opacity: 1; 
+body .lp-modal input[type=checkbox],
+body .lp-about-form-card input[type=checkbox],
+body .lp-modal-agree input[type=checkbox] {
+    visibility: visible;
+	opacity: 1; 
     display: inline-block;
     vertical-align: middle;
     width: auto; 
