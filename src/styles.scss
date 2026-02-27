@@ -3,7 +3,14 @@
 //@import "src/assets/css/style.css";
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
-
+body .lp-modal input[type=checkbox] {
+    visibility: auto; 
+opacity: 1; 
+    display: inline-block;
+    vertical-align: middle;
+    width: auto; 
+    height: auto ; 
+}
 .watch .h1 {
 
     margin-top: 50px;
