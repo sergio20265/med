@@ -4,7 +4,7 @@
 <div *ngIf="showForm" class="lp-modal-overlay" (click)="closeFormOverlay($event)">
   <div class="lp-modal" role="dialog">
     <button class="lp-modal-close" (click)="toggleForm()"><i class="fal fa-times"></i></button>
-    <h4 class="lp-modal-title">Бесплатная консультация врача</h4>
+    <h4 class="lp-modal-title">{{ formTitle }}</h4>
     <p class="lp-modal-sub">Ответим в течение 3–5 минут</p>
     <div class="mb-3">
       <input type="text" placeholder="Имя" class="form-control lp-modal-input">
@@ -99,8 +99,8 @@
             <strong style="color:#27477d;">От 2 000 ₽/сутки — без скрытых платежей</strong>
           </p>
           <div class="d-flex flex-wrap gap-3 mb-3">
-            <button class="lp-btn-primary" (click)="toggleForm()">Проверить наличие мест</button>
-            <button class="lp-btn-primary" (click)="toggleForm()">Бесплатная консультация врача</button>
+            <button class="lp-btn-primary" (click)="toggleForm('Проверить наличие мест')">Проверить наличие мест</button>
+            <button class="lp-btn-primary" (click)="toggleForm('Бесплатная консультация врача')">Бесплатная консультация врача</button>
           </div>
           <div class="col-lg-5 col-abs col-min">
 		  <div class="ls-btn ls-l ls-responsive" data-ls-laptop="left: 200px; top: 520px;" data-ls-tablet="left: 200px; top: 520px;" style="top: 15%; left: 95%;">
@@ -274,7 +274,7 @@
             <li>Профилактика пролежней</li>
             <li>Наблюдение 24/7</li>
           </ul>
-          <button class="lp-btn-primary w-100 mt-auto pt-3" (click)="toggleForm()">Узнать подробнее</button>
+          <button class="lp-btn-primary w-100 mt-auto pt-3" (click)="toggleForm('Узнать подробнее')">Узнать подробнее</button>
         </div>
       </div>
 
@@ -291,7 +291,7 @@
             <li>Контроль врача</li>
             <li>Индивидуальная программа</li>
           </ul>
-          <button class="lp-btn-primary w-100 mt-auto pt-3" (click)="toggleForm()">Узнать подробнее</button>
+          <button class="lp-btn-primary w-100 mt-auto pt-3" (click)="toggleForm('Узнать подробнее')">Узнать подробнее</button>
         </div>
       </div>
 
@@ -334,7 +334,7 @@
       </div>
 
     </div>
-	<button class="lp-btn-primary mt-3" (click)="toggleForm()">Узнать условия перевозки</button>
+	<button class="lp-btn-primary mt-3" (click)="toggleForm('Узнать условия перевозки')">Узнать условия перевозки</button>
   </div>
 </section>
 
@@ -527,7 +527,7 @@
 	  <a href="tel:+79300332222" class="lp-btn-primary lp-cta-phone-btn">
         <i class="fas fa-phone-alt me-2"></i>+7 (930) 033-22-22
       </a>
-      <button class="lp-btn-primary" (click)="toggleForm()">Бесплатная консультация врача</button>
+      <button class="lp-btn-primary" (click)="toggleForm('Бесплатная консультация врача')">Бесплатная консультация врача</button>
     </div>
 
   </div>

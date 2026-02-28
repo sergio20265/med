@@ -20,6 +20,7 @@ export class IndexComponent implements OnInit, AfterViewInit {
   activeFaq: number | null = null;
   showForm: boolean = false;
   showViewForm: boolean = false;
+  formTitle = 'Бесплатная консультация врача';
 
   // ── Лайтбокс ──────────────────────────────────────────────
   lightboxOpen = false;
@@ -52,7 +53,8 @@ export class IndexComponent implements OnInit, AfterViewInit {
     if (e.key === 'ArrowLeft')  this.lightboxPrev();
   }
 
-  toggleForm() {
+  toggleForm(title?: string) {
+    if (title) this.formTitle = title;
     this.showForm = !this.showForm;
     document.body.style.overflow = this.showForm ? 'hidden' : '';
   }

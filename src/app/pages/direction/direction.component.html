@@ -204,7 +204,7 @@
           <div class="dir-trial-badge">Пробный день — 50% стоимости</div>
           <h3 class="dir-trial-title">Оцените нас без риска</h3>
           <p class="dir-trial-text">{{ data.trialDayText }}</p>
-          <button class="lp-btn-primary mt-3" (click)="openCheckModal()">
+          <button class="lp-btn-primary mt-3" (click)="openCheckModal('Записаться на пробный день')">
             <i class="fas fa-calendar-check me-2"></i>Записаться на пробный день
           </button>
         </div>
@@ -307,7 +307,7 @@
         <div class="dir-cta-block">
           <p class="dir-cta-final" *ngIf="data.finalText">{{ data.finalText }}</p>
           <div class="dir-cta-btns">
-            <button class="lp-btn-primary" (click)="openCheckModal()">
+            <button class="lp-btn-primary" (click)="openCheckModal('Проверить свободные места')">
               <i class="fas fa-bed me-2"></i>Проверить свободные места
             </button>
             <button class="lp-btn-primary" (click)="openConsultModal()">
@@ -328,7 +328,7 @@
   <div class="lp-modal" role="dialog">
     <button class="lp-modal-close" (click)="closeModals()"><i class="fal fa-times"></i></button>
     <div *ngIf="!checkSent">
-      <h4 class="lp-modal-title">Проверить наличие мест</h4>
+      <h4 class="lp-modal-title">{{ checkModalTitle }}</h4>
       <p class="lp-modal-sub">Ответим в течение 3–5 минут</p>
       <form [formGroup]="checkForm" (ngSubmit)="submitCheck()">
         <div class="mb-3">

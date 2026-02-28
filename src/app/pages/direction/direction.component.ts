@@ -469,6 +469,7 @@ export class DirectionComponent implements OnInit {
   showConsultModal = false;
   checkSent        = false;
   consultSent      = false;
+  checkModalTitle  = 'Проверить наличие мест';
 
   checkForm = new FormGroup({
     name:  new FormControl('', Validators.required),
@@ -482,10 +483,26 @@ export class DirectionComponent implements OnInit {
 
   // ── Персонал ─────────────────────────────────────────
   staff = [
-    { name: 'Жигарёв Антон Юрьевич', role: 'Директор стационара', photo: 'assets/img/team/Zhigaryov_Anton.webp' },
-    { name: 'Попова Елена Владимировна', role: 'Главный врач, врач-терапевт', photo: 'assets/img/team/popova_ev.webp' },
-    { name: 'Стригунов Денис Юрьевич', role: 'Врач-невролог, нейрохирург', photo: 'assets/img/team/strigunov.webp' },
-    { name: 'Пилипейко Тамара', role: 'Старшая медсестра', photo: 'assets/img/team/pilipeyko.webp' },
+    {
+      name: 'Жигарёв Антон Юрьевич',
+      role: 'Директор стационара',
+      photo: 'assets/img/team/zhigarev.webp'
+    },
+    {
+      name: 'Попова Елена Владимировна',
+      role: 'Главный врач, врач-терапевт, гастроэнтеролог<span>Стаж работы - 25лет</span>',
+      photo: 'assets/img/team/popova_ev.webp'
+    },
+    {
+      name: 'Левко Наталья Ивановна',
+      role: 'Врач-УЗИ<span>Стаж работы - 36лет</span>',
+      photo: 'assets/img/team/levko_ni.webp'
+    },
+    {
+      name: 'Пилипейко Тамара',
+      role: 'Cтаршая медсестра<span>Стаж работы - 14лет</span>',
+      photo: 'assets/img/team/pilipeyko.webp'
+    },
   ];
 
   // ── Галерея ───────────────────────────────────────────
@@ -570,7 +587,8 @@ export class DirectionComponent implements OnInit {
   }
 
   // ── Модалки ──────────────────────────────────────────
-  openCheckModal(): void {
+  openCheckModal(title = 'Проверить наличие мест'): void {
+    this.checkModalTitle = title;
     this.showCheckModal = true;
     document.body.style.overflow = 'hidden';
   }

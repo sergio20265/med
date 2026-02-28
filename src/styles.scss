@@ -3383,7 +3383,16 @@ html, body { overflow-x: hidden; max-width: 100%; }
 
 /* Mobile nav bar: hide phone number text on small screens, keep icon as tap target */
 @media (max-width: 460px) {
-  .hdr-mob-phone-txt { display: none; }
+  .hdr-mob-phone-txt {  }
+  .lp-btn-primary {    width: 100%;}
+  .col-lg-5.col-abs {  width: 100%;}
+  .lp-end-box { flex-direction: column-reverse;}
+  .lp-end-col1, .lp-end-col2 {  width: 100%;}
+  .lp-end-col2 img { width: 100%;}
+  .lp-cta-section { padding-bottom: 40px;}
+  .lp-price-compare-table {    display: table;}
+  .lp-price-compare-row {  grid-template-columns: 1fr 95px 95px;}
+  
 }
 
 /* Mobile sidebar menu: expand to fill available height + iOS touch scroll */
