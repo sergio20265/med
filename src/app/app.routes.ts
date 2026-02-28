@@ -218,8 +218,8 @@ const appRoutes: Routes = [
     path: 'video-reviews',
     loadComponent: () => import('./pages/video-reviews/video-reviews.component').then(m => m.VideoReviewsComponent),
     data: {
-      title: 'Видео отзывы пациентов - Частный стационар "Новая медицина"',
-      description: 'Видео отзывы пациентов о лечении в частном стационаре "Новая медицина". Реальные истории выздоровления и благодарности.',
+      title: 'Отзывы о стационаре Новая Медицина',
+      description: 'Истории пациентов после инсульта, переломов и операций. Реальные отзывы родственников.',
       keywords: 'видео отзывы, отзывы пациентов, благодарности, истории выздоровления, пациенты',
       canonical: `${BASE_URL}/video-reviews`
     },
@@ -228,8 +228,8 @@ const appRoutes: Routes = [
     path: 'license',
     loadComponent: () => import('./pages/license/license.component').then(m => m.LicenseComponent),
     data: {
-      title: 'Лицензия на медицинскую деятельность - Новая медицина',
-      description: 'Лицензия на осуществление медицинской деятельности частного стационара "Новая медицина". Официальные документы и разрешения.',
+      title: 'Лицензия и документы стационара',
+      description: 'Официальная медицинская лицензия, реквизиты и документы. Работаем по договору.',
       keywords: 'лицензия, медицинская деятельность, разрешения, документы, официальная медицина',
       canonical: `${BASE_URL}/license`
     }
