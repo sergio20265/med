@@ -35,7 +35,7 @@ export class StaffComponent {
         {
           name: 'Жигарёв Антон Юрьевич',
           role: 'Директор стационара',
-          photo: 'assets/img/team/Zhigaryov_Anton.webp'
+          photo: 'assets/img/team/zhigarev.webp'
         },
         {
           name: 'Ганина Татьяна Евгеньевна',
@@ -53,22 +53,22 @@ export class StaffComponent {
       members: [
         {
           name: 'Попова Елена Владимировна',
-          role: 'Главный врач, врач-терапевт, гастроэнтеролог',
+          role: 'Главный врач, врач-терапевт, гастроэнтеролог<span>Стаж работы - 25лет</span>',
           photo: 'assets/img/team/popova_ev.webp'
         },
         {
           name: 'Стригунов Денис Юрьевич',
-          role: 'Врач-невролог, нейрохирург, мануальный терапевт',
+          role: 'Врач-невролог, нейрохирург, мануальный терапевт<span>Стаж работы - 11лет</span>',
           photo: 'assets/img/team/strigunov.webp'
         },
         {
           name: 'Левко Наталья Ивановна',
-          role: 'Врач-УЗИ',
+          role: 'Врач-УЗИ<span>Стаж работы - 36лет</span>',
           photo: 'assets/img/team/levko_ni.webp'
         },
         {
           name: 'Ушаков Николай Александрович',
-          role: 'Врач-инфекционист, врач-дерматовенеролог',
+          role: 'Врач-инфекционист, врач-дерматовенеролог<span>Стаж работы - 12лет</span>',
           photo: 'assets/img/team/ushakov.webp'
         },
       ]
@@ -82,13 +82,13 @@ export class StaffComponent {
       members: [
         {
           name: 'Китаев Дмитрий',
-          role: 'Инструктор ЛФК',
+          role: 'Инструктор ЛФК<span>Стаж работы - 8лет</span>',
           photo: 'assets/img/team/kitaev.webp'
         },
         {
           name: 'Анохин Николай',
-          role: 'Инструктор ЛФК, кинезиотерапевт',
-          photo: 'assets/img/team/Anohin_Nikolaj.webp'
+          role: 'Инструктор ЛФК, кинезиотерапевт<span>Стаж работы - 3года</span>',
+          photo: 'assets/img/team/anochin.webp'
         },
 		{
           name: 'Латкин Дмитрий',
@@ -96,9 +96,9 @@ export class StaffComponent {
           photo: 'assets/img/team/latkin.webp'
         },
         {
-          name: 'Архаров Владимир',
+          name: 'Иванов Владимир',
           role: 'Помощник инструктора',
-          photo: ''
+          photo: 'assets/img/team/ivanov.webp'
         },
       ]
     },
@@ -111,15 +111,15 @@ export class StaffComponent {
       members: [
         {
           name: 'Пилипейко Тамара',
-          role: 'Старшая медсестра',
+          role: 'Старшая медсестра<span>Стаж работы - 14лет</span>',
           photo: 'assets/img/team/pilipeyko.webp'
         },
-        { name: 'Власова Алина',      role: 'Палатная медсестра', photo: '' },
-        { name: 'Былкина Кристина',   role: 'Палатная медсестра', photo: 'assets/img/team/bylkina.webp' },
-        { name: 'Вишнякова Ольга',    role: 'Палатная медсестра', photo: '' },
-        { name: 'Беликова Алина',     role: 'Палатная медсестра', photo: 'assets/img/team/belikova.webp' },
-        { name: 'Изюмова Светлана',   role: 'Палатная медсестра', photo: '' },
-        { name: 'Панфилова Екатерина',role: 'Палатная медсестра', photo: '' },
+        { name: 'Власова Алина',      role: 'Палатная медсестра<span>Стаж работы - 14лет</span>', photo: 'assets/img/team/vlasova.webp' },
+        { name: 'Былкина Кристина',   role: 'Палатная медсестра<span>Стаж работы - 26лет</span>', photo: 'assets/img/team/bylkina.webp' },
+        { name: 'Вишнякова Ольга',    role: 'Палатная медсестра<span>Стаж работы - 40лет</span>', photo: '' },
+        { name: 'Беликова Алина',     role: 'Палатная медсестра<span>Стаж работы - 11лет</span>', photo: 'assets/img/team/belikova.webp' },
+        { name: 'Изюмова Светлана',   role: 'Палатная медсестра<span>Стаж работы - 38лет</span>', photo: 'assets/img/team/izyumova.webp' },
+        { name: 'Панфилова Екатерина',role: 'Палатная медсестра<span>Стаж работы - 38лет</span>', photo: '' },
       ]
     },
 
@@ -129,11 +129,11 @@ export class StaffComponent {
       icon: 'fas fa-hands-helping',
       compact: true,
       members: [
-        { name: 'Уварова Ольга',         role: '', photo: '' },
+        { name: 'Уварова Ольга',         role: '', photo: 'assets/img/team/uvarova.webp' },
         { name: 'Ефремова Евгения',       role: '', photo: 'assets/img/team/efremova.webp' },
-        { name: 'Шивагорнова Светлана',   role: '', photo: '' },
+        { name: 'Шивагорнова Светлана',   role: '', photo: 'assets/img/team/shivagornova.webp' },
         { name: 'Витмаер Ирина',          role: '', photo: 'assets/img/team/vitmaer.webp' },
-        { name: 'Акишина Е.',             role: '', photo: '' },
+        { name: 'Акишина Е.',             role: '', photo: 'assets/img/team/akishina.webp' },
         { name: 'Баганова Алла',          role: '', photo: 'assets/img/team/Baganova_Alla.webp' },
         { name: 'Панфилова Людмила',      role: '', photo: 'assets/img/team/panfilova_l.webp' },
       ]
@@ -146,7 +146,7 @@ export class StaffComponent {
       compact: true,
       members: [
         { name: 'Маликова Оксана', role: '', photo: 'assets/img/team/malikova.webp' },
-        { name: 'Ибрагимова И.',   role: '', photo: '' },
+        { name: 'Ибрагимова И.',   role: '', photo: 'assets/img/team/ibrahimova.webp' },
       ]
     },
 
@@ -156,8 +156,8 @@ export class StaffComponent {
       icon: 'fas fa-tshirt',
       compact: true,
       members: [
-        { name: 'Маликова Виктория', role: '', photo: '' },
-        { name: 'Махова Ольга',      role: '', photo: '' },
+        { name: 'Маликова Виктория', role: '', photo: 'assets/img/team/malikova_v.webp' },
+        { name: 'Махова Ольга',      role: '', photo: 'assets/img/team/makhova.webp' },
       ]
     },
 
@@ -168,7 +168,7 @@ export class StaffComponent {
       compact: true,
       members: [
         { name: 'Алексеева Татьяна', role: '', photo: 'assets/img/team/alekseeva.webp' },
-        { name: 'Боева Марина',      role: '', photo: '' },
+        { name: 'Боева Марина',      role: '', photo: 'assets/img/team/boeva.webp' },
       ]
     },
 

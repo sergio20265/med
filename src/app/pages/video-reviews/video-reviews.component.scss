@@ -207,7 +207,7 @@
 .video-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 9/16;
   background: #000;
   overflow: hidden;
 }
@@ -584,4 +584,69 @@
 
 .video-card:hover .video-wrapper::before {
   transform: translateX(100%);
+}
+
+// Карточка кликабельная
+.video-card {
+  cursor: pointer;
+}
+
+// Иконка play — всегда видна (не только на hover)
+.play-button-overlay {
+  opacity: 1 !important;
+  background: rgba(0, 0, 0, 0.25) !important;
+  pointer-events: none;
+}
+
+// ─── Попап ───────────────────────────────────────────────────────────────────
+.vr-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: vrFadeIn 0.2s ease;
+}
+
+@keyframes vrFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.vr-modal {
+  position: relative;
+  width: min(380px, 92vw);
+  animation: vrSlideIn 0.25s ease;
+}
+
+@keyframes vrSlideIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+.vr-modal-close {
+  position: absolute;
+  top: -44px;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 0;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+
+  &:hover { opacity: 1; }
+}
+
+.vr-modal-video {
+  width: 100%;
+  aspect-ratio: 9/16;
+  max-height: 82vh;
+  border-radius: 14px;
+  display: block;
+  background: #000;
+  object-fit: contain;
 }

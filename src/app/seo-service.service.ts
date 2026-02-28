@@ -152,23 +152,36 @@ export class SeoService {
     const schemaType = seoData.schemaType ?? 'organization';
 
     const organization: Record<string, unknown> = {
-      '@type': 'MedicalOrganization',
+      '@type': ['MedicalOrganization', 'MedicalClinic'],
       '@id': `${this.baseUrl}/#organization`,
-      name: this.siteName,
+      name: 'Реабилитационный стационар «Новая медицина»',
+      alternateName: 'НМ Реабилитация',
       url: this.baseUrl,
-      logo: this.defaultImage,
-      description: 'Частный стационар с полным спектром медицинских услуг',
+      logo: { '@type': 'ImageObject', url: this.defaultImage },
+      image: `${this.baseUrl}/assets/img/stacionar-main/book_bg.webp`,
+      description: 'Частный реабилитационный стационар с круглосуточным медицинским наблюдением. Реабилитация после инсульта, переломов, операций. Уход при деменции и болезни Паркинсона.',
+      telephone: '+7-930-033-22-22',
+      email: 'nmpansion@yandex.ru',
       address: {
         '@type': 'PostalAddress',
-        addressCountry: 'RU',
-        addressLocality: 'Москва'
+        streetAddress: 'ул. Больничный проезд, д. 1',
+        addressLocality: 'пос. Городищи',
+        addressRegion: 'Владимирская область',
+        postalCode: '601005',
+        addressCountry: 'RU'
       },
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'customer service',
-        availableLanguage: 'Russian'
-      },
-      medicalSpecialty: ['Реабилитация', 'Стационарное лечение', 'Уход за пожилыми']
+      openingHours: 'Mo-Su 00:00-24:00',
+      contactPoint: [
+        {
+          '@type': 'ContactPoint',
+          telephone: '+7-930-033-22-22',
+          contactType: 'customer service',
+          availableLanguage: 'Russian'
+        }
+      ],
+      medicalSpecialty: ['Реабилитация', 'Неврология', 'Паллиативная помощь', 'Гериатрия'],
+      sameAs: ['https://t.me/+dnM4EbcdmwM3ZjAy'],
+      hasMap: 'https://yandex.ru/maps/?ll=40.35,56.14&z=15'
     };
 
     let pageEntity: Record<string, unknown> | null = null;
@@ -297,5 +310,91 @@ export class SeoService {
       schemaType: 'medicalBusiness',
       breadcrumbs: data.breadcrumbs
     });
+  }
+
+  /** Полная разметка главной страницы: WebSite + MedicalClinic + FAQPage */
+  updateHomepageSeo(faqs: { question: string; answer: string }[]): void {
+    // Стандартные мета-теги
+    this.updateSeoData({
+      title: 'Реабилитационный стационар «Новая медицина» — круглосуточно',
+      description: 'Частный реабилитационный стационар во Владимирской области. Реабилитация после инсульта, переломов, операций. Уход при деменции и болезни Паркинсона. Круглосуточно.',
+      keywords: 'реабилитационный стационар, реабилитация после инсульта, перелом шейки бедра, деменция, болезнь Паркинсона, паллиативная помощь, уход за лежачими',
+      url: `${this.baseUrl}/`,
+      schemaType: 'organization'
+    });
+
+    // Очищаем старые ld+json
+    this.document.querySelectorAll('script[type="application/ld+json"]').forEach(el => el.remove());
+
+    const graph: Record<string, unknown>[] = [
+      // 1. WebSite
+      {
+        '@type': 'WebSite',
+        '@id': `${this.baseUrl}/#website`,
+        url: this.baseUrl,
+        name: 'Реабилитационный стационар «Новая медицина»',
+        inLanguage: 'ru-RU',
+        publisher: { '@id': `${this.baseUrl}/#organization` }
+      },
+      // 2. MedicalClinic (полная карточка клиники)
+      {
+        '@type': ['MedicalClinic', 'LocalBusiness'],
+        '@id': `${this.baseUrl}/#clinic`,
+        name: 'Реабилитационный стационар «Новая медицина»',
+        alternateName: 'НМ Реабилитация',
+        url: this.baseUrl,
+        logo: { '@type': 'ImageObject', url: `${this.baseUrl}/assets/img/logo.png` },
+        image: `${this.baseUrl}/assets/img/stacionar-main/book_bg.webp`,
+        description: 'Частный реабилитационный стационар с круглосуточным медицинским наблюдением. Реабилитация после инсульта, переломов, операций. Уход при деменции и болезни Паркинсона.',
+        telephone: '+7-930-033-22-22',
+        email: 'nmpansion@yandex.ru',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'ул. Больничный проезд, д. 1',
+          addressLocality: 'пос. Городищи',
+          addressRegion: 'Владимирская область',
+          postalCode: '601005',
+          addressCountry: 'RU'
+        },
+        openingHours: 'Mo-Su 00:00-24:00',
+        openingHoursSpecification: {
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'],
+          opens: '00:00',
+          closes: '23:59'
+        },
+        contactPoint: {
+          '@type': 'ContactPoint',
+          telephone: '+7-930-033-22-22',
+          contactType: 'customer service',
+          availableLanguage: 'Russian'
+        },
+        medicalSpecialty: ['Реабилитация', 'Неврология', 'Паллиативная помощь', 'Гериатрия'],
+        hasCredential: 'Лицензия №ЛО-33-01-003878',
+        sameAs: ['https://t.me/+dnM4EbcdmwM3ZjAy'],
+        priceRange: 'от 2000 ₽/сутки',
+        currenciesAccepted: 'RUB',
+        paymentAccepted: 'Наличный расчёт, банковский перевод',
+        parentOrganization: { '@id': `${this.baseUrl}/#organization` }
+      },
+      // 3. FAQPage
+      ...(faqs.length > 0 ? [{
+        '@type': 'FAQPage',
+        '@id': `${this.baseUrl}/#faq`,
+        mainEntity: faqs.map(f => ({
+          '@type': 'Question',
+          name: f.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: f.answer.replace(/<[^>]*>/g, '')
+          }
+        }))
+      }] : [])
+    ];
+
+    const script = this.document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+    this.document.head.appendChild(script);
   }
 }

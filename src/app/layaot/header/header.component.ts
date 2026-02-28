@@ -20,6 +20,19 @@ interface MenuItem {
 export class HeaderComponent {
   visible: boolean = false;
   showCallback: boolean = false;
+  expandedItems = new Set<string>();
+
+  toggleSubmenu(label: string): void {
+    if (this.expandedItems.has(label)) {
+      this.expandedItems.delete(label);
+    } else {
+      this.expandedItems.add(label);
+    }
+  }
+
+  isExpanded(label: string): boolean {
+    return this.expandedItems.has(label);
+  }
 
   menuItems: MenuItem[] = [
     {
@@ -69,6 +82,9 @@ export class HeaderComponent {
 
   close_menu() {
     this.visible = !this.visible;
+    if (!this.visible) {
+      this.expandedItems.clear();
+    }
   }
 
   toggleCallback() {

@@ -56,7 +56,7 @@ export class PhoneCallComponent {
       this.api.send_form_data(formData).subscribe({
         next: (response) => {
           console.log('Форма успешно отправлена:', response);
-          // Можно добавить уведомление об успешной отправке
+          this.api.sendFormNotification(this.myForm.value.name, this.myForm.value.phone, '📞 Заявка на обратный звонок');
           this.myForm.reset();
         },
         error: (error) => {

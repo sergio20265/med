@@ -1,6 +1,7 @@
-import { Component, AfterViewInit, HostListener } from '@angular/core';
+import { Component, AfterViewInit, HostListener, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
+import { SeoService } from '../../seo-service.service';
 
 @Component({
   selector: 'app-index',
@@ -8,7 +9,13 @@ import { NgFor, NgIf } from '@angular/common';
   standalone: true,
   imports: [RouterLink, NgFor, NgIf]
 })
-export class IndexComponent implements AfterViewInit {
+export class IndexComponent implements OnInit, AfterViewInit {
+
+  constructor(private seo: SeoService) {}
+
+  ngOnInit(): void {
+    this.seo.updateHomepageSeo(this.faqs);
+  }
 
   activeFaq: number | null = null;
   showForm: boolean = false;
@@ -156,21 +163,21 @@ export class IndexComponent implements AfterViewInit {
     {
       name: 'Жигарёв Антон Юрьевич',
       role: 'Директор стационара',
-      photo: 'assets/img/team/Zhigaryov_Anton.webp'
+      photo: 'assets/img/team/zhigarev.webp'
     },
     {
       name: 'Попова Елена Владимировна',
-      role: 'Главный врач, врач-терапевт, гастроэнтеролог',
+      role: 'Главный врач, врач-терапевт, гастроэнтеролог<span>Стаж работы - 25лет</span>',
       photo: 'assets/img/team/popova_ev.webp'
     },
     {
       name: 'Левко Наталья Ивановна',
-      role: 'Врач-УЗИ',
+      role: 'Врач-УЗИ<span>Стаж работы - 36лет</span>',
       photo: 'assets/img/team/levko_ni.webp'
     },
     {
       name: 'Пилипейко Тамара',
-      role: 'Cтаршая медсестра',
+      role: 'Cтаршая медсестра<span>Стаж работы - 14лет</span>',
       photo: 'assets/img/team/pilipeyko.webp'
     },
   ];

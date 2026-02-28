@@ -46,9 +46,7 @@ export class ContactsComponent implements OnInit {
   submitView(): void {
     if (this.viewForm.valid) {
       const { name, phone } = this.viewForm.value;
-      this.api.send_telegram(505467091,
-        `📅 Запись на просмотр (контакты)\nИмя: ${name}\nТелефон: ${phone}`
-      ).subscribe();
+      this.api.sendFormNotification(name!, phone!, '📅 Запись на просмотр (контакты)');
       this.formSent = true;
       this.viewForm.reset();
     }
@@ -57,9 +55,7 @@ export class ContactsComponent implements OnInit {
   submitTransport(): void {
     if (this.transportForm.valid) {
       const { name, phone } = this.transportForm.value;
-      this.api.send_telegram(505467091,
-        `🚑 Перевозка пациента\nИмя: ${name}\nТелефон: ${phone}`
-      ).subscribe();
+      this.api.sendFormNotification(name!, phone!, '🚑 Перевозка пациента');
       this.transportFormSent = true;
       this.transportForm.reset();
     }

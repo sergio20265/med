@@ -3,34 +3,26 @@
 <div class="video-reviews-container">
   <div class="container">
     <h1 class="page-title">Видео отзывы</h1>
-    
+
     <!-- Состояние загрузки -->
     <div *ngIf="loading" class="loading-state">
       <div class="loading-spinner"></div>
       <p>Загружаем видео отзывы...</p>
     </div>
-    
-    <!-- Состояние ошибки -->
-    <div *ngIf="error && !loading" class="error-state">
-      <div class="error-icon">⚠️</div>
-      <h3>Ошибка загрузки</h3>
-      <p>{{ error }}</p>
-      <button class="retry-btn" (click)="loadVideos()">Попробовать снова</button>
-    </div>
-    
+
     <!-- Пустое состояние -->
-    <div *ngIf="!loading && !error && videos.length === 0" class="empty-state">
+    <div *ngIf="!loading && videos.length === 0" class="empty-state">
       <div class="empty-icon">📹</div>
       <h3>Пока нет видео отзывов</h3>
       <p>Скоро здесь появятся отзывы наших клиентов</p>
     </div>
-    
+
     <!-- Карусель с видео -->
-    <div *ngIf="!loading && !error && videos.length > 0" class="video-carousel">
+    <div *ngIf="!loading && videos.length > 0" class="video-carousel">
       <div class="carousel-container">
         <!-- Кнопка назад -->
-        <button 
-          class="carousel-btn carousel-btn-prev" 
+        <button
+          class="carousel-btn carousel-btn-prev"
           [class.disabled]="!canScrollLeft"
           (click)="prevSlide()"
           [disabled]="!canScrollLeft"
@@ -39,64 +31,49 @@
             <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </button>
-        
+
         <!-- Слайды -->
         <div class="carousel-track-container">
-          <div 
-            class="carousel-track" 
+          <div
+            class="carousel-track"
             [style.transform]="'translateX(-' + (currentSlide * (100 / slidesPerView)) + '%)'">
-            <div 
-              *ngFor="let video of videos; let i = index" 
+            <div
+              *ngFor="let video of videos; let i = index; trackBy: trackByVideo"
               class="carousel-slide"
               [style.flex]="'0 0 ' + (100 / slidesPerView) + '%'">
-              <div class="video-card">
+              <!-- Карточка — клик открывает попап -->
+              <div class="video-card" (click)="openModal(video)" role="button" tabindex="0"
+                   (keydown.enter)="openModal(video)" aria-label="Смотреть отзыв">
                 <div class="video-wrapper">
-                  <video 
-                    [src]="getVideoUrl(video)" 
-                    [poster]="video.thumbnail || '/assets/images/video-placeholder.jpg'"
-                    controls
+                  <!-- Превью без controls -->
+                  <video
+                    [src]="getVideoUrl(video)"
                     preload="metadata"
-                    [attr.aria-label]="'Видео отзыв ' + (i + 1)"
+                    muted
+                    playsinline
                     class="video-element"
-                    #videoElement
-                    (loadstart)="onVideoElementReady(videoElement, video)"
-                    (loadedmetadata)="video.loaded = true"
-                     (error)="video.error = true">
-                    Ваш браузер не поддерживает воспроизведение видео.
+                    [attr.aria-label]="'Видео отзыв ' + (i + 1)">
                   </video>
-                  
-                  <!-- Плейсхолдер для загрузки -->
-                  <div *ngIf="!video.loaded" class="video-placeholder">
-                    <div class="placeholder-spinner"></div>
-                  </div>
-                  
                   <!-- Кнопка воспроизведения -->
                   <div class="play-button-overlay">
-                    <button class="play-button" aria-label="Воспроизвести видео">
+                    <div class="play-button">
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
                         <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
                       </svg>
-                    </button>
+                    </div>
                   </div>
                 </div>
-                
-                <!-- Информация о видео -->
-                 <div class="video-info">
-                   <h3 class="video-title">{{ 'Отзыв клиента' }}</h3>
-                   <div class="video-meta" *ngIf="video.duration">
-                     <span class="video-duration">
-                       Длительность: {{ video.duration }} сек
-                     </span>
-                   </div>
-                 </div>
+                <div class="video-info">
+                  <h3 class="video-title">Отзыв клиента</h3>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        
+
         <!-- Кнопка вперед -->
-        <button 
-          class="carousel-btn carousel-btn-next" 
+        <button
+          class="carousel-btn carousel-btn-next"
           [class.disabled]="!canScrollRight"
           (click)="nextSlide()"
           [disabled]="!canScrollRight"
@@ -106,11 +83,11 @@
           </svg>
         </button>
       </div>
-      
+
       <!-- Индикаторы -->
       <div class="carousel-indicators" *ngIf="videos.length > slidesPerView">
-        <button 
-          *ngFor="let video of videos; let i = index" 
+        <button
+          *ngFor="let video of videos; let i = index"
           class="indicator"
           [class.active]="i >= currentSlide && i < currentSlide + slidesPerView"
           (click)="goToSlide(i)"
@@ -118,5 +95,24 @@
         </button>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- Видео попап -->
+<div *ngIf="selectedVideo" class="vr-modal-overlay" (click)="onOverlayClick($event)">
+  <div class="vr-modal">
+    <button class="vr-modal-close" (click)="closeModal()" aria-label="Закрыть">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <video
+      #modalVideo
+      [src]="getVideoUrl(selectedVideo)"
+      controls
+      autoplay
+      playsinline
+      class="vr-modal-video">
+    </video>
   </div>
 </div>

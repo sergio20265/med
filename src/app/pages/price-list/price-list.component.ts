@@ -40,9 +40,7 @@ export class PriceListComponent implements OnInit {
   submitPrice(): void {
     if (this.priceForm.valid) {
       const { name, phone } = this.priceForm.value;
-      this.api.send_telegram(505467091,
-        `💰 Запрос стоимости\nИмя: ${name}\nТелефон: ${phone}`
-      ).subscribe();
+      this.api.sendFormNotification(name!, phone!, '💰 Запрос стоимости');
       this.formSent = true;
       this.priceForm.reset();
     }

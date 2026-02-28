@@ -1,35 +1,13 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { environment } from './environments/environment';
-import { ContactsComponent } from './pages/contacts/contacts.component';
-import { AboutComponent } from './pages/about/about.component';
 
 const BASE_URL = environment.baseUrl;
-
-import { IndexComponent } from './pages/index/index.component';
-import { PriceListComponent } from './pages/price-list/price-list.component';
-import { ServiceComponent } from './pages/service/service.component';
-import { StaffComponent } from './pages/staff/staff.component';
-import { StaffDetailComponent } from './pages/staff/staff-detail/staff-detail.component';
-import { StacionarComponent } from './pages/goroda/stacionar/stacionar.component';
-import { DomPrestarelComponent } from './pages/goroda/dom-prestarel/dom-prestarel.component';
-import { DiagnosComponent } from './pages/diagnos/diagnos.component';
-import { ArticleComponent } from './pages/article/article.component';
-import { RaczionComponent } from './pages/raczion/raczion.component';
-import { DiagnosesListComponent } from './layaot/diagnoses-list/diagnoses-list.component';
-import { RehabilitationComponent } from './layaot/rehabilitation/rehabilitation.component';
-import { VideoReviewsComponent } from './pages/video-reviews/video-reviews.component';
-import { LicenseComponent } from './pages/license/license.component';
-import { TransportComponent } from './pages/transport/transport.component';
-import { ErrorComponent } from './pages/error/error.component';
-import { ReabilitaciyaPosleInsultovComponent } from './pages/goroda/reabilitaciya-posle-insultov/reabilitaciya-posle-insultov.component';
-import { DirectionComponent } from './pages/direction/direction.component';
-// import {GoradaListComponent} from "./pages/goroda/gorada-list/gorada-list.component";
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: IndexComponent,
+    loadComponent: () => import('./pages/index/index.component').then(m => m.IndexComponent),
     data: {
       title: 'Частный стационар "Новая медицина" - Медицинский центр',
       description: 'Частный стационар "Новая медицина" - современный медицинский центр с полным спектром услуг. Квалифицированные врачи, комфортные условия, индивидуальный подход к каждому пациенту.',
@@ -39,7 +17,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'contact',
-    component: ContactsComponent,
+    loadComponent: () => import('./pages/contacts/contacts.component').then(m => m.ContactsComponent),
     data: {
       title: 'Контакты реабилитационного стационара «Новая медицина»',
       description: 'Адрес, телефон, режим работы. Владимирская область, пос. Городищи, ул. Больничный проезд, д. 1. Звоните +7 (930) 033-22-22.',
@@ -49,7 +27,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'about',
-    component: AboutComponent,
+    loadComponent: () => import('./pages/about/about.component').then(m => m.AboutComponent),
     data: {
       title: 'О нас — Реабилитационный стационар «Новая медицина»',
       description: 'Реабилитационный стационар в составе сети медицинских центров «Новая медицина». Более 15 лет работы, 9 медицинских центров, официальная лицензия.',
@@ -57,29 +35,29 @@ const appRoutes: Routes = [
       canonical: `${BASE_URL}/about`
     },
   },
-  { 
-    path: 'service', 
-    component: ServiceComponent, 
+  {
+    path: 'service',
+    loadComponent: () => import('./pages/service/service.component').then(m => m.ServiceComponent),
     data: {
       title: 'Медицинские услуги - Частный стационар "Новая медицина"',
       description: 'Полный спектр медицинских услуг в частном стационаре "Новая медицина". Диагностика, лечение, реабилитация, профилактика. Современное оборудование и опытные специалисты.',
       keywords: 'медицинские услуги, диагностика, лечение, реабилитация, стационар, врачи, медицина',
       canonical: `${BASE_URL}/service`
-    } 
+    }
   },
-  { 
-    path: 'price', 
-    component: PriceListComponent, 
+  {
+    path: 'price',
+    loadComponent: () => import('./pages/price-list/price-list.component').then(m => m.PriceListComponent),
     data: {
       title: 'Цены на медицинские услуги - Частный стационар "Новая медицина"',
       description: 'Прайс-лист на медицинские услуги частного стационара "Новая медицина". Доступные цены на диагностику, лечение, госпитализацию и реабилитацию.',
       keywords: 'цены, прайс, стоимость, медицинские услуги, лечение, диагностика, госпитализация',
       canonical: `${BASE_URL}/price`
-    } 
+    }
   },
-  { 
-    path: 'stacionar', 
-    component: StacionarComponent,
+  {
+    path: 'stacionar',
+    loadComponent: () => import('./pages/goroda/stacionar/stacionar.component').then(m => m.StacionarComponent),
     data: {
       title: 'Частный стационар - Медицинские центры по городам',
       description: 'Сеть частных стационаров "Новая медицина" в различных городах. Выберите ближайший медицинский центр для получения качественной медицинской помощи.',
@@ -89,7 +67,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'stacionar/:gorod',
-    component: StacionarComponent,
+    loadComponent: () => import('./pages/goroda/stacionar/stacionar.component').then(m => m.StacionarComponent),
     data: {
       title: 'Частный стационар в городе - Новая медицина',
       description: 'Частный стационар "Новая медицина" в вашем городе. Современное медицинское оборудование, квалифицированные врачи, комфортные палаты.',
@@ -98,7 +76,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'stacionar/:gorod/diagnos/:slug',
-    component: DiagnosComponent,
+    loadComponent: () => import('./pages/diagnos/diagnos.component').then(m => m.DiagnosComponent),
     data: {
       title: 'Лечение диагноза в стационаре - Новая медицина',
       description: 'Профессиональное лечение различных заболеваний в частном стационаре "Новая медицина". Индивидуальный подход, современные методы терапии.',
@@ -107,7 +85,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'stacionar/:gorod/rehabilitation/:slug',
-    component: DiagnosComponent,
+    loadComponent: () => import('./pages/diagnos/diagnos.component').then(m => m.DiagnosComponent),
     data: {
       title: 'Реабилитация в стационаре - Новая медицина',
       description: 'Комплексная реабилитация в частном стационаре "Новая медицина". Восстановительное лечение, физиотерапия, индивидуальные программы реабилитации.',
@@ -116,7 +94,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'dom-prestarelyh/:gorod',
-    component: DomPrestarelComponent,
+    loadComponent: () => import('./pages/goroda/dom-prestarel/dom-prestarel.component').then(m => m.DomPrestarelComponent),
     data: {
       title: 'Дом престарелых - Уход за пожилыми людьми',
       description: 'Частный дом престарелых "Новая медицина". Профессиональный уход за пожилыми людьми, медицинское наблюдение, комфортные условия проживания.',
@@ -125,7 +103,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'reabilitaciya-posle-insultov/:gorod',
-    component: ReabilitaciyaPosleInsultovComponent,
+    loadComponent: () => import('./pages/goroda/reabilitaciya-posle-insultov/reabilitaciya-posle-insultov.component').then(m => m.ReabilitaciyaPosleInsultovComponent),
     data: {
       title: 'Реабилитация после инсульта - Восстановление в стационаре',
       description: 'Комплексная реабилитация после инсульта в частном стационаре "Новая медицина". Индивидуальные программы восстановления, современные методы реабилитации.',
@@ -134,7 +112,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'staff',
-    component: StaffComponent,
+    loadComponent: () => import('./pages/staff/staff.component').then(m => m.StaffComponent),
     data: {
       title: 'Медицинский персонал - Врачи стационара "Новая медицина"',
       description: 'Команда опытных врачей и медицинского персонала частного стационара "Новая медицина". Высокая квалификация, многолетний опыт работы.',
@@ -144,7 +122,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'diagnos',
-    component: DiagnosesListComponent,
+    loadComponent: () => import('./layaot/diagnoses-list/diagnoses-list.component').then(m => m.DiagnosesListComponent),
     data: {
       title: 'Медицинские диагнозы - Лечение заболеваний в стационаре',
       description: 'Полный перечень медицинских диагнозов, которые лечат в частном стационаре "Новая медицина". Профессиональная диагностика и эффективное лечение.',
@@ -154,7 +132,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'rehabilitation',
-    component: RehabilitationComponent,
+    loadComponent: () => import('./layaot/rehabilitation/rehabilitation.component').then(m => m.RehabilitationComponent),
     data: {
       title: 'Медицинская реабилитация - Виды восстановительного лечения',
       description: 'Различные виды медицинской реабилитации в частном стационаре "Новая медицина". Физиотерапия, ЛФК, массаж, восстановительные программы.',
@@ -165,7 +143,7 @@ const appRoutes: Routes = [
   // ── Статические лендинги направлений (до параметрических роутов) ──
   {
     path: 'rehabilitation/insult',
-    component: DirectionComponent,
+    loadComponent: () => import('./pages/direction/direction.component').then(m => m.DirectionComponent),
     data: {
       slug: 'insult',
       title: 'Реабилитация после инсульта в стационаре 24/7 | Новая медицина',
@@ -174,7 +152,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'rehabilitation/perelom-shejki-bedra',
-    component: DirectionComponent,
+    loadComponent: () => import('./pages/direction/direction.component').then(m => m.DirectionComponent),
     data: {
       slug: 'perelom-shejki-bedra',
       title: 'Реабилитация после перелома шейки бедра | Новая медицина',
@@ -183,7 +161,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'rehabilitation/endoprotezirovanie',
-    component: DirectionComponent,
+    loadComponent: () => import('./pages/direction/direction.component').then(m => m.DirectionComponent),
     data: {
       slug: 'endoprotezirovanie',
       title: 'Реабилитация после эндопротезирования сустава | Новая медицина',
@@ -192,7 +170,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'diagnos/demenciya',
-    component: DirectionComponent,
+    loadComponent: () => import('./pages/direction/direction.component').then(m => m.DirectionComponent),
     data: {
       slug: 'demenciya',
       title: 'Уход при деменции и болезни Альцгеймера 24/7 | Новая медицина',
@@ -201,7 +179,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'diagnos/parkinson',
-    component: DirectionComponent,
+    loadComponent: () => import('./pages/direction/direction.component').then(m => m.DirectionComponent),
     data: {
       slug: 'parkinson',
       title: 'Уход при болезни Паркинсона 24/7 | Новая медицина',
@@ -210,7 +188,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'diagnos/palliativ',
-    component: DirectionComponent,
+    loadComponent: () => import('./pages/direction/direction.component').then(m => m.DirectionComponent),
     data: {
       slug: 'palliativ',
       title: 'Паллиативная помощь в стационаре 24/7 | Новая медицина',
@@ -220,7 +198,7 @@ const appRoutes: Routes = [
   // ── Обобщённый роут реабилитации (API) ──────────────────────
   {
     path: 'rehabilitation/:slug',
-    component: DiagnosComponent,
+    loadComponent: () => import('./pages/diagnos/diagnos.component').then(m => m.DiagnosComponent),
     data: {
       title: 'Программа реабилитации - Восстановительное лечение',
       description: 'Индивидуальная программа медицинской реабилитации в частном стационаре "Новая медицина". Комплексный подход к восстановлению здоровья.',
@@ -229,7 +207,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'diagnos/:slug',
-    component: DiagnosComponent,
+    loadComponent: () => import('./pages/diagnos/diagnos.component').then(m => m.DiagnosComponent),
     data: {
       title: 'Лечение заболевания - Медицинская помощь в стационаре',
       description: 'Профессиональное лечение конкретного заболевания в частном стационаре "Новая медицина". Современные методы диагностики и терапии.',
@@ -238,7 +216,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'video-reviews',
-    component: VideoReviewsComponent,
+    loadComponent: () => import('./pages/video-reviews/video-reviews.component').then(m => m.VideoReviewsComponent),
     data: {
       title: 'Видео отзывы пациентов - Частный стационар "Новая медицина"',
       description: 'Видео отзывы пациентов о лечении в частном стационаре "Новая медицина". Реальные истории выздоровления и благодарности.',
@@ -248,7 +226,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'license',
-    component: LicenseComponent,
+    loadComponent: () => import('./pages/license/license.component').then(m => m.LicenseComponent),
     data: {
       title: 'Лицензия на медицинскую деятельность - Новая медицина',
       description: 'Лицензия на осуществление медицинской деятельности частного стационара "Новая медицина". Официальные документы и разрешения.',
@@ -258,7 +236,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'transport',
-    component: TransportComponent,
+    loadComponent: () => import('./pages/transport/transport.component').then(m => m.TransportComponent),
     data: {
       title: 'Медицинская транспортировка пациентов - Новая медицина',
       description: 'Услуги медицинской транспортировки пациентов от частного стационара "Новая медицина". Безопасная перевозка больных, скорая помощь.',
@@ -268,7 +246,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'staff-detail/:slug',
-    component: StaffDetailComponent,
+    loadComponent: () => import('./pages/staff/staff-detail/staff-detail.component').then(m => m.StaffDetailComponent),
     data: {
       title: 'Врач стационара - Медицинский специалист',
       description: 'Подробная информация о враче частного стационара "Новая медицина". Квалификация, опыт работы, специализация.',
@@ -277,7 +255,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'patient/raczion',
-    component: RaczionComponent,
+    loadComponent: () => import('./pages/raczion/raczion.component').then(m => m.RaczionComponent),
     data: {
       title: 'Рацион питания для пациентов - Лечебное питание в стационаре',
       description: 'Сбалансированный рацион питания для пациентов частного стационара "Новая медицина". Лечебные диеты, индивидуальное меню.',
@@ -287,7 +265,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'error',
-    component: ErrorComponent,
+    loadComponent: () => import('./pages/error/error.component').then(m => m.ErrorComponent),
     data: {
       type: 404,
       title: 'Страница не найдена - Частный стационар "Новая медицина"',

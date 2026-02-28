@@ -121,9 +121,7 @@ export class AboutComponent implements OnInit {
   submitView(): void {
     if (this.viewForm.valid) {
       const { name, phone } = this.viewForm.value;
-      this.api.send_telegram(505467091,
-        `📅 Запись на просмотр\nИмя: ${name}\nТелефон: ${phone}`
-      ).subscribe();
+      this.api.sendFormNotification(name!, phone!, '📅 Запись на просмотр');
       this.formSent = true;
       this.viewForm.reset();
     }
@@ -132,9 +130,7 @@ export class AboutComponent implements OnInit {
   submitConsult(): void {
     if (this.consultForm.valid) {
       const { name, phone } = this.consultForm.value;
-      this.api.send_telegram(505467091,
-        `💬 Консультация (О нас)\nИмя: ${name}\nТелефон: ${phone}`
-      ).subscribe();
+      this.api.sendFormNotification(name!, phone!, '💬 Консультация (О нас)');
       this.consultSent = true;
       this.consultForm.reset();
     }

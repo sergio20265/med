@@ -592,9 +592,7 @@ export class DirectionComponent implements OnInit {
   submitCheck(): void {
     if (this.checkForm.valid) {
       const { name, phone } = this.checkForm.value;
-      this.api.send_telegram(505467091,
-        `🛏 Проверить места (${this.data.breadcrumbTitle})\nИмя: ${name}\nТелефон: ${phone}`
-      ).subscribe();
+      this.api.sendFormNotification(name!, phone!, `🛏 Проверить места (${this.data.breadcrumbTitle})`);
       this.checkSent = true;
       this.checkForm.reset();
     }
@@ -603,9 +601,7 @@ export class DirectionComponent implements OnInit {
   submitConsult(): void {
     if (this.consultForm.valid) {
       const { name, phone } = this.consultForm.value;
-      this.api.send_telegram(505467091,
-        `💬 Консультация (${this.data.breadcrumbTitle})\nИмя: ${name}\nТелефон: ${phone}`
-      ).subscribe();
+      this.api.sendFormNotification(name!, phone!, `💬 Консультация (${this.data.breadcrumbTitle})`);
       this.consultSent = true;
       this.consultForm.reset();
     }

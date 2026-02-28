@@ -8,9 +8,16 @@
     </div>
     <div class="vs-mobile-menu">
       <ul>
-        <li *ngFor="let item of menuItems" [class.menu-item-has-children]="item.children">
-          <a (click)="close_menu()" [routerLink]="item.route">{{item.label}}</a>
-          <ul class="sub-menu" *ngIf="item.children">
+        <li *ngFor="let item of menuItems"
+            [class.vs-item-has-children]="item.children"
+            [class.vs-active]="item.children && isExpanded(item.label)">
+          <!-- Пункт с подменю: клик раскрывает/сворачивает -->
+          <a *ngIf="item.children; else simpleLink" (click)="toggleSubmenu(item.label)">{{item.label}}</a>
+          <ng-template #simpleLink>
+            <a (click)="close_menu()" [routerLink]="item.route">{{item.label}}</a>
+          </ng-template>
+          <!-- Подменю — только когда раскрыто -->
+          <ul class="sub-menu" *ngIf="item.children && isExpanded(item.label)">
             <li *ngFor="let child of item.children">
               <a (click)="close_menu()" [routerLink]="child.route">{{child.label}}</a>
             </li>
@@ -91,7 +98,7 @@
       <div class="hdr-actions-inner">
         <a routerLink="/license" class="hdr-action-btn">
           <i class="fas fa-file-medical"></i>
-          Медицинская лицензия №ЛО-33-01-003878
+          Медицинская лицензия Л041-01134-33_00340367
         </a>
         <a href="mailto:nmpansion@yandex.ru" class="hdr-action-btn">
           <i class="fas fa-paper-plane"></i>
@@ -132,9 +139,9 @@
           <a routerLink="/" class="hdr-mobile-logo">
             <img src="assets/img/stacionar-main/new_logo.png" alt="Новая медицина" style="max-height:38px;">
           </a>
-          <div class="d-flex align-items-center gap-3">
+          <div class="d-flex align-items-center gap-2">
             <a href="tel:+79300332222" style="color:#1a3a5c;font-weight:700;font-size:0.95rem;">
-              <i class="fas fa-phone-alt me-1"></i>+7 (930) 033-22-22
+              <i class="fas fa-phone-alt me-1"></i><span class="hdr-mob-phone-txt">+7 (930) 033-22-22</span>
             </a>
             <button class="vs-menu-toggle" style="background:none;border:none;font-size:1.4rem;color:#1a3a5c;" (click)="close_menu()">
               <i class="fas fa-bars"></i>

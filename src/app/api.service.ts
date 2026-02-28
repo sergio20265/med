@@ -142,6 +142,32 @@ export class ApiService {
     return this.http.get(`https://api.telegram.org/bot${environment.telegramBotToken || ''}/sendMessage?chat_id=${chat_id}&parse_mode=HTML&text=${encodeURIComponent(message)}`);
   }
 
+  /**
+   * Отправляет уведомление о заявке в Telegram И на email (если задан web3formsKey).
+   * Адрес email и chat_id берутся из environment.ts — менять только там.
+   */
+  sendFormNotification(name: string, phone: string, subject: string): void {
+    const chatId = parseInt(environment.telegramChatIds?.[0] || '505467091', 10);
+    const msg = `${subject}\nИмя: ${name}\nТелефон: ${phone}\n📅 ${new Date().toLocaleString('ru-RU')}`;
+
+    this.send_telegram(chatId, msg).subscribe({
+      error: (e) => console.error('Telegram notification error:', e)
+    });
+
+    if (environment.web3formsKey) {
+      this.http.post('https://api.web3forms.com/submit', {
+        access_key: environment.web3formsKey,
+        subject: subject,
+        from_name: 'Сайт НМ Реабилитация',
+        name,
+        phone,
+        message: msg
+      }).subscribe({
+        error: (e) => console.error('Email notification error:', e)
+      });
+    }
+  }
+
   get_diagnoses(): Observable<any> {
     const category = encodeURIComponent('Диагнозы');
     const stateKeyStr = 'api.statis.diagnoses.list';

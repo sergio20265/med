@@ -5,7 +5,6 @@ import {HttpClient} from "@angular/common/http";
 import { NgIf } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
-import { environment } from '../../environments/environment';
 
 @Component({
     selector: 'app-appointment-form',
@@ -75,29 +74,13 @@ export class AppointmentFormComponent implements OnInit {
       this.api.send_form_data(formData).subscribe({
         next: (response: any) => {
           console.log('Форма отправлена успешно', response);
-          
-          // Отправляем уведомления в Telegram во все настроенные чаты
-          if (environment.telegramBotToken && environment.telegramChatIds && 
-              environment.telegramBotToken !== 'YOUR_BOT_TOKEN_HERE' && 
-              environment.telegramChatIds.length > 0) {
-            
-            const telegramMessage = `🏥 Новая заявка на консультацию\n\n👤 Имя: ${this.myForm.value.name}\n📞 Телефон: ${this.myForm.value.phone}\n\n📅 Время подачи: ${new Date().toLocaleString('ru-RU')}`;
-            
-            // Отправляем сообщение во все чаты из массива
-            environment.telegramChatIds.forEach((chatId: string, index: number) => {
-              if (chatId && chatId !== 'YOUR_CHAT_ID_HERE') {
-                this.api.send_telegram(parseInt(chatId), telegramMessage).subscribe({
-                  next: (telegramResponse) => {
-                    console.log(`Уведомление в Telegram отправлено успешно в чат ${chatId}`);
-                  },
-                  error: (telegramError) => {
-                    console.error(`Ошибка отправки уведомления в Telegram для чата ${chatId}:`, telegramError);
-                  }
-                });
-              }
-            });
-          }
-          
+
+          this.api.sendFormNotification(
+            this.myForm.value.name,
+            this.myForm.value.phone,
+            `🏥 Новая заявка на консультацию (${this.form_type || 'consultation'})`
+          );
+
           this.isLoading = false;
           this.isSubmitted = true;
           this.myForm.reset();
