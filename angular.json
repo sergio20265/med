@@ -38,7 +38,6 @@
             "styles": [
               "src/assets/css/bootstrap.min.css",
               "src/assets/css/fontawesome.min.css",
-              "src/assets/css/layerslider.min.css",
               "src/assets/css/jquery.datetimepicker.min.css",
               "src/assets/css/magnific-popup.min.css",
               "src/assets/css/slick.min.css",
@@ -52,14 +51,9 @@
             "scripts": [
               "src/assets/js/vendor/jquery-3.6.0.min.js",
               "src/assets/js/slick.min.js",
-              "src/assets/js/layerslider.utils.js",
-              "src/assets/js/layerslider.transitions.js",
-              "src/assets/js/layerslider.kreaturamedia.jquery.js",
               "src/assets/js/bootstrap.min.js",
               "src/assets/js/jquery.datetimepicker.min.js",
               "src/assets/js/jquery.magnific-popup.min.js",
-              "src/assets/js/imagesloaded.pkgd.min.js",
-              "src/assets/js/isotope.pkgd.min.js",
               "node_modules/universal-parallax/dist/universal-parallax.min.js",
               "src/assets/js/wow.min.js",
               "src/assets/js/vscustom-carousel.min.js",
