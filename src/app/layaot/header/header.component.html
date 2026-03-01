@@ -32,12 +32,22 @@
 <div *ngIf="showCallback" class="hdr-popup-overlay" (click)="closeCallbackOverlay($event)">
   <div class="hdr-popup" role="dialog">
     <button class="hdr-popup-close" (click)="toggleCallback()" aria-label="Закрыть"><i class="fal fa-times"></i></button>
-    <h4 class="hdr-popup-title">Перезвоните мне</h4>
-    <p class="hdr-popup-sub">Оставьте номер — врач перезвонит в течение 5 минут</p>
-    <input type="text" placeholder="Ваше имя" class="form-control hdr-popup-input">
-    <input type="tel" placeholder="+7 (___) ___-__-__" class="form-control hdr-popup-input">
-    <button class="vs-btn style1 w-100">Отправить</button>
-    <p class="hdr-popup-agree">Нажимая кнопку, вы соглашаетесь с <a routerLink="/privacy">политикой конфиденциальности</a></p>
+
+    <ng-container *ngIf="!callbackSent">
+      <h4 class="hdr-popup-title">Перезвоните мне</h4>
+      <p class="hdr-popup-sub">Оставьте номер — врач перезвонит в течение 5 минут</p>
+      <form [formGroup]="callbackForm" (ngSubmit)="submitCallback()">
+        <input formControlName="name" type="text" placeholder="Ваше имя" class="form-control hdr-popup-input">
+        <input formControlName="phone" type="tel" placeholder="+7 (___) ___-__-__" class="form-control hdr-popup-input">
+        <button type="submit" class="vs-btn style1 w-100" [disabled]="callbackForm.invalid">Отправить</button>
+        <p class="hdr-popup-agree">Нажимая кнопку, вы соглашаетесь с <a routerLink="/privacy">политикой конфиденциальности</a></p>
+      </form>
+    </ng-container>
+
+    <div *ngIf="callbackSent" class="lp-about-form-success">
+      <i class="fas fa-check-circle"></i>
+      <p>Заявка отправлена! Мы свяжемся с вами в ближайшее время.</p>
+    </div>
   </div>
 </div>
 

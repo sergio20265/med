@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgIf, NgFor } from '@angular/common';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { ApiService } from '../../api.service';
 
 declare const init_mobile_menu: any;
+
 
 interface MenuItem {
   label: string;
@@ -15,12 +18,20 @@ interface MenuItem {
   templateUrl: './header.component.html',
   styles: [],
   standalone: true,
-  imports: [NgIf, RouterLink, NgFor]
+  imports: [NgIf, RouterLink, NgFor, ReactiveFormsModule]
 })
 export class HeaderComponent {
+  constructor(private api: ApiService) {}
+
   visible: boolean = false;
   showCallback: boolean = false;
+  callbackSent = false;
   expandedItems = new Set<string>();
+
+  callbackForm = new FormGroup({
+    name:  new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required),
+  });
 
   toggleSubmenu(label: string): void {
     if (this.expandedItems.has(label)) {
@@ -87,9 +98,19 @@ export class HeaderComponent {
     }
   }
 
+  submitCallback(): void {
+    if (this.callbackForm.valid) {
+      const { name, phone } = this.callbackForm.value;
+      this.api.sendFormNotification(name!, phone!, '📞 Перезвоните мне (шапка)');
+      this.callbackSent = true;
+      this.callbackForm.reset();
+    }
+  }
+
   toggleCallback() {
     this.showCallback = !this.showCallback;
     if (this.showCallback) {
+      this.callbackSent = false;
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
