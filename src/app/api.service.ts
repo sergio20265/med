@@ -1,5 +1,6 @@
 import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import emailjs from '@emailjs/browser';
 import { TransferState, makeStateKey } from '@angular/core';
 import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 import { Observable, of } from 'rxjs';
@@ -143,28 +144,30 @@ export class ApiService {
   }
 
   /**
-   * Отправляет уведомление о заявке в Telegram И на email (если задан web3formsKey).
-   * Адрес email и chat_id берутся из environment.ts — менять только там.
+   * Отправляет уведомление о заявке в Telegram + на email через EmailJS.
+   * Все ключи берутся из environment.ts — менять только там.
    */
   sendFormNotification(name: string, phone: string, subject: string): void {
     const chatId = parseInt(environment.telegramChatIds?.[0] || '505467091', 10);
     const msg = `${subject}\nИмя: ${name}\nТелефон: ${phone}\n📅 ${new Date().toLocaleString('ru-RU')}`;
 
+    // Telegram (работает в России)
     this.send_telegram(chatId, msg).subscribe({
       error: (e) => console.error('Telegram notification error:', e)
     });
 
-    if (environment.web3formsKey) {
-      this.http.post('https://api.web3forms.com/submit', {
-        access_key: environment.web3formsKey,
-        subject: subject,
-        from_name: 'Сайт НМ Реабилитация',
-        name,
-        phone,
-        message: msg
-      }).subscribe({
-        error: (e) => console.error('Email notification error:', e)
-      });
+    // Email через EmailJS (работает в России, Яндекс SMTP)
+    if (isPlatformBrowser(this.platformId)) {
+      const { serviceId, templateId, publicKey } = environment.emailjs;
+      if (serviceId && templateId && publicKey) {
+        emailjs.send(serviceId, templateId, {
+          from_name: name,
+          phone,
+          subject,
+          message: msg,
+          to_email: environment.notificationEmail,
+        }, publicKey).catch((e: any) => console.error('EmailJS error:', e));
+      }
     }
   }
 

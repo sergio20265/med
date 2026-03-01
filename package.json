@@ -27,6 +27,7 @@
     "@angular/platform-browser-dynamic": "^16.2.12",
     "@angular/platform-server": "^16.2.12",
     "@angular/router": "^16.2.12",
+    "@emailjs/browser": "^4.4.1",
     "@nguniversal/express-engine": "^16.2.0",
     "dotenv": "^16.4.5",
     "express": "^4.15.2",
