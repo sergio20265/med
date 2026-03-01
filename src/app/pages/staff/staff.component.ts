@@ -82,22 +82,22 @@ export class StaffComponent {
       members: [
         {
           name: 'Китаев Дмитрий',
-          role: 'Инструктор ЛФК<span>Стаж работы - 8лет</span>',
+          role: 'Реабилитолог<span>Стаж работы - 8лет</span>',
           photo: 'assets/img/team/kitaev.webp'
         },
         {
           name: 'Анохин Николай',
-          role: 'Инструктор ЛФК, кинезиотерапевт<span>Стаж работы - 3года</span>',
+          role: 'Реабилитолог, кинезиотерапевт<span>Стаж работы - 3года</span>',
           photo: 'assets/img/team/anochin.webp'
         },
 		{
           name: 'Латкин Дмитрий',
-          role: 'Помощник инструктора',
+          role: 'Инструктор ЛФК',
           photo: 'assets/img/team/latkin.webp'
         },
         {
           name: 'Иванов Владимир',
-          role: 'Помощник инструктора',
+          role: 'Инструктор ЛФК',
           photo: 'assets/img/team/ivanov.webp'
         },
       ]

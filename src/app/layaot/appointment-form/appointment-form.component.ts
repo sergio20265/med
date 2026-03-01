@@ -1,7 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { FormControl, FormGroup, Validators, ReactiveFormsModule } from "@angular/forms";
 import {ApiService} from "../../api.service";
-import {HttpClient} from "@angular/common/http";
 import { NgIf } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
@@ -13,20 +12,14 @@ import { ButtonModule } from 'primeng/button';
     standalone: true,
     imports: [ReactiveFormsModule, InputTextModule, ButtonModule, NgIf]
 })
-export class AppointmentFormComponent implements OnInit {
+export class AppointmentFormComponent {
   @Input() form_type: string = ''
   isSubmitted: boolean = false;
-  isLoading: boolean = false;
   myForm: FormGroup = new FormGroup({
     "name": new FormControl('',[Validators.required,] ),
     "phone": new FormControl('',[Validators.required,] ),
-
   });
-  constructor(private api:ApiService,private http:HttpClient) {
-  }
-  ngOnInit(): void {
-
-  }
+  constructor(private api: ApiService) {}
 
   formatPhoneNumber(event: any) {
     let value = event.target.value.replace(/\D/g, '');
@@ -63,33 +56,10 @@ export class AppointmentFormComponent implements OnInit {
 
   submit() {
     if (this.myForm.valid) {
-      this.isLoading = true;
-      
-      const formData = {
-        name: this.myForm.value.name,
-        phone: this.myForm.value.phone,
-        form_type: this.form_type || 'consultation'
-      };
-      
-      this.api.send_form_data(formData).subscribe({
-        next: (response: any) => {
-          console.log('Форма отправлена успешно', response);
-
-          this.api.sendFormNotification(
-            this.myForm.value.name,
-            this.myForm.value.phone,
-            `🏥 Новая заявка на консультацию (${this.form_type || 'consultation'})`
-          );
-
-          this.isLoading = false;
-          this.isSubmitted = true;
-          this.myForm.reset();
-        },
-        error: (error: any) => {
-          console.error('Ошибка отправки формы', error);
-          this.isLoading = false;
-        }
-      });
+      const { name, phone } = this.myForm.value;
+      this.api.sendFormNotification(name, phone, `🏥 Новая заявка (${this.form_type || 'консультация'})`);
+      this.isSubmitted = true;
+      this.myForm.reset();
     }
   }
 

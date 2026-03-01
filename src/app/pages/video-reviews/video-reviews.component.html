@@ -44,17 +44,20 @@
               <!-- Карточка — клик открывает попап -->
               <div class="video-card" (click)="openModal(video)" role="button" tabindex="0"
                    (keydown.enter)="openModal(video)" aria-label="Смотреть отзыв">
-                <div class="video-wrapper">
-                  <!-- Превью без controls -->
+                <div class="video-wrapper"
+                     [class.landscape]="video.orientation === 'landscape'"
+                     [class.portrait]="video.orientation === 'portrait'">
+                  <!-- Превью без controls; ориентация определяется по событию loadedmetadata -->
                   <video
                     [src]="getVideoUrl(video)"
                     preload="metadata"
                     muted
                     playsinline
                     class="video-element"
-                    [attr.aria-label]="'Видео отзыв ' + (i + 1)">
+                    [attr.aria-label]="'Видео отзыв ' + (i + 1)"
+                    (loadedmetadata)="onVideoMetadata($event, video)">
                   </video>
-                  <!-- Кнопка воспроизведения -->
+                  <!-- Иконка воспроизведения -->
                   <div class="play-button-overlay">
                     <div class="play-button">
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -98,9 +101,9 @@
   </div>
 </div>
 
-<!-- Видео попап -->
+<!-- Видео попап — размер адаптируется под ориентацию видео -->
 <div *ngIf="selectedVideo" class="vr-modal-overlay" (click)="onOverlayClick($event)">
-  <div class="vr-modal">
+  <div class="vr-modal" [class.landscape]="selectedVideo.orientation === 'landscape'">
     <button class="vr-modal-close" (click)="closeModal()" aria-label="Закрыть">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
@@ -112,7 +115,8 @@
       controls
       autoplay
       playsinline
-      class="vr-modal-video">
+      class="vr-modal-video"
+      [class.landscape]="selectedVideo.orientation === 'landscape'">
     </video>
   </div>
 </div>

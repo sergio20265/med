@@ -4,9 +4,7 @@ import { CommonModule } from '@angular/common';
 
 interface VideoItem {
   url: string;
-  name?: string;
-  thumbnail?: string;
-  duration?: number;
+  orientation?: 'portrait' | 'landscape';
   loaded?: boolean;
   error?: boolean;
 }
@@ -25,12 +23,40 @@ export class VideoReviewsComponent implements AfterContentInit, OnDestroy {
 
   // ← Добавляйте локальные видео сюда
   private readonly localVideos: VideoItem[] = [
-    { url: 'assets/video/video5262534676584637657.mp4', loaded: false, error: false },
+    { url: 'assets/video/avg22-1.mp4' },
+    { url: 'assets/video/avg22-2.mp4' },
+    { url: 'assets/video/avg23.mp4' },
+    { url: 'assets/video/apr22-1.mp4' },
+    { url: 'assets/video/apr22-2.mp4' },
+    { url: 'assets/video/apr22-3.mp4' },
+    { url: 'assets/video/apr23-1.mp4' },
+    { url: 'assets/video/dek22-1.mp4' },
+    { url: 'assets/video/iul22-1.mp4' },
+    { url: 'assets/video/iul22-2.mp4' },
+    { url: 'assets/video/iun22-1.mp4' },
+    { url: 'assets/video/iun23-1.mp4' },
+    { url: 'assets/video/iun23-2.mp4' },
+    { url: 'assets/video/may22-1.mp4' },
+    { url: 'assets/video/may22-2.mp4' },
+    { url: 'assets/video/mar22-1.mp4' },
+    { url: 'assets/video/mar22-2.mp4' },
+    { url: 'assets/video/mar22-3.mp4' },
+    { url: 'assets/video/mar23-1.mp4' },
+    { url: 'assets/video/mar23-2.mp4' },
+    { url: 'assets/video/noy23-1.mp4' },
+    { url: 'assets/video/okt22-1.mp4' },
+    { url: 'assets/video/okt23-1.mp4' },
+    { url: 'assets/video/sen22-1.mp4' },
+    { url: 'assets/video/sen22-2.mp4' },
+    { url: 'assets/video/fev22-1.mp4' },
+    { url: 'assets/video/fev22-2.mp4' },
+    { url: 'assets/video/yan23-1.mp4' },
+    { url: 'assets/video/yan23-2.mp4' },
   ];
 
   // Карусель
   currentSlide = 0;
-  slidesPerView = 2;
+  slidesPerView = 3;
   canScrollLeft = false;
   canScrollRight = true;
 
@@ -81,9 +107,17 @@ export class VideoReviewsComponent implements AfterContentInit, OnDestroy {
   }
 
   loadVideos(): void {
-    this.videos = [...this.localVideos];
+    this.videos = this.localVideos.map(v => ({ ...v, loaded: false, error: false }));
     this.loading = false;
     this.updateCarouselState();
+    this.cdr.markForCheck();
+  }
+
+  /** Определяем ориентацию по реальным размерам видео после загрузки метаданных */
+  onVideoMetadata(event: Event, video: VideoItem): void {
+    const el = event.target as HTMLVideoElement;
+    video.orientation = el.videoWidth > el.videoHeight ? 'landscape' : 'portrait';
+    video.loaded = true;
     this.cdr.markForCheck();
   }
 

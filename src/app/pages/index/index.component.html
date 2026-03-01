@@ -4,30 +4,27 @@
 <div *ngIf="showForm" class="lp-modal-overlay" (click)="closeFormOverlay($event)">
   <div class="lp-modal" role="dialog">
     <button class="lp-modal-close" (click)="toggleForm()"><i class="fal fa-times"></i></button>
-    <h4 class="lp-modal-title">{{ formTitle }}</h4>
-    <p class="lp-modal-sub">Ответим в течение 3–5 минут</p>
-    <div class="mb-3">
-      <input type="text" placeholder="Имя" class="form-control lp-modal-input">
+    <div *ngIf="!formSent">
+      <h4 class="lp-modal-title">{{ formTitle }}</h4>
+      <p class="lp-modal-sub">Ответим в течение 3–5 минут</p>
+      <form [formGroup]="mainForm" (ngSubmit)="submitMainForm()">
+        <div class="mb-3">
+          <input type="text" formControlName="name" placeholder="Ваше имя" class="form-control lp-modal-input">
+        </div>
+        <div class="mb-4">
+          <input type="tel" formControlName="phone" placeholder="+7 (___) ___-__-__" class="form-control lp-modal-input">
+        </div>
+        <button type="submit" class="vs-btn style1 w-100 mb-3" [disabled]="mainForm.invalid">Отправить</button>
+        <label class="lp-modal-agree d-flex align-items-start gap-2">
+          <input type="checkbox" checked style="margin-top:3px;flex-shrink:0;">
+          <span>Я соглашаюсь с <a href="assets/documents/politika.pdf" target="_blank" rel="noopener" style="color:#f0a500;">политикой обработки персональных данных</a></span>
+        </label>
+      </form>
     </div>
-    <div class="mb-3">
-      <input type="tel" placeholder="Телефон" class="form-control lp-modal-input">
+    <div *ngIf="formSent" class="lp-about-form-success">
+      <i class="fas fa-check-circle"></i>
+      <p>Заявка отправлена! Мы свяжемся с вами в ближайшее время.</p>
     </div>
-    <div class="mb-4">
-      <select class="form-control lp-modal-input">
-        <option value="" disabled selected>Состояние пациента</option>
-        <option>После инсульта</option>
-        <option>После операции / эндопротезирования</option>
-        <option>После перелома / травмы</option>
-        <option>Деменция</option>
-        <option>Болезнь Паркинсона</option>
-        <option>Паллиативная помощь</option>
-      </select>
-    </div>
-    <button class="vs-btn style1 w-100 mb-3">Отправить</button>
-    <label class="lp-modal-agree d-flex align-items-start gap-2">
-      <input type="checkbox" checked style="margin-top:3px;flex-shrink:0;">
-      <span>Я соглашаюсь с <a href="assets/documents/politika.pdf" target="_blank" rel="noopener" style="color:#f0a500;">политикой обработки персональных данных</a></span>
-    </label>
   </div>
 </div>
 
@@ -35,19 +32,27 @@
 <div *ngIf="showViewForm" class="lp-modal-overlay" (click)="closeViewFormOverlay($event)">
   <div class="lp-modal" role="dialog">
     <button class="lp-modal-close" (click)="toggleViewForm()"><i class="fal fa-times"></i></button>
-    <h4 class="lp-modal-title">Записаться на просмотр</h4>
-    <p class="lp-modal-sub">Приедьте и лично оцените условия</p>
-    <div class="mb-3">
-      <input type="text" placeholder="Имя" class="form-control lp-modal-input">
+    <div *ngIf="!viewFormSent">
+      <h4 class="lp-modal-title">Записаться на просмотр</h4>
+      <p class="lp-modal-sub">Приедьте и лично оцените условия</p>
+      <form [formGroup]="viewForm" (ngSubmit)="submitViewForm()">
+        <div class="mb-3">
+          <input type="text" formControlName="name" placeholder="Ваше имя" class="form-control lp-modal-input">
+        </div>
+        <div class="mb-4">
+          <input type="tel" formControlName="phone" placeholder="+7 (___) ___-__-__" class="form-control lp-modal-input">
+        </div>
+        <button type="submit" class="vs-btn style1 w-100 mb-3" [disabled]="viewForm.invalid">Отправить заявку</button>
+        <label class="lp-modal-agree d-flex align-items-start gap-2">
+          <input type="checkbox" checked style="margin-top:3px;flex-shrink:0;">
+          <span>Я соглашаюсь с <a href="assets/documents/politika.pdf" target="_blank" rel="noopener" style="color:#f0a500;">политикой обработки персональных данных</a></span>
+        </label>
+      </form>
     </div>
-    <div class="mb-4">
-      <input type="tel" placeholder="Телефон" class="form-control lp-modal-input">
+    <div *ngIf="viewFormSent" class="lp-about-form-success">
+      <i class="fas fa-check-circle"></i>
+      <p>Заявка отправлена! Мы свяжемся с вами в ближайшее время.</p>
     </div>
-    <button class="vs-btn style1 w-100 mb-3">Отправить заявку</button>
-    <label class="lp-modal-agree d-flex align-items-start gap-2">
-      <input type="checkbox" checked style="margin-top:3px;flex-shrink:0;">
-      <span>Я соглашаюсь с <a href="assets/documents/politika.pdf" target="_blank" rel="noopener" style="color:#f0a500;">политикой обработки персональных данных</a></span>
-    </label>
   </div>
 </div>
 

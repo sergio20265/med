@@ -207,9 +207,13 @@
 .video-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 9/16;
+  aspect-ratio: 9/16;   // по умолчанию — вертикальное
   background: #000;
   overflow: hidden;
+
+  // После определения ориентации браузером
+  &.landscape { aspect-ratio: 16/9; }
+  &.portrait  { aspect-ratio: 9/16; }
 }
 
 .video-element {
@@ -619,6 +623,9 @@
   position: relative;
   width: min(380px, 92vw);
   animation: vrSlideIn 0.25s ease;
+
+  // Горизонтальное видео — шире
+  &.landscape { width: min(800px, 95vw); }
 }
 
 @keyframes vrSlideIn {
@@ -649,4 +656,9 @@
   display: block;
   background: #000;
   object-fit: contain;
+
+  &.landscape {
+    aspect-ratio: 16/9;
+    max-height: 85vh;
+  }
 }

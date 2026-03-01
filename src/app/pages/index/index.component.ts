@@ -1,17 +1,19 @@
 import { Component, AfterViewInit, HostListener, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { SeoService } from '../../seo-service.service';
+import { ApiService } from '../../api.service';
 
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
   standalone: true,
-  imports: [RouterLink, NgFor, NgIf]
+  imports: [RouterLink, NgFor, NgIf, ReactiveFormsModule]
 })
 export class IndexComponent implements OnInit, AfterViewInit {
 
-  constructor(private seo: SeoService) {}
+  constructor(private seo: SeoService, private api: ApiService) {}
 
   ngOnInit(): void {
     this.seo.updateHomepageSeo(this.faqs);
@@ -21,6 +23,18 @@ export class IndexComponent implements OnInit, AfterViewInit {
   showForm: boolean = false;
   showViewForm: boolean = false;
   formTitle = 'Бесплатная консультация врача';
+  formSent = false;
+  viewFormSent = false;
+
+  mainForm = new FormGroup({
+    name:  new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required),
+  });
+
+  viewForm = new FormGroup({
+    name:  new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required),
+  });
 
   // ── Лайтбокс ──────────────────────────────────────────────
   lightboxOpen = false;
@@ -73,6 +87,24 @@ export class IndexComponent implements OnInit, AfterViewInit {
   closeViewFormOverlay(event: MouseEvent) {
     if ((event.target as HTMLElement).classList.contains('lp-modal-overlay')) {
       this.toggleViewForm();
+    }
+  }
+
+  submitMainForm(): void {
+    if (this.mainForm.valid) {
+      const { name, phone } = this.mainForm.value;
+      this.api.sendFormNotification(name!, phone!, `🏥 ${this.formTitle}`);
+      this.formSent = true;
+      this.mainForm.reset();
+    }
+  }
+
+  submitViewForm(): void {
+    if (this.viewForm.valid) {
+      const { name, phone } = this.viewForm.value;
+      this.api.sendFormNotification(name!, phone!, '📅 Записаться на просмотр (главная)');
+      this.viewFormSent = true;
+      this.viewForm.reset();
     }
   }
 

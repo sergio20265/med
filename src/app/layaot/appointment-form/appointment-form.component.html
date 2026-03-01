@@ -50,10 +50,15 @@
       </div>
 
       <div class="col-xl-12 text-center">
-        <button class="vs-btn style2" [disabled]="myForm.invalid || isLoading" type="submit">
-          <span *ngIf="!isLoading">Получить консультацию <i class="far fa-calendar-alt"></i></span>
-          <span *ngIf="isLoading">Отправка... <i class="fas fa-spinner fa-spin"></i></span>
+        <button class="vs-btn style2" [disabled]="myForm.invalid" type="submit">
+          Получить консультацию <i class="far fa-calendar-alt"></i>
         </button>
+      </div>
+      <div class="col-xl-12 mt-3">
+        <label class="lp-modal-agree d-flex align-items-start gap-2">
+          <input type="checkbox" checked style="margin-top:3px;flex-shrink:0;">
+          <span style="font-size:0.82rem;color:#666;">Я соглашаюсь с <a href="assets/documents/politika.pdf" target="_blank" rel="noopener" style="color:#f0a500;">политикой обработки персональных данных</a></span>
+        </label>
       </div>
     </div>
   </div>

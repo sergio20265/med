@@ -14,6 +14,7 @@ import { InputTextModule } from 'primeng/inputtext';
     imports: [CommonModule, ReactiveFormsModule, InputTextModule, InputMaskModule, ButtonModule]
 })
 export class PhoneCallComponent {
+  submitted = false;
   constructor(private api: ApiService) {
   }
 
@@ -47,25 +48,10 @@ export class PhoneCallComponent {
 
   submit() {
     if (this.myForm.valid) {
-      // Очищаем номер телефона от маски для отправки
-      const formData = {
-        ...this.myForm.value,
-        phone: this.myForm.value.phone.replace(/[^\d]/g, '') // Оставляем только цифры
-      };
-      
-      this.api.send_form_data(formData).subscribe({
-        next: (response) => {
-          console.log('Форма успешно отправлена:', response);
-          this.api.sendFormNotification(this.myForm.value.name, this.myForm.value.phone, '📞 Заявка на обратный звонок');
-          this.myForm.reset();
-        },
-        error: (error) => {
-          console.error('Ошибка при отправке формы:', error);
-          // Можно добавить уведомление об ошибке
-        }
-      });
+      this.api.sendFormNotification(this.myForm.value.name, this.myForm.value.phone, '📞 Заявка на обратный звонок');
+      this.submitted = true;
+      this.myForm.reset();
     } else {
-      // Отмечаем все поля как touched для показа ошибок валидации
       Object.keys(this.myForm.controls).forEach(key => {
         this.myForm.get(key)?.markAsTouched();
       });

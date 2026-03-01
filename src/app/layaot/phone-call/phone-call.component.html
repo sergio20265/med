@@ -1,7 +1,11 @@
 <div class="phone-call-container">
   <div class="phone-call-form">
     <h3 class="form-title">Заказать звонок</h3>
-    <form (ngSubmit)="submit()" [formGroup]="myForm" novalidate class="contact-form">
+    <div *ngIf="submitted" class="lp-about-form-success">
+      <i class="fas fa-check-circle"></i>
+      <p>Заявка отправлена! Мы свяжемся с вами в ближайшее время.</p>
+    </div>
+    <form *ngIf="!submitted" (ngSubmit)="submit()" [formGroup]="myForm" novalidate class="contact-form">
       <div class="input-wrapper">
         <span class="p-float-label">
           <input 
@@ -37,14 +41,18 @@
       </div>
       
       <div class="button-wrapper">
-        <p-button 
-          [disabled]="myForm.invalid" 
-          label="Заказать звонок" 
+        <p-button
+          [disabled]="myForm.invalid"
+          label="Заказать звонок"
           type="submit"
           class="submit-button"
           icon="pi pi-phone"
         ></p-button>
       </div>
+      <label class="lp-modal-agree d-flex align-items-start gap-2 mt-3">
+        <input type="checkbox" checked style="margin-top:3px;flex-shrink:0;">
+        <span style="font-size:0.82rem;color:#666;">Я соглашаюсь с <a href="assets/documents/politika.pdf" target="_blank" rel="noopener" style="color:#f0a500;">политикой обработки персональных данных</a></span>
+      </label>
     </form>
   </div>
 </div>

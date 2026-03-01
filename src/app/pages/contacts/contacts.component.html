@@ -66,6 +66,10 @@
             <button type="submit" class="lp-btn-primary w-100" [disabled]="viewForm.invalid">
               Записаться на просмотр
             </button>
+            <label class="lp-modal-agree d-flex align-items-start gap-2 mt-3">
+              <input type="checkbox" checked style="margin-top:3px;flex-shrink:0;">
+              <span style="font-size:0.82rem;color:#666;">Я соглашаюсь с <a href="assets/documents/politika.pdf" target="_blank" rel="noopener" style="color:#f0a500;">политикой обработки персональных данных</a></span>
+            </label>
           </form>
           <div *ngIf="formSent" class="lp-about-form-success">
             <i class="fas fa-check-circle"></i>
@@ -225,6 +229,10 @@
             <button type="submit" class="lp-btn-primary w-100" [disabled]="transportForm.invalid">
               Узнать условия перевозки
             </button>
+            <label class="lp-modal-agree d-flex align-items-start gap-2 mt-3">
+              <input type="checkbox" checked style="margin-top:3px;flex-shrink:0;">
+              <span style="font-size:0.82rem;color:#666;">Я соглашаюсь с <a href="assets/documents/politika.pdf" target="_blank" rel="noopener" style="color:#f0a500;">политикой обработки персональных данных</a></span>
+            </label>
           </form>
           <div *ngIf="transportFormSent" class="lp-about-form-success">
             <i class="fas fa-check-circle"></i>
