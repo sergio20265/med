@@ -17,8 +17,43 @@
       <p>Скоро здесь появятся отзывы наших клиентов</p>
     </div>
 
-    <!-- Карусель с видео -->
-    <div *ngIf="!loading && videos.length > 0" class="video-carousel">
+    <!-- ── МОБИЛЬНАЯ СЕТКА (< 768px) ── -->
+    <div *ngIf="isMobile && !loading && videos.length > 0" class="vr-mob-section">
+      <div class="row g-2">
+        <div class="col-6" *ngFor="let video of displayedVideos; trackBy: trackByVideo">
+          <div class="vr-mob-card" (click)="openModal(video)" role="button" tabindex="0"
+               (keydown.enter)="openModal(video)" aria-label="Смотреть отзыв">
+            <div class="vr-mob-thumb"
+                 [class.landscape]="video.orientation === 'landscape'"
+                 [class.portrait]="video.orientation === 'portrait'">
+              <video
+                [src]="getVideoUrl(video)"
+                preload="metadata"
+                muted
+                playsinline
+                class="vr-mob-video"
+                (loadedmetadata)="onVideoMetadata($event, video)">
+              </video>
+              <div class="vr-mob-play">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                  <path d="M8 5V19L19 12L8 5Z" fill="currentColor"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Показать ещё -->
+      <div *ngIf="hasMore" class="vr-load-more-wrap">
+        <button class="vr-load-more-btn" (click)="loadMore()">
+          Показать ещё · осталось {{ videos.length - displayCount }}
+        </button>
+      </div>
+    </div>
+
+    <!-- ── КАРУСЕЛЬ (десктоп, >= 768px) ── -->
+    <div *ngIf="!isMobile && !loading && videos.length > 0" class="video-carousel">
       <div class="carousel-container">
         <!-- Кнопка назад -->
         <button
@@ -47,7 +82,6 @@
                 <div class="video-wrapper"
                      [class.landscape]="video.orientation === 'landscape'"
                      [class.portrait]="video.orientation === 'portrait'">
-                  <!-- Превью без controls; ориентация определяется по событию loadedmetadata -->
                   <video
                     [src]="getVideoUrl(video)"
                     preload="metadata"
@@ -57,7 +91,6 @@
                     [attr.aria-label]="'Видео отзыв ' + (i + 1)"
                     (loadedmetadata)="onVideoMetadata($event, video)">
                   </video>
-                  <!-- Иконка воспроизведения -->
                   <div class="play-button-overlay">
                     <div class="play-button">
                       <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -98,6 +131,7 @@
         </button>
       </div>
     </div>
+
   </div>
 </div>
 

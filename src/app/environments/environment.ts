@@ -14,11 +14,11 @@ export const environment = {
   // Инструкция: https://www.emailjs.com/ → Sign Up → Email Services → Add Service (Яндекс)
   // → Email Templates → Create Template → Account → API Keys (Public Key)
   emailjs: {
-    serviceId:  '',   // ← вставить Service ID  (напр. 'service_abc123')
-    templateId: '',   // ← вставить Template ID (напр. 'template_xyz456')
-    publicKey:  '',   // ← вставить Public Key  (напр. 'AbCdEfGhIjKlMnOp')
+    serviceId:  'service_0uhosbr',   // ← вставить Service ID  (напр. 'service_abc123')
+    templateId: 'template_eu8ixz6',   // ← вставить Template ID (напр. 'template_xyz456')
+    publicKey:  'Lu1cIHnbRGP3STtjC',   // ← вставить Public Key  (напр. 'AbCdEfGhIjKlMnOp')
   },
-  notificationEmail: 'psergio48@gmail.com',
+  notificationEmail: 'nmpansion@yandex.ru',
 };
 // https://api.telegram.org/bot6692526264:AAFr-6NU0jpEhzIj0p88ZFXw-c8JwgnOne4/getUpdates
 /*

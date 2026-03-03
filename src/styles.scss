@@ -966,9 +966,9 @@ body .lp-modal-agree input[type=checkbox] {
   background-size: auto;
 }
 
-.hero-doc-0 { background-image: url('assets/img/dropme/dh0.webp'); }
-.hero-doc-1 { background-image: url('assets/img/dropme/dh1.webp'); }
-.hero-doc-2 { background-image: url('assets/img/dropme/dh2.webp'); }
+.hero-doc-0 { background-image: url('assets/img/dropme/hd_01.webp'); }
+.hero-doc-1 { background-image: url('assets/img/dropme/hd_10.webp'); }
+.hero-doc-2 { background-image: url('assets/img/dropme/hd_20.webp'); }
 .col-lg-5.col-abs
  {
     width: 87%;
@@ -1057,8 +1057,13 @@ body .lp-modal-agree input[type=checkbox] {
 }
 
 @media (max-width: 991px) {
-  .lp-hero-main { padding: 60px 0 30px; }
+  .lp-hero-main { padding: 10px 0; }
   .hero-docs-names { display: none !important; }
+  .lp-hero-main p.mb-4{font-size: 0.9rem!important;}
+  .st-card-name { font-size: 1.2rem!important;}
+  .st-card-role { font-size: 1rem!important;}
+  body .lp-staff-role span, body .st-card-role { font-size: .8rem!important;}
+  .st-card-body { align-items: center;text-align: center;}
 }
 
 @media (max-width: 767px) {
@@ -3401,4 +3406,7 @@ html, body { overflow-x: hidden; max-width: 100%; }
   max-height: calc(100dvh - 160px) !important;
   overflow-y: auto !important;
   -webkit-overflow-scrolling: touch;
+}
+@media (max-width: 460px) {
+  .lp-staff-role span, .st-card-role span{ font-size: .8rem!important;}
 }

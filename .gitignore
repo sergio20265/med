@@ -2,6 +2,7 @@
 /DropMe
 /tmp
 /node_modules
+/files (2)
 .env
 .angular
 .vscode

@@ -1,6 +1,6 @@
-import {AfterContentInit, Component, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, ViewChild, ElementRef} from '@angular/core';
+import {AfterContentInit, Component, ChangeDetectionStrategy, OnDestroy, ChangeDetectorRef, ViewChild, ElementRef, Inject, PLATFORM_ID} from '@angular/core';
 import { BreadcumbComponent } from '../../layaot/breadcumb/breadcumb.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 
 interface VideoItem {
   url: string;
@@ -20,8 +20,9 @@ interface VideoItem {
 export class VideoReviewsComponent implements AfterContentInit, OnDestroy {
   videos: VideoItem[] = [];
   loading = true;
+  isMobile = false;
+  displayCount = 8;
 
-  // ← Добавляйте локальные видео сюда
   private readonly localVideos: VideoItem[] = [
     { url: 'https://nmrehab1.ru/assets/video/avg22-1.mp4' },
     { url: 'https://nmrehab1.ru/assets/video/avg22-2.mp4' },
@@ -54,7 +55,7 @@ export class VideoReviewsComponent implements AfterContentInit, OnDestroy {
     { url: 'https://nmrehab1.ru/assets/video/yan23-2.mp4' },
   ];
 
-  // Карусель
+  // Карусель (десктоп)
   currentSlide = 0;
   slidesPerView = 3;
   canScrollLeft = false;
@@ -64,46 +65,49 @@ export class VideoReviewsComponent implements AfterContentInit, OnDestroy {
   selectedVideo: VideoItem | null = null;
   @ViewChild('modalVideo') modalVideoRef?: ElementRef<HTMLVideoElement>;
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  constructor(
+    private cdr: ChangeDetectorRef,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
+  get displayedVideos(): VideoItem[] {
+    return this.videos.slice(0, this.displayCount);
+  }
+
+  get hasMore(): boolean {
+    return this.displayCount < this.videos.length;
+  }
+
+  loadMore(): void {
+    this.displayCount = Math.min(this.displayCount + 8, this.videos.length);
+    this.cdr.markForCheck();
+  }
 
   ngAfterContentInit(): void {
     this.loadVideos();
-    this.updateSlidesPerView();
-    window.addEventListener('resize', this.handleResize);
+    if (isPlatformBrowser(this.platformId)) {
+      this.updateLayout();
+      window.addEventListener('resize', this.handleResize);
+    }
   }
 
   ngOnDestroy(): void {
-    window.removeEventListener('resize', this.handleResize);
-    document.body.style.overflow = '';
+    if (isPlatformBrowser(this.platformId)) {
+      window.removeEventListener('resize', this.handleResize);
+      document.body.style.overflow = '';
+    }
   }
 
-  private handleResize = () => { this.updateSlidesPerView(); };
+  private handleResize = () => { this.updateLayout(); };
 
-  nextSlide() {
-    if (this.canScrollRight) { this.currentSlide++; this.updateCarouselState(); }
-  }
-
-  prevSlide() {
-    if (this.canScrollLeft) { this.currentSlide--; this.updateCarouselState(); }
-  }
-
-  goToSlide(index: number) {
-    this.currentSlide = index;
-    this.updateCarouselState();
-  }
-
-  private updateCarouselState() {
-    this.canScrollLeft = this.currentSlide > 0;
-    this.canScrollRight = this.currentSlide < this.videos.length - this.slidesPerView;
-    this.cdr.detectChanges();
-  }
-
-  private updateSlidesPerView() {
+  private updateLayout(): void {
     const width = window.innerWidth;
+    this.isMobile = width < 768;
     if (width < 768) this.slidesPerView = 1;
     else if (width < 1200) this.slidesPerView = 2;
     else this.slidesPerView = 3;
     this.updateCarouselState();
+    this.cdr.markForCheck();
   }
 
   loadVideos(): void {
@@ -113,7 +117,6 @@ export class VideoReviewsComponent implements AfterContentInit, OnDestroy {
     this.cdr.markForCheck();
   }
 
-  /** Определяем ориентацию по реальным размерам видео после загрузки метаданных */
   onVideoMetadata(event: Event, video: VideoItem): void {
     const el = event.target as HTMLVideoElement;
     video.orientation = el.videoWidth > el.videoHeight ? 'landscape' : 'portrait';
@@ -121,9 +124,30 @@ export class VideoReviewsComponent implements AfterContentInit, OnDestroy {
     this.cdr.markForCheck();
   }
 
+  nextSlide(): void {
+    if (this.canScrollRight) { this.currentSlide++; this.updateCarouselState(); }
+  }
+
+  prevSlide(): void {
+    if (this.canScrollLeft) { this.currentSlide--; this.updateCarouselState(); }
+  }
+
+  goToSlide(index: number): void {
+    this.currentSlide = index;
+    this.updateCarouselState();
+  }
+
+  private updateCarouselState(): void {
+    this.canScrollLeft = this.currentSlide > 0;
+    this.canScrollRight = this.currentSlide < this.videos.length - this.slidesPerView;
+    this.cdr.detectChanges();
+  }
+
   openModal(video: VideoItem): void {
     this.selectedVideo = video;
-    document.body.style.overflow = 'hidden';
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflow = 'hidden';
+    }
     this.cdr.detectChanges();
   }
 
@@ -136,7 +160,9 @@ export class VideoReviewsComponent implements AfterContentInit, OnDestroy {
   closeModal(): void {
     this.modalVideoRef?.nativeElement?.pause();
     this.selectedVideo = null;
-    document.body.style.overflow = '';
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.style.overflow = '';
+    }
     this.cdr.markForCheck();
   }
 

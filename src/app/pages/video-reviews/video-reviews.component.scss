@@ -595,6 +595,75 @@
   cursor: pointer;
 }
 
+// ─── Мобильная сетка ─────────────────────────────────────────────────────────
+.vr-mob-section {
+  padding-bottom: 20px;
+}
+
+.vr-mob-card {
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #1a1e2d;
+  display: block;
+  transition: transform 0.15s ease;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.vr-mob-thumb {
+  position: relative;
+  aspect-ratio: 9/16;
+  background: #1a1e2d;
+  overflow: hidden;
+
+  &.landscape { aspect-ratio: 16/9; }
+}
+
+.vr-mob-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.vr-mob-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.28);
+  color: #fff;
+
+  svg {
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.6));
+  }
+}
+
+.vr-load-more-wrap {
+  text-align: center;
+  margin-top: 18px;
+}
+
+.vr-load-more-btn {
+  background: #1a3a5c;
+  color: #fff;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #f0a500;
+  }
+}
+
 // Иконка play — всегда видна (не только на hover)
 .play-button-overlay {
   opacity: 1 !important;
