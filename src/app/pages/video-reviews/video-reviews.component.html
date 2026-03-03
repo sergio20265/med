@@ -32,7 +32,8 @@
                 muted
                 playsinline
                 class="vr-mob-video"
-                (loadedmetadata)="onVideoMetadata($event, video)">
+                (loadedmetadata)="onVideoMetadata($event, video)"
+                (error)="onVideoError(video)">
               </video>
               <div class="vr-mob-play">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
@@ -89,7 +90,8 @@
                     playsinline
                     class="video-element"
                     [attr.aria-label]="'Видео отзыв ' + (i + 1)"
-                    (loadedmetadata)="onVideoMetadata($event, video)">
+                    (loadedmetadata)="onVideoMetadata($event, video)"
+                    (error)="onVideoError(video)">
                   </video>
                   <div class="play-button-overlay">
                     <div class="play-button">

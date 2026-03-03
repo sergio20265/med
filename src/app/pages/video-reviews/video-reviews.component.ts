@@ -121,6 +121,15 @@ export class VideoReviewsComponent implements AfterContentInit, OnDestroy {
     const el = event.target as HTMLVideoElement;
     video.orientation = el.videoWidth > el.videoHeight ? 'landscape' : 'portrait';
     video.loaded = true;
+    el.currentTime = 0.1; // захватываем первый кадр как превью
+    this.cdr.markForCheck();
+  }
+
+  onVideoError(video: VideoItem): void {
+    // удаляем недоступное видео из массива
+    const idx = this.videos.indexOf(video);
+    if (idx !== -1) { this.videos.splice(idx, 1); }
+    this.updateCarouselState();
     this.cdr.markForCheck();
   }
 
