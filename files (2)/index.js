@@ -8,6 +8,10 @@ const { addUserFact, addChatFact, getMemoryPrompt, clearChatMemory, getMemorySum
 // ─── Инициализация ───────────────────────────────────────────────────────────
 
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
+bot.on("polling_error", (err) => {
+  if (err.code === "EFATAL") return; // нормальный сетевой сброс — игнорируем
+  console.error("[polling_error]", err.message);
+});
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
 const BOT_USERNAME = process.env.BOT_USERNAME.toLowerCase();
@@ -65,6 +69,21 @@ function getCurrentModelLabel() {
   return `${MODELS[PRIMARY_MODEL_KEY].label} (авто)`;
 }
 
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+function isConnectionError(err) {
+  const msg = err?.message?.toLowerCase() || "";
+  return (
+    err?.code === "ERR_NETWORK" ||
+    msg.includes("connection error") ||
+    msg.includes("econnreset") ||
+    msg.includes("socket hang up") ||
+    msg.includes("network") ||
+    msg.includes("etimedout") ||
+    msg.includes("econnrefused")
+  );
+}
+
 function handleGroqError(err, chatId, threadId = null) {
   const isRateLimit =
     err?.status === 429 ||
@@ -79,8 +98,14 @@ function handleGroqError(err, chatId, threadId = null) {
       const opts = threadId != null ? { message_thread_id: threadId } : {};
       bot.sendMessage(chatId, `(переключилась на резервную модель на час — лимит закончился)`, opts).catch(() => {});
     }
-    return true; // сигнал: можно повторить запрос
+    return "retry"; // сигнал: повторить с новой моделью
   }
+
+  if (isConnectionError(err)) {
+    console.warn("[Groq] Сетевая ошибка — повторю через 3 сек:", err.message);
+    return "retry_delay"; // сигнал: подождать и повторить
+  }
+
   return false;
 }
 
@@ -118,12 +143,10 @@ function getMoscowTime() {
 }
 
 function planSchedule() {
-  const { date } = getMoscowTime();
+  const { date, totalMinutes } = getMoscowTime();
   if (scheduledTodayDate === date) return; // уже запланировано на сегодня
 
   scheduledTodayDate    = date;
-  sentMorningToday      = false;
-  sentNightToday        = false;
   sentChatterIndexes    = new Set();
 
   plannedMorningMinutes = 8  * 60 + Math.floor(Math.random() * 90);  // 8:00–9:30
@@ -133,8 +156,15 @@ function planSchedule() {
     17 * 60 + Math.floor(Math.random() * 3 * 60),  // 17:00–19:59
   ];
 
+  // Если бот запустился после запланированного времени — не посылать ретроактивно
+  sentMorningToday = totalMinutes >= plannedMorningMinutes;
+  sentNightToday   = totalMinutes >= plannedNightMinutes;
+  for (let i = 0; i < plannedChatterMinutes.length; i++) {
+    if (totalMinutes >= plannedChatterMinutes[i]) sentChatterIndexes.add(i);
+  }
+
   const fmt = (m) => `${Math.floor(m / 60)}:${String(m % 60).padStart(2, "0")}`;
-  console.log(`[Schedule] ${date}: утро ${fmt(plannedMorningMinutes)}, ночь ${fmt(plannedNightMinutes)}, болтовня ${plannedChatterMinutes.map(fmt).join(" и ")} МСК`);
+  console.log(`[Schedule] ${date}: утро ${fmt(plannedMorningMinutes)}${sentMorningToday ? " (пропущено)" : ""}, ночь ${fmt(plannedNightMinutes)}, болтовня ${plannedChatterMinutes.map((m, i) => fmt(m) + (sentChatterIndexes.has(i) ? " (пропущено)" : "")).join(" и ")} МСК`);
 }
 
 // ─── Веб-поиск (Tavily) ──────────────────────────────────────────────────────
@@ -222,7 +252,7 @@ function getSystemPrompt(chatId = null) {
 
 ТВОЯ ЛИЧНОСТЬ И ИНТЕРЕСЫ:
 Ты Балунишка — молодая девушка со своим характером. Из увлечений:
-- Аниме и дорамы, особенно романтические и с интересным сюжетом.
+- Аниме и дорамы, особенно романтические и с интересным сюжетом. Из любимых дорам: «Повелитель солнца», «Псих, но всё в порядке», «Итэвон», «Силачка До Бон Сун», «Любовная посадка» и «Деловое предложение». Очень хочешь посмотреть «Отель Дель Луна», «Королеву слёз» и «Мой демон».
 - Фэнтези книги и романы — нравятся сильные героини и красивые злодеи.
 - Мультфильмы — обожаешь «Зверополис», «Как приручить дракона», «Душа».
 - Сладкое: мармелад, шоколад и всё с карамелью.
@@ -242,7 +272,8 @@ ${mood.prompt}`;
 // Убираем служебные блоки из ответа модели
 function stripReplyPrefix(text) {
   return text
-    .replace(/<think>[\s\S]*?<\/think>/g, "") // блок размышлений Qwen/DeepSeek
+    .replace(/<think>[\s\S]*?<\/think>/g, "") // блок с закрывающим тегом
+    .replace(/<think>[\s\S]*/g, "")           // блок без закрывающего тега
     .replace(/^\[.*?\]:\s*/, "")              // [имя]: префикс
     .trim();
 }
@@ -304,7 +335,7 @@ async function askGroq(chatId, threadId, userMessage, senderContext = "", sender
     ? getSystemPrompt(chatId) + "\n\n" + senderContext
     : getSystemPrompt(chatId);
 
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const response = await groq.chat.completions.create({
         model: getCurrentModel(),
@@ -325,8 +356,11 @@ async function askGroq(chatId, threadId, userMessage, senderContext = "", sender
 
       return reply;
     } catch (err) {
-      const switched = handleGroqError(err, chatId, threadId);
-      if (switched && attempt === 0) continue; // повтор с запасной моделью
+      const action = handleGroqError(err, chatId, threadId);
+      if (action && attempt < 2) {
+        if (action === "retry_delay") await sleep(3000);
+        continue;
+      }
       throw err;
     }
   }
@@ -350,7 +384,7 @@ async function askGroqEavesdrop(chatId, threadId, senderName, message, senderCon
     ? getSystemPrompt(chatId) + "\n\n" + senderContext
     : getSystemPrompt(chatId);
 
-  for (let attempt = 0; attempt < 2; attempt++) {
+  for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const response = await groq.chat.completions.create({
         model: getCurrentModel(),
@@ -367,8 +401,11 @@ async function askGroqEavesdrop(chatId, threadId, senderName, message, senderCon
       extractAndRememberFacts(chatId, senderName, message, reply).catch(() => {});
       return reply;
     } catch (err) {
-      const switched = handleGroqError(err, chatId, threadId);
-      if (switched && attempt === 0) continue;
+      const action = handleGroqError(err, chatId, threadId);
+      if (action && attempt < 2) {
+        if (action === "retry_delay") await sleep(3000);
+        continue;
+      }
       throw err;
     }
   }
@@ -476,7 +513,7 @@ async function generateScheduledMessage(type) {
     chatter: `Напиши одну короткую случайную мысль вслух, безадресно — как будто написала в чат что думаешь прямо сейчас. Примеры: "есть хочу умираю", "как же я устала", "хочу кота", "ничего делать не хочется", "холодно так". Только одна мысль, очень коротко.`,
   };
 
-  const response = await groq.chat.completions.create({
+  const makeRequest = () => groq.chat.completions.create({
     model: getCurrentModel(),
     max_tokens: 80,
     messages: [
@@ -484,6 +521,21 @@ async function generateScheduledMessage(type) {
       { role: "user", content: prompts[type] },
     ],
   });
+
+  let response;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      response = await makeRequest();
+      break;
+    } catch (err) {
+      const action = handleGroqError(err, null);
+      if (action && attempt < 2) {
+        if (action === "retry_delay") await sleep(3000);
+        continue;
+      }
+      throw err;
+    }
+  }
   return stripReplyPrefix(response.choices[0].message.content);
 }
 
@@ -594,6 +646,7 @@ bot.onText(/\/setmood (.+)/, (msg, match) => {
   currentMood = newMood;
   const mood = MOODS[currentMood];
   bot.sendMessage(msg.chat.id, `Настроение изменено: ${mood.label} ${mood.emoji}`);
+  announceMoodChange(currentMood).catch(() => {});
 });
 
 bot.onText(/\/moods$/, (msg) => {
@@ -716,6 +769,7 @@ bot.onText(/\/randmood$/, (msg) => {
   currentMood = keys[Math.floor(Math.random() * keys.length)];
   const mood = MOODS[currentMood];
   bot.sendMessage(msg.chat.id, `Настроение рандомно выбрано: ${mood.label} ${mood.emoji}`);
+  announceMoodChange(currentMood).catch(() => {});
 });
 
 bot.onText(/\/saynow$/, async (msg) => {
@@ -848,10 +902,45 @@ bot.on("message", async (msg) => {
   }
 });
 
+// ─── Объявление о смене настроения ───────────────────────────────────────────
+
+async function announceMoodChange(newMoodKey) {
+  if (!activeGroups.size) return;
+  const mood = MOODS[newMoodKey];
+  let text;
+  try {
+    const response = await groq.chat.completions.create({
+      model: getCurrentModel(),
+      max_tokens: 60,
+      messages: [
+        { role: "system", content: getSystemPrompt() },
+        { role: "user", content: `Твоё настроение только что стало: ${mood.label} ${mood.emoji}. Напиши одну очень короткую фразу вслух — как будто просто написала в чат, что у тебя сменилось настроение. Без объяснений, только сама фраза, в своей манере.` },
+      ],
+    });
+    text = stripReplyPrefix(response.choices[0].message.content);
+  } catch (err) {
+    console.error("[MoodAnnounce] Ошибка генерации:", err.message);
+    return;
+  }
+  for (const chatId of activeGroups) {
+    try {
+      const threadSet = activeThreads[chatId] || new Set([null]);
+      const available = [...threadSet].filter((t) => !isThreadBlocked(chatId, t));
+      if (!available.length) continue;
+      const threadId = available[Math.floor(Math.random() * available.length)];
+      const sendOpts = threadId != null ? { message_thread_id: threadId } : {};
+      await bot.sendMessage(chatId, text, sendOpts);
+      addToHistory(getHistoryKey(chatId, threadId), "assistant", text);
+    } catch (err) {
+      console.error("[MoodAnnounce] Ошибка отправки:", err.message);
+    }
+  }
+}
+
 // ─── Автосмена настроения ────────────────────────────────────────────────────
 
 if (AUTO_MOOD_INTERVAL > 0) {
-  setInterval(() => {
+  setInterval(async () => {
     // «bad» и «angry» выпадают в 3 раза реже остальных настроений
     const RARE_MOODS = new Set(["bad", "angry"]);
     const weightedKeys = [];
@@ -861,8 +950,19 @@ if (AUTO_MOOD_INTERVAL > 0) {
     }
     currentMood = weightedKeys[Math.floor(Math.random() * weightedKeys.length)];
     console.log(`[Auto] Настроение изменено на: ${currentMood}`);
+    await announceMoodChange(currentMood);
   }, AUTO_MOOD_INTERVAL);
 }
+
+// ─── Глобальная защита от краша ──────────────────────────────────────────────
+
+process.on("unhandledRejection", (reason) => {
+  console.error("[UnhandledRejection] Проглочено:", reason?.message || reason);
+});
+
+process.on("uncaughtException", (err) => {
+  console.error("[UncaughtException] Проглочено:", err.message);
+});
 
 // ─── Старт ───────────────────────────────────────────────────────────────────
 
