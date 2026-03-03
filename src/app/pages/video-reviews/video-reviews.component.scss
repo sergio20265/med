@@ -595,9 +595,19 @@
   cursor: pointer;
 }
 
-// ─── Мобильная сетка ─────────────────────────────────────────────────────────
+// ─── Мобильная masonry-сетка ─────────────────────────────────────────────────
 .vr-mob-section {
   padding-bottom: 20px;
+}
+
+.vr-mob-masonry {
+  column-count: 2;
+  column-gap: 8px;
+}
+
+.vr-mob-item {
+  break-inside: avoid;
+  margin-bottom: 8px;
 }
 
 .vr-mob-card {

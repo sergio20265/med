@@ -17,10 +17,10 @@
       <p>Скоро здесь появятся отзывы наших клиентов</p>
     </div>
 
-    <!-- ── МОБИЛЬНАЯ СЕТКА (< 768px) ── -->
+    <!-- ── МОБИЛЬНАЯ СЕТКА masonry (< 768px) ── -->
     <div *ngIf="isMobile && !loading && videos.length > 0" class="vr-mob-section">
-      <div class="row g-2">
-        <div class="col-6" *ngFor="let video of displayedVideos; trackBy: trackByVideo">
+      <div class="vr-mob-masonry">
+        <div class="vr-mob-item" *ngFor="let video of displayedVideos; trackBy: trackByVideo">
           <div class="vr-mob-card" (click)="openModal(video)" role="button" tabindex="0"
                (keydown.enter)="openModal(video)" aria-label="Смотреть отзыв">
             <div class="vr-mob-thumb"
