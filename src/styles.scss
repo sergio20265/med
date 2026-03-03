@@ -963,7 +963,19 @@ body .lp-modal-agree input[type=checkbox] {
   left: 0;
   background-repeat: no-repeat;
   background-position: right bottom;
+  background-size: contain;
+}
+@media (min-width: 1500px) {
+.hero-doc {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-position: right bottom;
   background-size: auto;
+}
 }
 
 .hero-doc-0 { background-image: url('assets/img/dropme/hd_01.webp'); }

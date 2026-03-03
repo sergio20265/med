@@ -45,7 +45,7 @@ export class StaffComponent {
     { name: 'Шивагорнова Светлана',       role: 'Санитарка',             photo: 'assets/img/team/shivagornova.webp' },
     { name: 'Витмаер Ирина',              role: 'Санитарка',             photo: 'assets/img/team/vitmaer.webp' },
     { name: 'Акишина Елена',                 role: 'Санитарка',             photo: 'assets/img/team/akishina.webp' },
-    { name: 'Баганова Алла',              role: 'Санитарка',             photo: 'assets/img/team/Baganova.webp' },
+    { name: 'Баганова Алла',              role: 'Санитарка',             photo: 'assets/img/team/baganova_a.webp' },
     { name: 'Панфилова Людмила',          role: 'Санитарка',             photo: 'assets/img/team/panfilova_l.webp' },
     // Буфетчицы
     { name: 'Маликова Оксана',            role: 'Буфетчица',             photo: 'assets/img/team/malikova.webp' },
