@@ -3,6 +3,8 @@
 /tmp
 /node_modules
 /files (2)
+/track
+/willowtales
 .env
 .angular
 .vscode
